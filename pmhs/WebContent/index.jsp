@@ -7,8 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href = "index.home">Home</a>
-<a href = "introduceForm.home">게시판글쓰기</a>
-<a href = "loginForm.bo">게시판글쓰기</a>
+<a href = "index.jsp">Home</a>
+<a href = "introduceForm.jsp">시스템 소개</a>
+<a href = "noticeBoardList.bo">공지사항</a>
+<a href = "qnaBoardList.bo">문의사항</a>
+<a href = "memberList.mem">회원정보</a>
+<a href = "errorPcList.pc">PC정보</a>
+<a href = "messageReceiveList.msg">메시지</a>
+<a href = "loginForm.mem">로그인</a>
 </body>
 </html>

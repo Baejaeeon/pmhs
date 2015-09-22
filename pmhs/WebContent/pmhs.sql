@@ -1,5 +1,4 @@
 CREATE TABLE member (
-	m_num NUMBER NOT NULL,
 	m_id VARCHAR2(12) NOT NULL,
 	m_name VARCHAR2(12) NOT NULL,
 	m_studentNum NUMBER,
@@ -12,8 +11,10 @@ CREATE TABLE member (
 	m_email VARCHAR2(30),
 	m_phone VARCHAR2(13) NOT NULL,
 	m_gender VARCHAR2(2) NOT NULL,
-	PRIMARY KEY(m_num, m_id)
+	PRIMARY KEY(m_id)
 )
+
+CREATE SEQUENCE member_seq;
 
 CREATE TABLE zipcode(
 	seq NUMBER NOT NULL,
@@ -45,10 +46,9 @@ CREATE TABLE messageInfo(
 	msg_title VARCHAR2(30) NOT NULL,
 	msg_date TIMESTAMP NOT NULL,
 	msg_content VARCHAR2(200) NOT NULL,
-	m_num NUMBER NOT NULL,
 	m_id VARCHAR2(12) NOT NULL,
 	PRIMARY KEY(msg_num),
-	FOREIGN KEY(m_num, m_id) REFERENCES member(m_num, m_id)
+	FOREIGN KEY(m_id) REFERENCES member(m_id)
 )
 
 CREATE TABLE commentInfo(
@@ -56,10 +56,9 @@ CREATE TABLE commentInfo(
 	c_content VARCHAR2(400),
 	c_reg_date TIMESTAMP NOT NULL,
 	b_num NUMBER NOT NULL,
-	m_num NUMBER NOT NULL,
 	m_id VARCHAR2(12) NOT NULL,
 	FOREIGN KEY(b_num) REFERENCES board(b_num),
-	FOREIGN KEY(m_num, m_id) REFERENCES member(m_num, m_id)
+	FOREIGN KEY(m_id) REFERENCES member(m_id)
 )
 
 CREATE TABLE pcInfo(
@@ -76,13 +75,12 @@ CREATE TABLE errorPCInfo(
 	e_declaredate TIMESTAMP NOT NULL,
 	e_errorsymptom VARCHAR2(15),
 	p_num NUMBER NOT NULL,
-	m_num NUMBER NOT NULL,
 	m_id VARCHAR2(12) NOT NULL,
 	e_name VARCHAR2(12) NOT NULL,
 	e_phone VARCHAR2(13) NOT NULL,
 	PRIMARY KEY(e_declarenum),
 	FOREIGN KEY(p_num) REFERENCES pcInfo(p_num),
-	FOREIGN KEY(m_num, m_id) REFERENCES member(m_num, m_id)
+	FOREIGN KEY(m_id) REFERENCES member(m_id)
 )
 
 CREATE TABLE reservationInfo(
@@ -90,13 +88,12 @@ CREATE TABLE reservationInfo(
 	e_declaredate TIMESTAMP NOT NULL,
 	e_errorsymptom VARCHAR2(15),
 	p_num NUMBER NOT NULL,
-	m_num NUMBER NOT NULL,
 	m_id VARCHAR2(12) NOT NULL,
 	e_name VARCHAR2(12) NOT NULL,
 	e_phone VARCHAR2(13) NOT NULL,
 	PRIMARY KEY(e_declarenum),
 	FOREIGN KEY(p_num) REFERENCES pcInfo(p_num),
-	FOREIGN KEY(m_num, m_id) REFERENCES member(m_num, m_id)
+	FOREIGN KEY(m_id) REFERENCES member(m_id)
 )
 
 DROP TABLE reservationInfo PURGE;

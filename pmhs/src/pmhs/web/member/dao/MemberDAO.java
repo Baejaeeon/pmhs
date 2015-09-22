@@ -28,7 +28,9 @@ public class MemberDAO {
 
 	public int insertMember(Member member) {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO member VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO member(m_id, m_name, m_studentNum, m_passwd, m_zipcode1, m_zipcode2,"
+				+ " m_address1, m_address2, m_birthDay, m_email, m_phone, m_gender)"
+				+ " VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = null; // statement ¼±¾ð
 		int insertCount = 0;
 		try {
@@ -42,11 +44,10 @@ public class MemberDAO {
 			pstmt.setInt(6, member.getM_zipcode2());
 			pstmt.setString(7, member.getM_address1());
 			pstmt.setString(8, member.getM_address2());
-			pstmt.setString(9, member.get);
-			pstmt.setString(10, member.getBirthDay());
-			pstmt.setString(11, member.getGender());
-			pstmt.setString(12, member.getHomepage());
-
+			pstmt.setString(9, member.getM_birthDay());
+			pstmt.setString(10, member.getM_email());
+			pstmt.setString(11, member.getM_phone());
+			pstmt.setString(12, member.getM_gender());
 			insertCount = pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -57,7 +58,4 @@ public class MemberDAO {
 		}
 		return insertCount;
 	}
-	}
-	
-	
-
+}

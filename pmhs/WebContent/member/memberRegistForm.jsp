@@ -53,7 +53,8 @@ table {
 </script>-->
 <body> 
 	<section id="registFormArea">
-	<form action = "memberRegistForm" method="POST">
+	<form action = "memberRegistPro.mem" method="POST">
+		
 		<h2>회원가입</h2>
 		<table>
 			<tr>
@@ -78,7 +79,7 @@ table {
 				<label id = "studentNum">학번</label>
 				</td>
 				<td class="td_right">
-				<input type = "text" name = "name" id = "name" required = "required"/>
+				<input type = "text" name = "studentNum" id = "studentNum" required = "required"/>
 				</td>
 				</tr>
 			<tr>
@@ -115,7 +116,7 @@ table {
 				</td>
 				<td class="td_right">
 				<input type = "text" name = "address1" id = "address1" required = "required" 
-				readonly="readonly"/>
+				/>
 				
 				</td>
 				</tr>

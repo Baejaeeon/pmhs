@@ -1,7 +1,6 @@
 package pmhs.web.member.vo;
 
 public class Member {
-	private int m_num;
 	private String m_id;
 	private String m_name;
 	private int m_studentNum;
@@ -15,10 +14,9 @@ public class Member {
 	private String m_phone;
 	private String m_gender;
 
-	public Member(int m_num, String m_id, String m_name, int m_studentNum, String m_passwd, int m_zipcode1,
+	public Member(String m_id, String m_name, int m_studentNum, String m_passwd, int m_zipcode1,
 			int m_zipcode2, String m_address1, String m_address2,String m_birthDay, String m_email, String m_phone, String m_gender) {
 		super();
-		this.m_num = m_num;
 		this.m_id = m_id;
 		this.m_name = m_name;
 		this.m_studentNum = m_studentNum;
@@ -31,14 +29,6 @@ public class Member {
 		this.m_email = m_email;
 		this.m_phone = m_phone;
 		this.m_gender = m_gender;
-	}
-
-	public int getM_num() {
-		return m_num;
-	}
-
-	public void setM_num(int m_num) {
-		this.m_num = m_num;
 	}
 
 	public String getM_id() {

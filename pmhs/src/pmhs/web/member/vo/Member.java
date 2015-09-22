@@ -14,6 +14,23 @@ public class Member {
 	private String m_phone;
 	private String m_gender;
 
+	public Member(int m_num, String m_id, String m_name, int m_studentNum, String m_passwd, int m_zipcode1,
+			int m_zipcode2, String m_address1, String m_address2, String m_email, String m_phone, String m_gender) {
+		super();
+		this.m_num = m_num;
+		this.m_id = m_id;
+		this.m_name = m_name;
+		this.m_studentNum = m_studentNum;
+		this.m_passwd = m_passwd;
+		this.m_zipcode1 = m_zipcode1;
+		this.m_zipcode2 = m_zipcode2;
+		this.m_address1 = m_address1;
+		this.m_address2 = m_address2;
+		this.m_email = m_email;
+		this.m_phone = m_phone;
+		this.m_gender = m_gender;
+	}
+
 	public int getM_num() {
 		return m_num;
 	}

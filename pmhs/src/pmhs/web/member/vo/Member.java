@@ -10,12 +10,13 @@ public class Member {
 	private int m_zipcode2;
 	private String m_address1;
 	private String m_address2;
+	private String m_birthDay;
 	private String m_email;
 	private String m_phone;
 	private String m_gender;
 
 	public Member(int m_num, String m_id, String m_name, int m_studentNum, String m_passwd, int m_zipcode1,
-			int m_zipcode2, String m_address1, String m_address2, String m_email, String m_phone, String m_gender) {
+			int m_zipcode2, String m_address1, String m_address2,String m_birthDay, String m_email, String m_phone, String m_gender) {
 		super();
 		this.m_num = m_num;
 		this.m_id = m_id;
@@ -26,6 +27,7 @@ public class Member {
 		this.m_zipcode2 = m_zipcode2;
 		this.m_address1 = m_address1;
 		this.m_address2 = m_address2;
+		this.m_birthDay = m_birthDay;
 		this.m_email = m_email;
 		this.m_phone = m_phone;
 		this.m_gender = m_gender;
@@ -101,6 +103,14 @@ public class Member {
 
 	public void setM_address2(String m_address2) {
 		this.m_address2 = m_address2;
+	}
+
+	public String getM_birthDay() {
+		return m_birthDay;
+	}
+
+	public void setM_birthDay(String m_birthDay) {
+		this.m_birthDay = m_birthDay;
 	}
 
 	public String getM_email() {

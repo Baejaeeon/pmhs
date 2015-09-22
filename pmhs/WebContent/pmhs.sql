@@ -8,6 +8,7 @@ CREATE TABLE member (
 	m_zipcode2 NUMBER NOT NULL,
 	m_address1 VARCHAR2(50) NOT NULL,
 	m_address2 VARCHAR2(50) NOT NULL,
+	m_birthday DATE NOT NULL,
 	m_email VARCHAR2(30),
 	m_phone VARCHAR2(13) NOT NULL,
 	m_gender VARCHAR2(2) NOT NULL,
@@ -97,6 +98,12 @@ CREATE TABLE reservationInfo(
 	FOREIGN KEY(p_num) REFERENCES pcInfo(p_num),
 	FOREIGN KEY(m_num, m_id) REFERENCES member(m_num, m_id)
 )
+
+DROP TABLE reservationInfo PURGE;
+DROP TABLE errorPCInfo PURGE;
+DROP TABLE commentInfo PURGE;
+DROP TABLE messageInfo PURGE;
+DROP TABLE member PURGE;
 
 
 select * from member;

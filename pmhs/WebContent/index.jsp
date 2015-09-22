@@ -13,6 +13,7 @@
 <a href = "qnaBoardList.bo">문의사항</a>
 <a href = "memberList.mem">회원정보</a>
 <a href = "errorPcList.pc">PC정보</a>
+<a href = "memberRegistForm.mem">회원가입</a>
 <a href = "reservationList.pc">예약정보</a>
 <a href = "messageReceiveList.msg">메시지</a>
 <a href = "loginForm.mem">로그인</a>

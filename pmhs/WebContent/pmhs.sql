@@ -26,18 +26,30 @@ CREATE TABLE zipcode(
 	PRIMARY KEY(seq)
 )
 
-CREATE TABLE board(
-	b_num NUMBER NOT NULL,
-	b_writer VARCHAR2(12) NOT NULL,
-	b_subject VARCHAR2(50) NOT NULL,
-	b_passwd VARCHAR2(12),
-	b_reg_date TIMESTAMP NOT NULL,
-	b_readcount NUMBER NOT NULL,
-	b_ref NUMBER NOT NULL,
-	b_re_level NUMBER NOT NULL,
-	b_content VARCHAR2(400),
-	b_ip VARCHAR2(20) NOT NULL,
-	PRIMARY KEY(b_num)
+CREATE TABLE qnABoard(
+	q_num NUMBER NOT NULL,
+	q_writer VARCHAR2(12) NOT NULL,
+	q_subject VARCHAR2(50) NOT NULL,
+	q_passwd VARCHAR2(12),
+	q_reg_date TIMESTAMP NOT NULL,
+	q_readcount NUMBER NOT NULL,
+	q_ref NUMBER NOT NULL,
+	q_re_level NUMBER NOT NULL,
+	q_content VARCHAR2(400),
+	q_ip VARCHAR2(20) NOT NULL,
+	PRIMARY KEY(q_num)
+)
+
+CREATE TABLE noticeBoard(
+	n_num NUMBER NOT NULL,
+	n_writer VARCHAR2(12) NOT NULL,
+	n_subject VARCHAR2(50) NOT NULL,
+	n_passwd VARCHAR2(12),
+	n_reg_date TIMESTAMP NOT NULL,
+	n_readcount NUMBER NOT NULL,
+	n_content VARCHAR2(400),
+	n_ip VARCHAR2(20) NOT NULL,
+	PRIMARY KEY(n_num)
 )
 
 CREATE TABLE messageInfo(
@@ -55,9 +67,9 @@ CREATE TABLE commentInfo(
 	c_seq NUMBER NOT NULL,
 	c_content VARCHAR2(400),
 	c_reg_date TIMESTAMP NOT NULL,
-	b_num NUMBER NOT NULL,
+	q_num NUMBER NOT NULL,
 	m_id VARCHAR2(12) NOT NULL,
-	FOREIGN KEY(b_num) REFERENCES board(b_num),
+	FOREIGN KEY(q_num) REFERENCES qnABoard(q_num),
 	FOREIGN KEY(m_id) REFERENCES member(m_id)
 )
 
@@ -101,6 +113,7 @@ DROP TABLE errorPCInfo PURGE;
 DROP TABLE commentInfo PURGE;
 DROP TABLE messageInfo PURGE;
 DROP TABLE member PURGE;
+DROP TABLE board PURGE;
 
 
 select * from member;

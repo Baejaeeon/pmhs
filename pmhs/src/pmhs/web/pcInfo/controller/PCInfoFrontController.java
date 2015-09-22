@@ -46,7 +46,7 @@ public class PCInfoFrontController extends HttpServlet {
 		ActionForward forward = null; // 포워딩될 뷰페이지 정보를 담을 foward정의
 		
 		// 각각의 요청 처리
-		if(command.equals("/pcSelectForm.pc")) { // 게시판 작성 폼
+		if(command.equals("/pcSelectForm.pc")) { // pc 선택하기 폼
 			action = new PCSelectFormAction();
 			try {
 				forward = action.execute(request, response);

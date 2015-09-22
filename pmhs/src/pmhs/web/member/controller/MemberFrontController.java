@@ -46,7 +46,7 @@ public class MemberFrontController extends HttpServlet {
 		ActionForward forward = null; // 포워딩될 뷰페이지 정보를 담을 foward정의
 		
 		// 각각의 요청 처리
-		if(command.equals("/memberDetail.mem")) { // 공지사항 리스트
+		if(command.equals("/memberDetail.mem")) { // 회원정보 상세보기
 			action = new MemberDetailAction();
 			try {
 				forward = action.execute(request, response);

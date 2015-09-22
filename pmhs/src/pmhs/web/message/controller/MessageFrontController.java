@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
-import pmhs.web.message.action.MessageWriteFormAction;
+import pmhs.web.memberAdmin.action.MemberListAction;
 
 /**
  * Servlet implementation class MessageFrontController
@@ -46,8 +46,8 @@ public class MessageFrontController extends HttpServlet {
 		ActionForward forward = null; // 포워딩될 뷰페이지 정보를 담을 foward정의
 		
 		// 각각의 요청 처리
-		if(command.equals("/messageWriteForm.msg")) { // 메시지 작성 폼
-			action = new MessageWriteFormAction();
+		if(command.equals("/memberList.mema")) { // 공지사항 리스트
+			action = new MemberListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

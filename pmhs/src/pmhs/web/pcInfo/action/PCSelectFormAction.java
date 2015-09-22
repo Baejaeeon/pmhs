@@ -32,7 +32,7 @@ public class PCSelectFormAction implements Action {
 		
 		request.setAttribute("pcInfo", pcInfo);
 		ActionForward forward = new ActionForward();
-		forward.setUrl("pc/pcSelectFrorm.jsp");
+		forward.setUrl("pc/pcSelectForm.jsp");
 		return forward;
 	}
 }

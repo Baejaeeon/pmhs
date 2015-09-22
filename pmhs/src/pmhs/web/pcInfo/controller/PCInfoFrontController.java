@@ -19,7 +19,7 @@ import pmhs.web.pcInfo.action.PCSelectFormAction;
 @WebServlet("*.pc")
 public class PCInfoFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,7 +46,7 @@ public class PCInfoFrontController extends HttpServlet {
 		ActionForward forward = null; // 포워딩될 뷰페이지 정보를 담을 foward정의
 		
 		// 각각의 요청 처리
-		if(command.equals("/pcSelectForm.pc")) { // pc 선택하기 폼
+		if(command.equals("/pcSelectForm.pc")) { // 고장 PC 리스트
 			action = new PCSelectFormAction();
 			try {
 				forward = action.execute(request, response);
@@ -68,7 +68,6 @@ public class PCInfoFrontController extends HttpServlet {
 			}
 		}
 	}
-    
     
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

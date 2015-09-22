@@ -27,7 +27,7 @@ public class PCAdminFrontController extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet, doPost의 공통된 작업들을 doProcess에서 요청 처리
@@ -46,7 +46,7 @@ public class PCAdminFrontController extends HttpServlet {
 		ActionForward forward = null; // 포워딩될 뷰페이지 정보를 담을 foward정의
 		
 		// 각각의 요청 처리
-		if(command.equals("/errorPCList.epc")) { // 고장 PC 리스트
+		if(command.equals("/pcSelectForm.pc")) { // 고장 PC 리스트
 			action = new ErrorPCListAction();
 			try {
 				forward = action.execute(request, response);
@@ -68,8 +68,7 @@ public class PCAdminFrontController extends HttpServlet {
 			}
 		}
 	}
-    
-    
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -86,4 +85,5 @@ public class PCAdminFrontController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8"); // 요청을 한글 처리
 		doProcess(request, response);
 	}
+
 }

@@ -27,7 +27,7 @@ public class MemberAdminFrontController extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
+
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet, doPost의 공통된 작업들을 doProcess에서 요청 처리
@@ -46,7 +46,7 @@ public class MemberAdminFrontController extends HttpServlet {
 		ActionForward forward = null; // 포워딩될 뷰페이지 정보를 담을 foward정의
 		
 		// 각각의 요청 처리
-		if(command.equals("/memberList.mem")) { // 회원 리스트
+		if(command.equals("/memberList.mema")) { // 공지사항 리스트
 			action = new MemberListAction();
 			try {
 				forward = action.execute(request, response);
@@ -68,7 +68,7 @@ public class MemberAdminFrontController extends HttpServlet {
 			}
 		}
 	}
-
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

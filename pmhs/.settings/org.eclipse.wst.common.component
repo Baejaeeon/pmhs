@@ -2,7 +2,7 @@
     <wb-module deploy-name="pmhs">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="pmhs"/>
         <property name="java-output-path" value="/pmhs/build/classes"/>
+        <property name="context-root" value="pmhs"/>
     </wb-module>
 </project-modules>

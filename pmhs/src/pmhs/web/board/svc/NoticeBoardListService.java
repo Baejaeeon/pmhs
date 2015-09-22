@@ -1,37 +1,42 @@
 package pmhs.web.board.svc;
 
-import static pmhs.db.JdbcUtil.*;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
+import static pmhs.db.JdbcUtil.*;
 import pmhs.web.board.dao.BoardDAO;
-import pmhs.web.board.vo.QnABoardVO;
+import pmhs.web.board.vo.NoticeBoardVO;
 
-public class QnABoardListService {
+public class NoticeBoardListService {
 
-	public int getQnAArticleCount() {
+	public int getNoticeArticleCount() {
 		// TODO Auto-generated method stub
 		Connection con = getConnect(); // 커넥션 객체 생성
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		boardDAO.setConnection(con); // 커넥션 주입
-		int articleCount = boardDAO.selectQnAArticleCount();
+		int articleCount = boardDAO.selectNoticeArticleCount();
 		
 		close(con);
 		
 		return articleCount;
 	}
 
-	public List<QnABoardVO> getArticleList(int startRow, int pageSize) {
+	public List<NoticeBoardVO> getNoticeArticleList(int startRow, int pageSize) {
 		// TODO Auto-generated method stub
 		Connection con = getConnect(); // 커넥션 객체 생성
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		boardDAO.setConnection(con); // 커넥션 주입
 		
 		// 글이 하나라도 있으면 리스팅할 글 정보 얻어오기
-		List<QnABoardVO> articleList = boardDAO.selectQnAArticleList(startRow, pageSize);
+		List<NoticeBoardVO> articleList = boardDAO.selectNoticeArticleList(startRow, pageSize);
 		
 		close(con);
 		
 		return articleList;
 	}
+	
+
 }

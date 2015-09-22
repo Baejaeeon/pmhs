@@ -1,36 +1,35 @@
 package pmhs.web.pcInfo.vo;
 
 public class PCInfo {
-	private int p_num;
-	private String p_unit;
-	private String p_department;
-	private int lectureroom;
+	private int num;
+	private String unit;
+	private String department;
+	private int lectureRoom;
 	private String lectureImage;
 	
-	// getter & setter
-	public int getP_num() {
-		return p_num;
+	public int getNum() {
+		return num;
 	}
-	public void setP_num(int p_num) {
-		this.p_num = p_num;
+	public void setNum(int num) {
+		this.num = num;
 	}
-	public String getP_unit() {
-		return p_unit;
+	public String getUnit() {
+		return unit;
 	}
-	public void setP_unit(String p_unit) {
-		this.p_unit = p_unit;
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
-	public String getP_department() {
-		return p_department;
+	public String getDepartment() {
+		return department;
 	}
-	public void setP_department(String p_department) {
-		this.p_department = p_department;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
-	public int getLectureroom() {
-		return lectureroom;
+	public int getLectureRoom() {
+		return lectureRoom;
 	}
-	public void setLectureroom(int lectureroom) {
-		this.lectureroom = lectureroom;
+	public void setLectureRoom(int lectureRoom) {
+		this.lectureRoom = lectureRoom;
 	}
 	public String getLectureImage() {
 		return lectureImage;
@@ -38,4 +37,5 @@ public class PCInfo {
 	public void setLectureImage(String lectureImage) {
 		this.lectureImage = lectureImage;
 	}
+	
 }

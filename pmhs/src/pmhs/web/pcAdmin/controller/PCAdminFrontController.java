@@ -16,7 +16,7 @@ import pmhs.web.pcAdmin.action.ErrorPCListAction;
 /**
  * Servlet implementation class PCAdminFrontController
  */
-@WebServlet("*.pc")
+@WebServlet("*.epc")
 public class PCAdminFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,7 +46,7 @@ public class PCAdminFrontController extends HttpServlet {
 		ActionForward forward = null; // 포워딩될 뷰페이지 정보를 담을 foward정의
 		
 		// 각각의 요청 처리
-		if(command.equals("/errorPCList.pc")) { // 고장 PC 리스트
+		if(command.equals("/errorPCList.epc")) { // 고장 PC 리스트
 			action = new ErrorPCListAction();
 			try {
 				forward = action.execute(request, response);

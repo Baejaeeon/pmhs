@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
 import pmhs.web.member.action.MemberDetailAction;
+import pmhs.web.member.action.MemberRegistFormAction;
 
 /**
  * Servlet implementation class MemberFrontController
@@ -46,8 +47,18 @@ public class MemberFrontController extends HttpServlet {
 		ActionForward forward = null; // 포워딩될 뷰페이지 정보를 담을 foward정의
 		
 		// 각각의 요청 처리
+		
 		if(command.equals("/memberDetail.mem")) { // 회원정보 상세보기
 			action = new MemberDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/memberRegistForm.mem")) { // 회원정보 상세보기
+			action = new MemberRegistFormAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

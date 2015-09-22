@@ -99,5 +99,6 @@ CREATE TABLE reservationInfo(
 )
 
 
+select * from member;
 select * from zipcode;
 DROP TABLE zipcode PURGE;

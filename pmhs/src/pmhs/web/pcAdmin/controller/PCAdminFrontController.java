@@ -16,7 +16,7 @@ import pmhs.web.pcAdmin.action.ErrorPCListAction;
 /**
  * Servlet implementation class PCAdminFrontController
  */
-@WebServlet("*.epc")
+@WebServlet("*.pca")
 public class PCAdminFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

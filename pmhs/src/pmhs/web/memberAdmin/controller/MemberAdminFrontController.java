@@ -16,7 +16,7 @@ import pmhs.web.memberAdmin.action.MemberListAction;
 /**
  * Servlet implementation class MemberAdminFrontController
  */
-@WebServlet("*.mem")
+@WebServlet("*.mema")
 public class MemberAdminFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

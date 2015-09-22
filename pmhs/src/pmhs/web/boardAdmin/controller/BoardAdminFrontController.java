@@ -16,7 +16,7 @@ import pmhs.web.boardAdmin.action.NoticeBoardListAction;
 /**
  * Servlet implementation class BoardAdminFrontController
  */
-@WebServlet("*.bo")
+@WebServlet("*.boa")
 public class BoardAdminFrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

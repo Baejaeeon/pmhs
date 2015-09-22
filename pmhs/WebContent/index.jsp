@@ -17,6 +17,6 @@
 <a href = "reservationList.pc">예약정보</a>
 <a href = "messageReceiveList.msg">메시지</a>
 <a href = "loginForm.mem">로그인</a>
-<a href = "pcSelectForm.pc">PC 선택하기</a>
+<a href = "pcSelectForm.pc">PC선택하기</a>
 </body>
 </html>

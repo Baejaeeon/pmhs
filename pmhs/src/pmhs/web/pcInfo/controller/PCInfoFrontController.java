@@ -75,7 +75,6 @@ public class PCInfoFrontController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("AAAAAAAAAAAAAAAAAA");
 		doProcess(request, response);
 	}
 

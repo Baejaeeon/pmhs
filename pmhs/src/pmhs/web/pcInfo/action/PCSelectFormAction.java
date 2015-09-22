@@ -11,6 +11,10 @@ public class PCSelectFormAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		int num = 0;
+		String unit = null;
+		
+		
 		return null;
 	}
 

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
 import pmhs.web.pcAdmin.action.ErrorPCListAction;
+import pmhs.web.pcAdmin.action.ReservationListAction;
 
 /**
  * Servlet implementation class PCAdminFrontController
@@ -46,8 +47,17 @@ public class PCAdminFrontController extends HttpServlet {
 		ActionForward forward = null; // 포워딩될 뷰페이지 정보를 담을 foward정의
 		
 		// 각각의 요청 처리
-		if(command.equals("/pcSelectForm.pc")) { // 고장 PC 리스트
+		if(command.equals("/errorPCList.pca")) { // 고장 PC 리스트
 			action = new ErrorPCListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/reservationList.pca")) { // 고장 PC 리스트
+			action = new ReservationListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

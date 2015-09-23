@@ -97,16 +97,19 @@ CREATE TABLE errorPCInfo(
 
 CREATE TABLE reservationInfo(
 	e_declarenum NUMBER NOT NULL,
+	e_subject VARCHAR2(25) NOT NULL,
 	e_declaredate TIMESTAMP NOT NULL,
 	e_errorsymptom VARCHAR2(15),
 	p_num NUMBER NOT NULL,
 	m_id VARCHAR2(12) NOT NULL,
 	e_name VARCHAR2(12) NOT NULL,
 	e_phone VARCHAR2(13) NOT NULL,
+	e_time VARCHAR2(10) NOT NULL,
 	PRIMARY KEY(e_declarenum),
 	FOREIGN KEY(p_num) REFERENCES pcInfo(p_num),
 	FOREIGN KEY(m_id) REFERENCES member(m_id)
 )
+
 
 DROP TABLE reservationInfo PURGE;
 DROP TABLE errorPCInfo PURGE;
@@ -115,7 +118,8 @@ DROP TABLE messageInfo PURGE;
 DROP TABLE member PURGE;
 DROP TABLE board PURGE;
 
-
+select * from pcInfo;
+select * from RESERVATIONINFO;
 select * from member;
 select * from zipcode;
 DROP TABLE zipcode PURGE;

@@ -1,3 +1,6 @@
+<%@page import="pmhs.web.board.vo.PageInfo"%>
+<%@page import="pmhs.web.board.dao.BoardDAO"%>
+<%@page import="pmhs.web.board.vo.QnABoardVO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -102,26 +105,27 @@
 				<tr>
 					<td class = "td_num">
 						${number }
-					<c:set var="number" value="${number -1 }"></c:set>
 					</td>
+					<c:set var = "number" value = "${number - 1 }"></c:set>
 					<td class = "td_subject">
-						<c:forEach begin="1" items="${article.re_level }">
-							&nbsp;&nbsp;&nbsp;
-							</c:forEach>
-						<c:if test="${article.re_level > 0 }">
-						re : 
+						<c:forEach begin="1" end = "${article.re_level }"> <!-- 답글 레벨을 하나씩 가져와서  -->
+						&nbsp;&nbsp;&nbsp;
+						</c:forEach>
+						<c:if test="${article.re_level > 0 }"> <!-- 답글 레벨이 0보다 크면 re를 출력해준다. -->
+						re :
+						<!-- 게시물 상세보기 요청 링크를 걸어준다. 해당 글을 구분할 수 있는 값인 num값을 파라미터로 던져준다. --> 
 						</c:if>
-						<a href = "boardContent.bo?num=${article.num }&pageNum=${pageInfo.currentPage }">${article.subject }</a>
-						<!-- 게시물 상세보기 요청 링크를 걸어준다. 해당 글을 구분할 수 있는 값인 num값을 파라미터로 던져준다. -->
+						<a href = "qnABoardContent.bo?num=${article.num }&pageNum=${pageInfo.currentPage}">${article.subject }</a>
 					</td>
 					<td class = "td_writer">
 						${article.writer }
 					</td>
+						<fmt:formatDate value="${article.reg_date }" var = "regDate" pattern="yyyy.MM.dd" />
 					<td class = "td_regdate">
-						${article.regDate }
+						${regDate }
 					</td>
 					<td class = "td_readcount">
-						${article.readcount}
+						${article.readCount }
 					</td>
 				</tr>
 				</c:forEach>
@@ -134,14 +138,14 @@
 	<c:if test="${pageInfo.count > 0 }">
 	<section id = "pageArea">
 	<c:if test="${pageInfo.startPage > 20 }">
-		<a href = "boardList.bo?pageNum=${pageInfo.startPage-20 }">[이전]</a>
+		<a href = "qnABoardList.bo?pageNum=${pageInfo.startPage-20 }">[이전]</a>
 	</c:if>
-	<c:forEach var = "i" begin="${pageInfo.startPage.startPage }" end="${pageInfp.endPage }">
-		<a href = "boardList.bo?pageNum=${i }">[${i }]</a>
+	<c:forEach var = "i" begin="${pageInfo.startPage }" end="${pageInfp.endPage }">
+		<a href = "qnABoardList.bo?pageNum=${i }">[${i }]</a>
 		<!-- startPage부터 endPage까지 출력하기 -->
 	</c:forEach>
 	<c:if test="${pageInfoendPage < pageInfo.pageCount }">
-		<a href = "boardList.bo?pageNum=${pageInfo.startPage+20 }">[다음]</a>
+		<a href = "qnABoardList.bo?pageNum=${pageInfo.startPage+20 }">[다음]</a>
 	</c:if>
 	</section>
 	</c:if>

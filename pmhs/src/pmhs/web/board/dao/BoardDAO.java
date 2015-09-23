@@ -115,7 +115,7 @@ public class BoardDAO {
 			
 			// 조회수 증가 처리
 			// 지금 파라미터로 넘어온 num값과 동일한 값을 업데이트
-			pstmt = con.prepareStatement("UPDATE qnABoard SET readcount = readcount + 1 WHERE num = ?");
+			pstmt = con.prepareStatement("UPDATE qnABoard SET q_readcount = q_readcount + 1 WHERE q_num = ?");
 			
 			pstmt.setInt(1, num);
 			int updateCount = pstmt.executeUpdate(); // 조회수 증가
@@ -130,19 +130,19 @@ public class BoardDAO {
 			
 			if(rs.next()) { 
 				// 글이 하나라도 있으면...
-					article = new QnABoardVO();
-					article.setNum(rs.getInt("q_num"));
-					article.setWriter(rs.getString("q_writer"));
-					article.setEmail(rs.getString("q_email"));
-					article.setSubject(rs.getString("q_subject"));
-					article.setPasswd(rs.getString("q_passwd"));
-					article.setReg_date(rs.getTimestamp("q_reg_date"));
-					article.setReadCount(rs.getInt("q_readCount"));
-					article.setRef(rs.getInt("q_ref"));
-					article.setRe_step(rs.getInt("q_re_step"));
-					article.setRe_level(rs.getInt("q_re_level"));
-					article.setContent(rs.getString("q_content"));
-					article.setIp(rs.getString("q_ip"));
+				article = new QnABoardVO();
+				article.setNum(rs.getInt("q_num"));
+				article.setWriter(rs.getString("q_writer"));
+				article.setEmail(rs.getString("q_email"));
+				article.setSubject(rs.getString("q_subject"));
+				article.setPasswd(rs.getString("q_passwd"));
+				article.setReg_date(rs.getTimestamp("q_reg_date"));
+				article.setReadCount(rs.getInt("q_readCount"));
+				article.setRef(rs.getInt("q_ref"));
+				article.setRe_step(rs.getInt("q_re_step"));
+				article.setRe_level(rs.getInt("q_re_level"));
+				article.setContent(rs.getString("q_content"));
+				article.setIp(rs.getString("q_ip"));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -172,7 +172,7 @@ public class BoardDAO {
 		
 		 try { // DB작업은 예외처리 해준다.
 			 // 작성한 글이 원글일 때 새로운 관련글 번호를 구하는 부분
-			 pstmt = con.prepareStatement("SELECT MAX(num) FROM qnABoard");
+			 pstmt = con.prepareStatement("SELECT MAX(q_num) FROM qnABoard");
 			 // board 테이블의 현재 num의 최대값 가져온다.
 			 rs = pstmt.executeQuery();
 			 if(rs.next()) { 

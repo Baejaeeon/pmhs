@@ -29,16 +29,21 @@ CREATE TABLE zipcode(
 CREATE TABLE qnABoard(
 	q_num NUMBER NOT NULL,
 	q_writer VARCHAR2(12) NOT NULL,
+	q_email VARCHAR2(30),
 	q_subject VARCHAR2(50) NOT NULL,
 	q_passwd VARCHAR2(12),
 	q_reg_date TIMESTAMP NOT NULL,
-	q_readcount NUMBER NOT NULL,
+	q_readcount NUMBER DEFAULT 0,
 	q_ref NUMBER NOT NULL,
+	q_re_step NUMBER NOT NULL,
 	q_re_level NUMBER NOT NULL,
 	q_content VARCHAR2(400),
 	q_ip VARCHAR2(20) NOT NULL,
 	PRIMARY KEY(q_num)
 )
+
+CREATE SEQUENCE qnABoard_seq;
+DROP SEQUENCE qnaboard_seq;
 
 CREATE TABLE noticeBoard(
 	n_num NUMBER NOT NULL,
@@ -51,6 +56,8 @@ CREATE TABLE noticeBoard(
 	n_ip VARCHAR2(20) NOT NULL,
 	PRIMARY KEY(n_num)
 )
+
+CREATE SEQUENCE noticeboard_seq;
 
 CREATE TABLE messageInfo(
 	msg_num	NUMBER NOT NULL,
@@ -123,3 +130,6 @@ select * from RESERVATIONINFO;
 select * from member;
 select * from zipcode;
 DROP TABLE zipcode PURGE;
+DROP TABLE qnaBoard PURGE;
+
+select * from qnaBoard;

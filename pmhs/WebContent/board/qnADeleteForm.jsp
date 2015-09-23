@@ -19,8 +19,8 @@
 </head>
 <body>
 <section id = "deleteForm">
-<form action="boardDeletePro.bo" method="POST">
-	<input type = "hidden" name = "num" value = "${article.num }" />
+<form action="qnABoardDeletePro.bo" method="POST">
+	<input type = "hidden" name = "num" value = "${num }" />
 	<input type = "hidden" name = "pageNum" value = "${pageNum }" />
 	<!-- 삭제 처리를 위해 글 번호와 페이지 번호를 hidden으로 받아온다. -->
 	<fieldset>

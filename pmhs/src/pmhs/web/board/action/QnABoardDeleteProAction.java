@@ -26,7 +26,7 @@ public class QnABoardDeleteProAction implements Action {
 		if(removeSuccess) { // 글 작성이 성공하면.... 포워딩 될 뷰페이지 설정
 			forward = new ActionForward();
 			forward.setRedirect(true); // 리다이렉트로 넘어간다는것을 표시
-			forward.setUrl("boardList.bo"); // 글 목록 보는 화면으로 화면을 넘긴다.
+			forward.setUrl("qnABoardList.bo"); // 글 목록 보는 화면으로 화면을 넘긴다.
 		} else { // 실패 시..
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();

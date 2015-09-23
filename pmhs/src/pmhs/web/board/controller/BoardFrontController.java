@@ -11,8 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
+import pmhs.web.board.action.NoticeBoardContentAction;
+import pmhs.web.board.action.NoticeBoardListAction;
 import pmhs.web.board.action.QnABoardContentAction;
+import pmhs.web.board.action.QnABoardDeleteFormAction;
+import pmhs.web.board.action.QnABoardDeleteProAction;
 import pmhs.web.board.action.QnABoardListAction;
+import pmhs.web.board.action.QnABoardUpdateFormAction;
+import pmhs.web.board.action.QnABoardUpdateProAction;
+import pmhs.web.board.action.QnABoardWriteFormAction;
+import pmhs.web.board.action.QnABoardWriteProAction;
 
 /**
  * Servlet implementation class BoardFrontController
@@ -48,7 +56,7 @@ public class BoardFrontController extends HttpServlet {
 		ActionForward forward = null; // 포워딩될 뷰페이지 정보를 담을 foward정의
 
 		// 각각의 요청 처리
-		if (command.equals("/qnaBoardList.bo")) { // 공지사항 리스트
+		if (command.equals("/qnABoardList.bo")) { // 공지사항 리스트
 			action = new QnABoardListAction();
 			try {
 				forward = action.execute(request, response);
@@ -65,7 +73,7 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/qnABoardWriteForm.bo")) { // 게시판 상세보기
-			action = new QnABoardContentAction();
+			action = new QnABoardWriteFormAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -73,7 +81,7 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/qnABoardWritePro.bo")) { // 게시판 상세보기
-			action = new QnABoardContentAction();
+			action = new QnABoardWriteProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -81,7 +89,7 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/qnABoardUpdateForm.bo")) { // 게시판 상세보기
-			action = new QnABoardContentAction();
+			action = new QnABoardUpdateFormAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -89,7 +97,7 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/qnABoardUpdatePro.bo")) { // 게시판 상세보기
-			action = new QnABoardContentAction();
+			action = new QnABoardUpdateProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -97,7 +105,7 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/qnABoardDeleteForm.bo")) { // 게시판 상세보기
-			action = new QnABoardContentAction();
+			action = new QnABoardDeleteFormAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -105,7 +113,7 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/qnABoardDeletePro.bo")) { // 게시판 상세보기
-			action = new QnABoardContentAction();
+			action = new QnABoardDeleteProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -113,7 +121,7 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/noticeBoardList.bo")) { // 문의사항 리스트
-			action = new QnABoardListAction();
+			action = new NoticeBoardListAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
@@ -121,7 +129,7 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/noticeBoardContent.bo")) { // 게시판 상세보기
-			action = new QnABoardContentAction();
+			action = new NoticeBoardContentAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

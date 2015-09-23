@@ -36,8 +36,8 @@
 </head>
 <body>
 	<section id = "writeFormArea">
-		<h2>게시판 글쓰기</h2>
-		<form action="boardUpdatePro.bo" method = "POST">
+		<h2>게시판 글 수정</h2>
+		<form action="qnABoardUpdatePro.bo" method = "POST">
 			<input type = "hidden" name = "num" value = "${article.num }">
 			<input type = "hidden" name = "pageNum" value = "${pageNum }">
 			<!-- 원래 페이지로 되 돌아갈 수 있게 pageNum을 던져준다. -->
@@ -92,7 +92,7 @@
 					<td colspan = "2" id = "td_command"> <!-- colspan : 셀 합치기 -->
 						<input type = "submit" value = "글수정" />
 						<input type = "reset" value = "취소" />
-						<input type = "button" value = "목록보기" onClick = "window.location.href='boardList.bo'" />
+						<input type = "button" value = "목록보기" onClick = "window.location.href='qnABoardList.bo'" />
 						<!-- location : 현재 url을 가지고 있다. 목록보기를 누르면 목록리스트로 페이지를 이동한다. -->
 					</td>
 				</tr>

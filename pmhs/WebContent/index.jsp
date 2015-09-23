@@ -10,7 +10,7 @@
 <a href = "index.jsp">Home</a>
 <a href = "introduceForm.jsp">시스템 소개</a>
 <a href = "noticeBoardList.bo">공지사항</a>
-<a href = "qnaBoardList.bo">문의사항</a>
+<a href = "qnABoardList.bo">문의사항</a>
 <a href = "memberList.mem">회원정보</a>
 <a href = "errorPcList.pca">PC정보</a>
 <a href = "memberRegistForm.mem">회원가입</a>

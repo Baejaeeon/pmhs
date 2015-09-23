@@ -49,11 +49,11 @@
 <body>
 	<section id = "writeFormArea">
 		<h2>게시판 글쓰기</h2>
-		<form action="boardWritePro.bo" method = "POST">
-			<input type = "hidden" name = "num" value = "${num }">
-			<input type = "hidden" name = "ref" value = "${ref}">
-			<input type = "hidden" name = "re_step" value = "${re_step }">
-			<input type = "hidden" name = "re_level" value = "${re_level}">
+		<form action="qnABoardWritePro.bo" method = "POST">
+			<input type = "hidden" name = "num" value = "${replyInfo.num }">
+			<input type = "hidden" name = "ref" value = "${replyInfo.ref}">
+			<input type = "hidden" name = "re_step" value = "${replyInfo.re_step }">
+			<input type = "hidden" name = "re_level" value = "${replyInfo.re_level}">
 			<!-- 원글인지 답글인지 구분을 위해 원글일 경우에도 hidden타입으로 파라미터들을 넘겨준다. -->
 			<table>
 				<tr>
@@ -113,7 +113,7 @@
 					<td colspan = "2" id = "td_command"> <!-- colspan : 셀 합치기 -->
 						<input type = "submit" value = "글등록" />
 						<input type = "reset" value = "취소" />
-						<input type = "button" value = "목록보기" onClick = "window.location.href='list.jsp'" />
+						<input type = "button" value = "목록보기" onClick = "window.location.href='qnABoardList.bo'" />
 						<!-- location : 현재 url을 가지고 있다. 목록보기를 누르면 목록리스트로 페이지를 이동한다. -->
 					</td>
 				</tr>

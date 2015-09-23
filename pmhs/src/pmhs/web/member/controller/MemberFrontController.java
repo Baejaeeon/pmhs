@@ -14,6 +14,7 @@ import pmhs.vo.ActionForward;
 import pmhs.web.member.action.IdCheckProAction;
 import pmhs.web.member.action.MemberRegistFormAction;
 import pmhs.web.member.action.MemberRegistProAction;
+import pmhs.web.member.action.zipcodeSearchAction;
 
 /**
  * Servlet implementation class MemberFrontController
@@ -75,6 +76,15 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/zipcodeSearch.mem")) { // 회원가입 처리
+	         action = new zipcodeSearchAction();
+	         try {
+	            forward = action.execute(request, response);
+	         } catch (Exception e) {
+	            // TODO: handle exception
+	            e.printStackTrace();
+	         }
+	      }
 		
 		// 비지니스로직 처리가 끝나면 포워딩
 		if(forward != null) {

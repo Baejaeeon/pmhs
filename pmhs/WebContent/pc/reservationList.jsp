@@ -20,6 +20,12 @@
 		border: 1px double orange;
 	}
 	
+	#list2Area{
+		margin: auto;
+		text-align: right;
+		width: 600px;
+	}
+	
 	#pageArea {
 		margin: auto;
 		width: 600px;
@@ -69,9 +75,27 @@
 	.td_right {
 		width: 280px;
 	}
+	#tr_command {
+		text-align: right;
+	}
 </style>
+<script>
+	function checkAll() {
+		// 단일객체 일때와 배열 객체일 경우를 구분해서 처리
+		if(document.forms[0].delete1.length == undefined) { // 단일 객체일 경우..
+			document.getElementById("delete1").checked = document.forms[0].allCheck.checked;
+			// checked : 체크가 됬는지 안됬는지 여부를 나타냄
+		}
+		else { // 배열일 경우
+			for(i = 0; i < document.forms[0].delete1.length; i++) {
+				document.forms[0].delete1[i].checked = document.forms[0].allCheck.checked;
+			}
+		}
+	}
+</script>
 </head>
 <body>
+<form action="errorPCfixPro.pca">
 	<%!
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		// 날짜 포맷 지정
@@ -84,6 +108,7 @@
 		<h2>예약 목록</h2>
 			<table>
 				<tr id = "tr_title">
+					<td><input type="checkbox" name = "allCheck" onclick="checkAll()" /></td>
 					<td class = "td_num">
 						신고번호
 					</td>
@@ -107,6 +132,7 @@
 				<c:set var = "number" value = "${pageInfo.number }"></c:set>
 				<c:forEach var = "reservation" items = "${reservationList }"> <!-- for문 수행 -->
 				<tr>
+					<td><input type="checkbox" name = "delete1" id = "delete1" value = "${reservation.declareNum }" /></td>
 					<td class = "td_num">
 						${number }
 					</td>
@@ -130,7 +156,14 @@
 				</tr>
 				</c:forEach>
 			</table>
+			<tr>
+		</tr>
 		</c:if>
+	</section>
+	<section id = "list2Area">
+		<td colspan="7" id = "tr_command" >
+				<input type = "submit" value = "수리 완료" />
+		</td>
 	</section>
 	<c:if test="${pageInfo.count > 0 }">
 	<section id = "pageArea">
@@ -148,5 +181,6 @@
 	</c:if>
 	</section>
 	</c:if>
+	</form>
 </body>
 </html>

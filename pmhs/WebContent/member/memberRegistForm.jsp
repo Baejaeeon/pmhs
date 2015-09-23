@@ -45,9 +45,9 @@ table {
 	//속성과 메소드가 제공된다.
 	window.open("idCheckPro.mem?id=" + document.forms[0].id.value,"window1","width=300,height=300");
   }
- /*  function zipSearch() {
-	  window.open("zipSearch.jsp","window2","width=300,height=400");
-  } */
+  function zipSearch() {
+	  window.open("zipcodeSearch.mem","window2","width=300,height=400");
+  }
 </script>
 <body> 
 	<section id="registFormArea">
@@ -99,25 +99,24 @@ table {
 				</tr>
 				
 			<tr>
-				<td class="td_left">
-				<label id = "zip1">우편번호</label>
-				</td>
-				<td class="td_right">
-				<input type = "text" name = "zip1" id = "zip1" required = "required"/>-
-				<input type = "text" name = "zip2" id = "zip2" required = "required"/>
-				<input type = "button" value = "우편번호 찾기" onclick = "zipSearch()"/>
-				</td>
-				</tr>
-			<tr>
-				<td class="td_left">
-				<label id = "address1">기본주소</label>
-				</td>
-				<td class="td_right">
-				<input type = "text" name = "address1" id = "address1" required = "required" 
-				/>
-				
-				</td>
-				</tr>
+	            <td class="td_left">
+	            <label id = "zipcode1">우편번호</label>
+	            </td>
+	            <td class="td_right">
+	            <input type = "text" name = "zipcode1" id = "zipcode1" required = "required"/>-
+	            <input type = "text" name = "zipcode2" id = "zipcode2" required = "required"/>
+	            <input type = "button" value = "우편번호 찾기" onclick = "zipSearch()"/>
+	            </td>
+            </tr>
+        	<tr>
+	            <td class="td_left">
+	            <label id = "address1">기본주소</label>
+	            </td>
+	            <td class="td_right">
+	            <input type = "text" name = "address1" id = "address1" required = "required" 
+	            readonly="readonly"/>
+	            </td>
+            </tr>
 			<tr>
 				<td class="td_left">
 				<label id = "address2">상세주소</label>

@@ -16,6 +16,10 @@
 		height: 500px;
 		border: 1px double orange;
 	}
+	#list2Area{
+		margin: auto;
+		width: 500px;
+	}
 	
 	#pageArea {
 		margin: auto;
@@ -68,7 +72,7 @@
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // 날짜 포맷 지정
 	%>
 	
-	
+<form action="qnABoardWriteForm.bo">	
 	<section id = "listArea">
 	<c:if test="${empty articleList }">
 			<h2>등록된 글이 없습니다.</h2>
@@ -124,6 +128,9 @@
 			</table>
 		</c:if>
 	</section>
+	<section id = "list2Area">
+		<input type = "submit" value = "글등록" />
+	</section>
 	<c:if test="${pageInfo.count > 0 }">
 	<section id = "pageArea">
 	<c:if test="${pageInfo.startPage > 20 }">
@@ -138,5 +145,6 @@
 	</c:if>
 	</section>
 	</c:if>
+	</form>
 </body>
 </html>

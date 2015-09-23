@@ -5,8 +5,10 @@ import static pmhs.db.JdbcUtil.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import pmhs.web.member.vo.Member;
+import pmhs.web.member.vo.Zipcode;
 
 public class MemberDAO {
 	private static MemberDAO instance;
@@ -85,4 +87,38 @@ public class MemberDAO {
 		}
 		return idCount;
 	}
+
+	public ArrayList<Zipcode> selectZipcodeList(String dong) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM zipcode WHERE dong LIKE ?";
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    ArrayList<Zipcode> zipSearchList = null;
+	    Zipcode zipcode = null;
+	    try {
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, "%" + dong + "%");
+	        rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	           zipSearchList = new ArrayList<Zipcode>();
+	           do {
+	              zipcode = new Zipcode();
+	              zipcode.setSido(rs.getString("sido"));
+	              zipcode.setDong(rs.getString("dong"));
+	              zipcode.setGugun(rs.getString("gugun"));
+	              zipcode.setBungi(rs.getString("bungi"));
+	              zipcode.setSeq(rs.getInt("seq"));
+	              zipcode.setZipcode(rs.getString("zipcode"));
+	              zipSearchList.add(zipcode);
+	            } while (rs.next());
+	         }
+	      } catch (Exception e) {
+	         // TODO: handle exception
+	         e.printStackTrace();
+	      } finally {
+	         close(rs);
+	         close(pstmt);
+	      }
+	      return zipSearchList;
+	   }
 }

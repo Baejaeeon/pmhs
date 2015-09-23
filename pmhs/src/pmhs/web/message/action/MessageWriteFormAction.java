@@ -11,8 +11,8 @@ public class MessageWriteFormAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		ActionForward forward = new ActionForward();
-		forward.setUrl("/message/messageWriteForm.jsp");
-		
-		return forward;
+	    forward.setUrl("/message/messageWriteForm.jsp");
+	      
+	      return forward;
 	}
 }

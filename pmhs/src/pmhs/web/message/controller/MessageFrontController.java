@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
+import pmhs.web.message.action.MessageContentAction;
+import pmhs.web.message.action.MessageDeleteAction;
+import pmhs.web.message.action.MessageReceiveListAction;
 import pmhs.web.message.action.MessageWriteFormAction;
 import pmhs.web.message.action.MessageWriteProAction;
 
@@ -47,25 +50,52 @@ public class MessageFrontController extends HttpServlet {
 		ActionForward forward = null; // 포워딩될 뷰페이지 정보를 담을 foward정의
 		
 		// 각각의 요청 처리
-		if(command.equals("messageWriteForm.msg")) {
-			action = new MessageWriteFormAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-		}
-		else if(command.equals("messageWritePro.msg")) {
-			action = new MessageWriteProAction();
-			try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
-		}
-
+		if(command.equals("/messageWriteForm.msg")) {
+	         System.out.println("AAAAAAAAA");
+	         action = new MessageWriteFormAction();
+	         try {
+	            forward = action.execute(request, response);
+	         } catch (Exception e) {
+	            // TODO: handle exception
+	            e.printStackTrace();
+	         }
+	      }
+	      else if(command.equals("/messageWritePro.msg")) {
+	         action = new MessageWriteProAction();
+	         try {
+	            forward = action.execute(request, response);
+	         } catch (Exception e) {
+	            // TODO: handle exception
+	            e.printStackTrace();
+	         }
+	      }
+	      else if(command.equals("/messageReceiveList.msg")) {
+	         action = new MessageReceiveListAction();
+	         try {
+	            forward = action.execute(request, response);
+	         } catch (Exception e) {
+	            // TODO: handle exception
+	            e.printStackTrace();
+	         }
+	      }
+	      else if(command.equals("/messageContent.msg")) {
+	         action = new MessageContentAction();
+	         try {
+	            forward = action.execute(request, response);
+	         } catch (Exception e) {
+	            // TODO: handle exception
+	            e.printStackTrace();
+	         }
+	      }
+	      else if(command.equals("/messageDelete.msg")) {
+	         action = new MessageDeleteAction();
+	         try {
+	            forward = action.execute(request, response);
+	         } catch (Exception e) {
+	            // TODO: handle exception
+	            e.printStackTrace();
+	         }
+	      }
 		
 		// 비지니스로직 처리가 끝나면 포워딩
 		if(forward != null) {

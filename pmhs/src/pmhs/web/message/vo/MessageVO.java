@@ -8,7 +8,7 @@ public class MessageVO {
 	private String messageReceiver;
 	private String Title;
 	private Timestamp messageReg_date;
-	private String messageText;
+	private String messageContent;
 	
 	public int getMessageNum() {
 		return messageNum;
@@ -40,10 +40,12 @@ public class MessageVO {
 	public void setMessageReg_date(Timestamp messageReg_date) {
 		this.messageReg_date = messageReg_date;
 	}
-	public String getMessageText() {
-		return messageText;
+	public String getMessageContent() {
+		return messageContent;
 	}
-	public void setMessageText(String messageText) {
-		this.messageText = messageText;
+	public void setMessageContent(String messageContent) {
+		this.messageContent = messageContent;
 	}
+	
+	
 }

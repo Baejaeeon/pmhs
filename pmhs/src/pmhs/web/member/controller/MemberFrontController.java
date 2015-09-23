@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
+import pmhs.web.member.action.IdCheckProAction;
 import pmhs.web.member.action.MemberRegistFormAction;
 import pmhs.web.member.action.MemberRegistProAction;
 
@@ -58,6 +59,15 @@ public class MemberFrontController extends HttpServlet {
 		}
 		else if(command.equals("/memberRegistPro.mem")) { // 회원가입 처리
 			action = new MemberRegistProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/idCheckPro.mem")) { // 아이디 체크
+			action = new IdCheckProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

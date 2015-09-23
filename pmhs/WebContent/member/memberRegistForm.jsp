@@ -39,18 +39,16 @@ table {
    width : 50px;
  }
 </style>
-<!-- <script>
+<script>
   function winOpen(){
 	//자바스크립트는 화면을 제어 할수 있는 수많은 내장 객체들을 제공하고, 각 내장 객체들은 
 	//속성과 메소드가 제공된다.
-	window.open("idCheck?id=" + document.forms[0].id.value,"window1","width=300,height=300");
+	window.open("idCheckPro.mem?id=" + document.forms[0].id.value,"window1","width=300,height=300");
   }
-  function zipSearch() {
+ /*  function zipSearch() {
 	  window.open("zipSearch.jsp","window2","width=300,height=400");
-  }
-  
-  
-</script>-->
+  } */
+</script>
 <body> 
 	<section id="registFormArea">
 	<form action = "memberRegistPro.mem" method="POST">

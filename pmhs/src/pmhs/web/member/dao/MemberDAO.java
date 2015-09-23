@@ -4,6 +4,7 @@ import static pmhs.db.JdbcUtil.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import pmhs.web.member.vo.Member;
 
@@ -57,5 +58,31 @@ public class MemberDAO {
 			close(pstmt); // close 메소드 사용
 		}
 		return insertCount;
+	}
+
+	public int selectIdCount(String id) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT COUNT(*) FROM member WHERE m_id = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int idCount = 0;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				// 로그인 성공
+				idCount = rs.getInt(1);
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return idCount;
 	}
 }

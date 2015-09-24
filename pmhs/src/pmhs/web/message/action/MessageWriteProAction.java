@@ -17,7 +17,7 @@ public class MessageWriteProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		MessageVO messageArticle = new MessageVO();
-	    messageArticle.setMessageWriter("aaa");
+	    messageArticle.setMessageWriter("tester");
 	    messageArticle.setTitle(request.getParameter("title"));
         messageArticle.setMessageReceiver(request.getParameter("receiver"));
         messageArticle.setMessageContent(request.getParameter("content"));

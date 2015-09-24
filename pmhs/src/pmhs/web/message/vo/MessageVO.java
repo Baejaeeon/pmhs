@@ -10,6 +10,10 @@ public class MessageVO {
 	private Timestamp messageReg_date;
 	private String messageContent;
 	
+	public MessageVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public int getMessageNum() {
 		return messageNum;
 	}

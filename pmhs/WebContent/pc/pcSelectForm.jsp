@@ -159,7 +159,7 @@
 				<table BORDER="0">
 					<tr>
 						<td>
-							<h1>실시간 좌석 정보</h1>
+							<h1>실시간 PC 정보</h1>
 						</td>
 					</tr>
 				</table>

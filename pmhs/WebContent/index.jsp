@@ -20,7 +20,6 @@
 <a href = "pcSelectForm.pc">PC선택하기</a>
 <%
    Member loginUser = (Member)session.getAttribute("loginUser");
-  
 
 if(loginUser != null){
 %>

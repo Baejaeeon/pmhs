@@ -28,8 +28,8 @@ public class PCSelectFormAction implements Action {
 			lectureRoom = Integer.parseInt(request.getParameter("lectureImage"));
 		}
 		
-		PCSelectFormService pcSelectFormService = new PCSelectFormService();
-		ArrayList<ReservationInfo> pcSiteList = pcSelectFormService.getPCSitList();
+		/*PCSelectFormService pcSelectFormService = new PCSelectFormService();
+		ArrayList<ReservationInfo> pcSiteList = pcSelectFormService.getPCSitList();*/
 		
 		PCInfo pcInfo = new PCInfo();
 		pcInfo.setNum(num);

@@ -127,7 +127,7 @@ public class MemberDAO {
 		String sql = "SELECT * FROM member WHERE m_id = ? AND m_passwd = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		Member loginMember = new Member();
+		Member loginMember = null;
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -136,6 +136,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				// 로그인 성공	
+				loginMember = new Member();
 				loginMember.setM_id(rs.getString("m_id"));
 				loginMember.setM_name(rs.getString("m_name"));
 				loginMember.setM_studentNum(rs.getInt("m_studentNum"));

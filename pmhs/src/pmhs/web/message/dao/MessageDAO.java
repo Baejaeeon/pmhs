@@ -87,7 +87,7 @@ public class MessageDAO {
 	         // 서브 쿼리 중 FROM 절 뒤에 제공되는 서브쿼리를 "인라인뷰"라고 한다. = 인라인 뷰는 별칭이 필요하다.
 	         pstmt = con.prepareStatement("SELECT list2.* FROM (SELECT rownum r, list1.* "
 	               + "FROM (SELECT * FROM messageInfo ORDER BY msg_num DESC) list1 ) list2 "
-	               + "WHERE r BETWEEN ? AND ?");
+	               + "WHERE r BETWEEN ? AND ?") ;
 	         // 레코드 번호로 조건을 주기 위해 rownum(레코드번호)을 사용한다.
 	         // ()안의 DESC된 값들을 가져와서 출력하면서 rownum을 붙여준다.
 	         pstmt.setInt(1, startRow);

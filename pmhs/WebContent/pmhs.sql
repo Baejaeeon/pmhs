@@ -129,6 +129,7 @@ DROP TABLE board PURGE;
 
 select * from pcInfo;
 select * from RESERVATIONINFO;
+select * from messageInfo;
 select * from member;
 select * from zipcode;
 DROP TABLE zipcode PURGE;

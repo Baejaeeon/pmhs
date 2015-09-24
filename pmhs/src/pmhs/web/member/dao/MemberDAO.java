@@ -121,4 +121,43 @@ public class MemberDAO {
 	      }
 	      return zipSearchList;
 	   }
+
+	public Member selectLoginMember(String id, String passwd) {
+		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM member WHERE m_id = ? AND m_passwd = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Member loginMember = new Member();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, passwd);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				// 로그인 성공	
+				loginMember.setM_id(rs.getString("m_id"));
+				loginMember.setM_name(rs.getString("m_name"));
+				loginMember.setM_studentNum(rs.getInt("m_studentNum"));
+				loginMember.setM_passwd(rs.getString("m_passwd"));
+				loginMember.setM_zipcode1(rs.getInt("m_zipcode1"));
+				loginMember.setM_zipcode2(rs.getInt("m_zipcode2"));
+				loginMember.setM_address1(rs.getString("m_address1"));
+				loginMember.setM_address2(rs.getString("m_address2"));
+				loginMember.setM_birthDay(rs.getString("m_birthDay"));
+				loginMember.setM_email(rs.getString("m_email"));
+				loginMember.setM_phone(rs.getString("m_phone"));
+				loginMember.setM_gender(rs.getString("m_gender"));
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return loginMember;
+	}
 }

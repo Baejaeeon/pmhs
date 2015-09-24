@@ -13,6 +13,10 @@ public class Member {
 	private String m_email;
 	private String m_phone;
 	private String m_gender;
+	
+	public Member() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public Member(String m_id, String m_name, int m_studentNum, String m_passwd, int m_zipcode1,
 			int m_zipcode2, String m_address1, String m_address2,String m_birthDay, String m_email, String m_phone, String m_gender) {

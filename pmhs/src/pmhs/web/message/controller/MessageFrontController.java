@@ -51,7 +51,6 @@ public class MessageFrontController extends HttpServlet {
 		
 		// 각각의 요청 처리
 		if(command.equals("/messageWriteForm.msg")) {
-	         System.out.println("AAAAAAAAA");
 	         action = new MessageWriteFormAction();
 	         try {
 	            forward = action.execute(request, response);

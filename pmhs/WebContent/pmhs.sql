@@ -70,6 +70,8 @@ CREATE TABLE messageInfo(
 	FOREIGN KEY(m_id) REFERENCES member(m_id)
 )
 
+CREATE SEQUENCE messageInfo_seq;
+
 CREATE TABLE commentInfo(
 	c_seq NUMBER NOT NULL,
 	c_content VARCHAR2(400),

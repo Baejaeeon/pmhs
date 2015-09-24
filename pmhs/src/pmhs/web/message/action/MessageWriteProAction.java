@@ -17,12 +17,11 @@ public class MessageWriteProAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		MessageVO messageArticle = new MessageVO();
-	      messageArticle.setMessageNum(Integer.parseInt(request.getParameter("messageNum")));
-	      messageArticle.setMessageWriter(request.getParameter("messageWriter"));
-	      messageArticle.setTitle(request.getParameter("title"));
-	      messageArticle.setMessageReceiver(request.getParameter("receiver"));
-	      messageArticle.setMessageContent(request.getParameter("messageContent"));
-	      messageArticle.setMessageReg_date(new Timestamp(System.currentTimeMillis()));
+	    messageArticle.setMessageWriter("aaa");
+	    messageArticle.setTitle(request.getParameter("title"));
+        messageArticle.setMessageReceiver(request.getParameter("receiver"));
+        messageArticle.setMessageContent(request.getParameter("content"));
+        messageArticle.setMessageReg_date(new Timestamp(System.currentTimeMillis()));
 	      
 	      MessageWriteProService messageWriteProService = new MessageWriteProService();
 	      

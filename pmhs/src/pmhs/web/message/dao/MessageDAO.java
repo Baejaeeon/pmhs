@@ -31,14 +31,14 @@ public class MessageDAO {
 	      // TODO Auto-generated method stub
 	      PreparedStatement pstmt = null;
 	      int insertCount = 0;
-	      String sql = "INSERT INTO messageInfo VALUES(message_seq.nextval,?,?,?,?,?)";
+	      String sql = "INSERT INTO messageInfo VALUES(messageInfo_seq.nextval,?,?,?,?,?)";
 	      try {
 	         pstmt = con.prepareStatement(sql);
-	         pstmt.setString(4, sendMessage.getMessageReceiver());
+	         pstmt.setString(1, sendMessage.getMessageReceiver());
 	         pstmt.setString(2, sendMessage.getTitle());
-	         pstmt.setTimestamp(5, sendMessage.getMessageReg_date());
-	         pstmt.setString(3, sendMessage.getMessageContent());
-	         pstmt.setString(1, sendMessage.getMessageWriter());
+	         pstmt.setTimestamp(3, sendMessage.getMessageReg_date());
+	         pstmt.setString(4, sendMessage.getMessageContent());
+	         pstmt.setString(5, sendMessage.getMessageWriter());
 	            insertCount = pstmt.executeUpdate();
 	      } catch (Exception e) {
 	         // TODO: handle exception

@@ -1,11 +1,15 @@
 package pmhs.web.pcInfo.action;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
+import pmhs.web.pcInfo.svc.PCSelectFormService;
 import pmhs.web.pcInfo.vo.PCInfo;
+import pmhs.web.pcInfo.vo.ReservationInfo;
 
 public class PCSelectFormAction implements Action {
 
@@ -24,6 +28,9 @@ public class PCSelectFormAction implements Action {
 			lectureRoom = Integer.parseInt(request.getParameter("lectureImage"));
 		}
 		
+		PCSelectFormService pcSelectFormService = new PCSelectFormService();
+		ArrayList<ReservationInfo> pcSiteList = pcSelectFormService.getPCSitList();
+		
 		PCInfo pcInfo = new PCInfo();
 		pcInfo.setNum(num);
 		pcInfo.setUnit(unit);
@@ -31,8 +38,9 @@ public class PCSelectFormAction implements Action {
 		pcInfo.setLectureImage(lectureImage);
 		
 		request.setAttribute("pcInfo", pcInfo);
+		request.setAttribute("pcSiteList", pcSiteList);
 		ActionForward forward = new ActionForward();
-		forward.setUrl("pc/pcSelectForm.jsp");
+		forward.setUrl("/pc/pcSelectForm.jsp");
 		return forward;
 	}
 }

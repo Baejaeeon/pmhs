@@ -13,6 +13,6 @@ public class MessageWriteFormAction implements Action {
 		ActionForward forward = new ActionForward();
 	    forward.setUrl("/message/messageWriteForm.jsp");
 	      
-	      return forward;
+	    return forward;
 	}
 }

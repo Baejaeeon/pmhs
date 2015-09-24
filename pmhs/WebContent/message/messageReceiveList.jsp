@@ -64,7 +64,7 @@
 </style>
 </head>
 <body>
-<input type = "button" value = "작성" onClick = "window.location.href='/pmhs/message/messageWriteForm.jsp'" />
+<a href="messageWriteForm.msg"><input type = "button" value = "작성" /></a>
    <%!
       // 한 페이지 당 출력될 글의 개수 지정
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // 날짜 포맷 지정
@@ -115,7 +115,6 @@
                   <%=number-- %>
                </td>
                <td class = "td_subject">
-                  <%=receiveList.get(i).getTitle() %>
                   <a href = "messageContent.msg?num=<%=receiveList.get(i).getMessageNum() %>&pageNum=<%=currentPage %>"><%=receiveList.get(i).getTitle() %></a>
                   <!-- 게시물 상세보기 요청 링크를 걸어준다. 해당 글을 구분할 수 있는 값인 num값을 파라미터로 던져준다. -->
                </td>
@@ -145,19 +144,19 @@
       if(startPage > 10) { 
          // 첫 번째 페이지 그룹이 아닐 때..
    %>
-      <a href = "messageReceiveList.jsp?pageNum=<%=startPage - 10 %>">[이전]</a>
+      <a href = "messageReceiveList.msg?pageNum=<%=startPage - 10 %>">[이전]</a>
    <%
       }
       // 이전 그룹의 startPage로 이동
       for(int i = startPage; i <= endPage; i++) {
    %>
-      <a href = "messageReceiveList.jsp?pageNum=<%=i %>">[<%=i %>]</a>
+      <a href = "messageReceiveList.msg?pageNum=<%=i %>">[<%=i %>]</a>
       <!-- startPage부터 endPage까지 출력하기 -->
    <%
       }
       if(endPage < pageCount) {
    %>
-      <a href = "messageReceiveList.jsp?pageNum=<%=startPage + 10 %>">[다음]</a>
+      <a href = "messageReceiveList.msg?pageNum=<%=startPage + 10 %>">[다음]</a>
    <%
       // 다음 그룹의 페이지로 넘어간다.
       }

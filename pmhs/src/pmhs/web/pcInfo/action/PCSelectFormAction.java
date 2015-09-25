@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
@@ -16,29 +17,28 @@ public class PCSelectFormAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		int num = 0;
 		String unit = null;
 		String department = null;
 		int lectureRoom = 0;
 		String lectureImage = null;
-		if(request.getParameter("num") != null) {
-			num = Integer.parseInt(request.getParameter("num"));
+		if(request.getParameter("unit") != null || request.getParameter("department") != null || request.getParameter("lectureRoom") != null) {
 			unit = request.getParameter("unit");
 			department = request.getParameter("department");
 			lectureRoom = Integer.parseInt(request.getParameter("lectureImage"));
 		}
 		
 		PCSelectFormService pcSelectFormService = new PCSelectFormService();
-		ArrayList<ReservationInfo> pcSiteList = pcSelectFormService.getPCSitList();
+		ArrayList<PCInfo> pcSiteList = pcSelectFormService.getPCSitList(unit, department, lectureRoom);
 		
-		PCInfo pcInfo = new PCInfo();
-		pcInfo.setNum(num);
+		/*PCInfo pcInfo = new PCInfo();
 		pcInfo.setUnit(unit);
 		pcInfo.setLectureRoom(lectureRoom);
-		pcInfo.setLectureImage(lectureImage);
+		pcInfo.setLectureImage(lectureImage);*/
 		
-		request.setAttribute("pcInfo", pcInfo);
-		request.setAttribute("pcSiteList", pcSiteList);
+		//request.setAttribute("pcInfo", pcInfo);
+		//request.setAttribute("pcSiteList", pcSiteList);
+		HttpSession session = request.getSession();
+		session.setAttribute("pcSiteList", pcSiteList);
 		ActionForward forward = new ActionForward();
 		forward.setUrl("/pc/pcSelectForm.jsp");
 		return forward;

@@ -5,7 +5,7 @@ public class PCInfo {
 	private String unit;
 	private String department;
 	private int lectureRoom;
-	private String lectureImage;
+	private int isDeclare;
 	
 	public int getNum() {
 		return num;
@@ -31,11 +31,11 @@ public class PCInfo {
 	public void setLectureRoom(int lectureRoom) {
 		this.lectureRoom = lectureRoom;
 	}
-	public String getLectureImage() {
-		return lectureImage;
+	public int getIsDeclare() {
+		return isDeclare;
 	}
-	public void setLectureImage(String lectureImage) {
-		this.lectureImage = lectureImage;
+	public void setIsDeclare(int isDeclare) {
+		this.isDeclare = isDeclare;
 	}
 	
 }

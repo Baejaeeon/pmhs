@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
+import pmhs.web.pcInfo.action.PCDeclareFormAction;
 import pmhs.web.pcInfo.action.PCSelectFormAction;
 
 /**
@@ -48,6 +49,15 @@ public class PCInfoFrontController extends HttpServlet {
 		// 각각의 요청 처리
 		if(command.equals("/pcSelectForm.pc")) { // 고장 PC 리스트
 			action = new PCSelectFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		if(command.equals("/pcDeclareForm.pc")) { // 고장 PC 리스트
+			action = new PCDeclareFormAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

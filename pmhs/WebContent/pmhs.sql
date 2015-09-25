@@ -87,7 +87,7 @@ CREATE TABLE pcInfo(
 	p_unit VARCHAR2(50) NOT NULL,
 	p_department VARCHAR2(50),
 	p_lectureroom NUMBER NOT NULL,
-	p_lectureimage VARCHAR2(12),
+	p_isdeclare NUMBER DEFAULT 0,
 	PRIMARY KEY(p_num)
 )
 
@@ -134,5 +134,8 @@ select * from member;
 select * from zipcode;
 DROP TABLE zipcode PURGE;
 DROP TABLE qnaBoard PURGE;
+DROP TABLE reservationInfo PURGE;
+DROP TABLE errorPCInfo PURGE;
+DROP TABLE pcInfo PURGE;
 
 select * from qnaBoard;

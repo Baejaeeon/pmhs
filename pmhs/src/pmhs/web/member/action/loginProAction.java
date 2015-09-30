@@ -18,6 +18,7 @@ public class loginProAction implements Action {
 		// TODO Auto-generated method stub
 		String id = request.getParameter("id");
 		String passwd = request.getParameter("passwd");
+
 		LoginService loginService = new LoginService();
 		Member loginUser = loginService.getLoginUser(id, passwd);
 

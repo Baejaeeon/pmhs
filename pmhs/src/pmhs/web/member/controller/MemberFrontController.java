@@ -13,6 +13,10 @@ import pmhs.action.Action;
 import pmhs.vo.ActionForward;
 import pmhs.web.member.action.IdCheckProAction;
 import pmhs.web.member.action.LogoutAction;
+import pmhs.web.member.action.MemberDetailAction;
+import pmhs.web.member.action.MemberMainAction;
+import pmhs.web.member.action.MemberModifyFormAction;
+import pmhs.web.member.action.MemberModifyProAction;
 import pmhs.web.member.action.MemberRegistFormAction;
 import pmhs.web.member.action.MemberRegistProAction;
 import pmhs.web.member.action.loginFormAction;
@@ -79,7 +83,7 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		else if(command.equals("/zipcodeSearch.mem")) { // 회원가입 처리
+		else if(command.equals("/zipcodeSearch.mem")) { // 우편번호 검색
 	         action = new zipcodeSearchAction();
 	         try {
 	            forward = action.execute(request, response);
@@ -88,7 +92,7 @@ public class MemberFrontController extends HttpServlet {
 	            e.printStackTrace();
 	         }
 	      }
-		else if(command.equals("/loginForm.mem")) { // 회원가입 처리
+		else if(command.equals("/loginForm.mem")) { // 로그인화면 출력
 			action = new loginFormAction();
 			try {
 				forward = action.execute(request, response);
@@ -97,7 +101,7 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		else if(command.equals("/loginPro.mem")) { // 회원가입 처리
+		else if(command.equals("/loginPro.mem")) { // 로그인 처리
 			action = new loginProAction();
 			try {
 				forward = action.execute(request, response);
@@ -106,7 +110,7 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		else if(command.equals("/logout.mem")) { // 회원가입 처리
+		else if(command.equals("/logout.mem")) { // 로그아웃 처리
 			action = new LogoutAction();
 			try {
 				forward = action.execute(request, response);
@@ -115,6 +119,44 @@ public class MemberFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		else if(command.equals("/memberMain.mem")) { // 회원정보 메인
+			action = new MemberMainAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/memberDetail.mem")) { // 회원정보상세보기
+			action = new MemberDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/memberModifyForm.mem")) { // 회원정보상세보기
+			action = new MemberModifyFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/memberModifyPro.mem")) { // 회원정보상세보기
+			action = new MemberModifyProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		
 		
 		// 비지니스로직 처리가 끝나면 포워딩
 		if(forward != null) {

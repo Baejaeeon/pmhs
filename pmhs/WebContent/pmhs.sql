@@ -14,6 +14,8 @@ CREATE TABLE member (
 	PRIMARY KEY(m_id)
 )
 
+ALTER TABLE member MODIFY m_gender VARCHAR2(7);
+
 CREATE SEQUENCE member_seq;
 
 CREATE TABLE zipcode(

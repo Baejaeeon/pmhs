@@ -1,5 +1,6 @@
 package pmhs.web.pcAdmin.action;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
 import pmhs.web.board.vo.PageInfo;
+import pmhs.web.pcAdmin.svc.ErrorPCListService;
 import pmhs.web.pcAdmin.svc.ReservationListService;
+import pmhs.web.pcAdmin.vo.ErrorPCInfo;
 import pmhs.web.pcAdmin.vo.ReservationInfo;
 
 public class ErrorPCListAction implements Action {
@@ -16,8 +19,83 @@ public class ErrorPCListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+int pageSize = 10; // 한 페이지 당 출력될 글의 개수 지정
 		
-		return null;
+		String pageNum = request.getParameter("pageNum"); // 페이지 번호를 받아온다.
+		if(pageNum == null) {
+			pageNum = "1"; // 페이지 번호를 눌러서 들어오지 않으면 게시판 1page를 보여준다.
+		}
+		
+		// 페이지 번호를 사용해서 페이징 처리 시 연산을 수행할 것이므로
+		// 페이지 번호값을 정수타입으로 변경
+		int currentPage = Integer.parseInt(pageNum);
+		
+		// 해당 페이지에 출력되는 글들 중 가장 먼저 출력되는 글의 레코드 번호
+		int startRow = (currentPage - 1) * pageSize + 1;
+		// 현재 페이지 : 1
+		// (1 - 1) * pageSize + 1 ---------> 1
+		// 현재 페이지 : 2
+		// (2 - 1) * pageSize + 1 ---------> 11
+		
+		int count = 0;
+		// count : 총 글의 개수를 저장할 변수
+		int number = 0;
+		// number : 해당 페이지에 가장 먼저 출력되는 글의 번호
+		
+		List<ErrorPCInfo> errorPCList = null; // 글 정보를 저장할 리스트
+		// 해당 페이지에 출력되는 글 목록을 저장할 컬렉션
+		
+		// 비지니스 로직 처리를 위해 서비스 객체 생성
+		ErrorPCListService errorPCListService = new ErrorPCListService();
+		
+		count = errorPCListService.getErrorPCCount(); // 총 예약의 개수를 가져온다.
+		if(count > 0) { 
+			// 예약이 하나라도 있으면 리스팅할 예약 정보 얻어오기
+			errorPCList = errorPCListService.getErrorPCList(startRow, pageSize); // 해당 페이지의 레코드 10개씩 가져온다.
+		}
+		
+		// 전체 페이지에서 현재페이지 -1을 해서 pageSize를 곱한다.
+		number = count - (currentPage - 1) * pageSize;
+		// 총 글의 개수 : 134
+		// 현재 페이지 : 1
+		// 134 - (1 - 1) * 10 -------> 134
+		
+		int startPage = 0;
+		int pageCount = 0;
+		int endPage = 0;
+		
+		if(count > 0) { // 글이 하나라도 존재하면...
+			pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+			// 총 페이지 개수를 구함.
+			// ex) 총 글의 개수 13개이면 페이지는 2개 필요..
+	
+			startPage = ((currentPage -1) / pageSize) * pageSize + 1;
+			// 현재 페이지 그룹의 첫번째 페이지를 구함.
+			// [1][2][3][4][5][6][7]...[10] -------> 처음 페이지 그룹
+			// 다음 페이지 스타트 페이지 : [11][12][13]....[20]
+					
+			int pageBlock = 10;
+			endPage = startPage + pageBlock - 1;
+			
+			// 마지막 페이지 그룹인 경우..
+			if(endPage > pageCount) endPage = pageCount;
+		}
+		
+		// 포워딩 하기 전, 가져 온 글 공유
+		request.setAttribute("errorPCList", errorPCList);
+		PageInfo pageInfo = new PageInfo(); // 페이지에 관한 정보를 처리하는 객체 생성
+		pageInfo.setCount(count);
+		pageInfo.setCurrentPage(currentPage);
+		pageInfo.setEndPage(endPage);
+		pageInfo.setNumber(number);
+		pageInfo.setPageCount(pageCount);
+		pageInfo.setStartPage(startPage);
+		
+		request.setAttribute("pageInfo", pageInfo);
+		ActionForward forward = new ActionForward();
+		forward.setUrl("/pc/errorPCList.jsp"); // list.jsp 페이지 포워딩
+		
+		return forward;
 	}
 
 }

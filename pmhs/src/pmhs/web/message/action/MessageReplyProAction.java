@@ -10,25 +10,25 @@ import javax.servlet.http.HttpSession;
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
 import pmhs.web.member.vo.Member;
-import pmhs.web.message.svc.MessageWriteProService;
+import pmhs.web.message.svc.MessageReplyProService;
 import pmhs.web.message.vo.MessageVO;
 
-public class MessageWriteProAction implements Action {
+public class MessageReplyProAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		MessageVO messageArticle = new MessageVO();
-	    messageArticle.setMessageWriter(((Member)session.getAttribute("loginUser")).getM_id());
+		messageArticle.setMessageWriter(((Member)session.getAttribute("loginUser")).getM_id());
 	    messageArticle.setTitle(request.getParameter("title"));
         messageArticle.setMessageReceiver(request.getParameter("receiver"));
         messageArticle.setMessageContent(request.getParameter("content"));
         messageArticle.setMessageReg_date(new Timestamp(System.currentTimeMillis()));
 	      
-	      MessageWriteProService messageWriteProService = new MessageWriteProService();
+	      MessageReplyProService messageReplyProService = new MessageReplyProService();
 	      
-	      boolean writeSuccess = messageWriteProService.sendMessage(messageArticle);
+	      boolean writeSuccess = messageReplyProService.replyMessage(messageArticle);
 	      ActionForward forward = null;
 	      if(writeSuccess){
 	         forward = new ActionForward();
@@ -45,4 +45,5 @@ public class MessageWriteProAction implements Action {
 	      }
 	      return forward;
 	}
+
 }

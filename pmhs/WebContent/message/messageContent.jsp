@@ -12,7 +12,7 @@
    width: 500px;
    height: 40px;
    margin: auto;
-   background: orange;
+   background: gray;
    text-align: center;
 }
 
@@ -21,7 +21,7 @@
    height: 300px;
    margin: auto;
    overflow: auto;
-   border: 1px solid orange;
+   border: 1px solid gray;
 }
 </style>
 </head>
@@ -32,7 +32,7 @@
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // 날짜 포맷 지정
    %>
    <section id="basicInfo">
-      작성자 :
+      보낸사람 :
       <%=content.getMessageWriter()%>
       글제목 :
       <%=content.getTitle()%>
@@ -43,8 +43,9 @@
       <%=content.getMessageContent()%>
    </section>
    <section id="commandList">
+	  <a href = "messageReplyForm.msg?writer=<%=content.getMessageWriter() %>">답장</a>
       <a href="messageDelete.msg?num=<%=content.getMessageNum()%>">글삭제</a>
-      <a href="messageReceiveList.jsp?pageNum=<%=pageNum%>">목록보기</a>
+      <a href="messageReceiveList.msg?pageNum=<%=pageNum%>">목록보기</a>
    </section>
 </body>
 </html>

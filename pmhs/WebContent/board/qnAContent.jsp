@@ -51,19 +51,16 @@ ArrayList<CommentVO> comment = (ArrayList<CommentVO>)request.getAttribute("comme
 <section id = "contentInfo">
 	${article.content }
 </section>
-	
-			<form action='qnAComment.bo' method="post">
-
-						<%
-					if (comment != null && comment.size() > 0) {
-				%>
-
+	<form action="qnAComment.bo" method="post">
+			<%
+				if (comment != null && comment.size() > 0) {
+			%>
 				<table id="reply">
 					<tr>
-						<td width="100px" class="name"><font color="black" style="font-family:a탈영고딕L">번호</font></td>
-						<td width="100px" class="name"><font color="black" style="font-family:a탈영고딕L">ID</font></td>
-						<td width="440px" class="name"><font color="black" style="font-family:a탈영고딕L">내용</font></td>
-						<td class="name"><font color="black" style="font-family:a탈영고딕L">등록일자</font></td>
+						<td width="40px" class="name"><font color="black" style="font-family:a탈영고딕L">번호</font></td>
+						<td width="50px" class="name"><font color="black" style="font-family:a탈영고딕L">ID</font></td>
+						<td width="270px" class="name"><font color="black" style="font-family:a탈영고딕L">내용</font></td>
+						<td width="140px" class="name"><font color="black" style="font-family:a탈영고딕L">등록일자</font></td>
 						
 					</tr>
 					<%
@@ -75,9 +72,9 @@ ArrayList<CommentVO> comment = (ArrayList<CommentVO>)request.getAttribute("comme
 						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_content()%></font></td>
 						<td><font color="black" style="font-family:a탈영고딕L"><%=sdf.format(comment.get(i).getC_reg_date())%></font></td>
 					</tr>
-					<%
-						}
-					%>
+						<%
+							}
+						%>
 					<%
 						}
 					%>

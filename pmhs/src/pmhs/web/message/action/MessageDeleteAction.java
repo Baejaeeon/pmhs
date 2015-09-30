@@ -14,7 +14,7 @@ public class MessageDeleteAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		int messageNum = Integer.parseInt(request.getParameter("messageNum"));
+		int messageNum = Integer.parseInt(request.getParameter("num"));
 	      String pageNum = request.getParameter("pageNum");
 
 	      MessageDeleteService messageDeleteService = new MessageDeleteService();

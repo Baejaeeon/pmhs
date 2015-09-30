@@ -8,15 +8,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>수신목록보기</title>
+<title>발신목록보기</title>
 </head>
 <body>
 	<a href = "index.jsp">Home</a>
 	<a href = "messageWriteForm.msg">작성</a>
-	<a href = "messageSendList.msg">발신목록보기</a>
+	<a href = "messageReceiveList.msg">수신목록보기</a>
 	<%
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-	List<MessageVO> receiveList = (List<MessageVO>)request.getAttribute("receiveList");
+	List<MessageVO> sendList = (List<MessageVO>)request.getAttribute("sendList");
 	
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	int number = pageInfo.getNumber();
@@ -29,39 +29,39 @@
 	
 	
 	<%
-	if(receiveList == null || receiveList.size() == 0){
+	if(sendList == null || sendList.size() == 0){
 	%>
-		<h2>수신된 메시지가 없습니다.</h2>
+		<h2>발신한 메시지가 없습니다.</h2>
 	<%
 	}
 	else{
 	%>
-	<h2>수신목록보기</h2>
+	<h2>발신목록보기</h2>
 			<table>
 				<tr id = "tr_title">
 					<td class = "td_subject">
 						제목
 					</td>
-					<td class = "td_writer">
-						보낸사람
+					<td class = "td_receiver">
+						받는사람
 					</td>
 					<td class = "td_regdate">
 						작성일
 					</td>
 				</tr>
 	<%
-					for(int i = 0; i < receiveList.size(); i++) {
+					for(int i = 0; i < sendList.size(); i++) {
 				%>
 				<tr>
 					<td class = "td_subject">
-						<a href = "messageContent.msg?num=<%=receiveList.get(i).getMessageNum() %>"><%=receiveList.get(i).getTitle() %></a>
+						<a href = "messageContent.msg?num=<%=sendList.get(i).getMessageNum() %>"><%=sendList.get(i).getTitle() %></a>
 						<!-- 게시물 상세보기 요청 링크를 걸어준다. 해당 글을 구분할 수 있는 값인 num값을 파라미터로 던져준다. -->
 					</td>
-					<td class = "td_writer">
-						<%=receiveList.get(i).getMessageWriter() %>
+					<td class = "td_receiver">
+						<%=sendList.get(i).getMessageReceiver() %>
 					</td>
 					<td class = "td_regdate">
-						<%=sdf.format(receiveList.get(i).getMessageReg_date()) %>
+						<%=sdf.format(sendList.get(i).getMessageReg_date()) %>
 					</td>
 				</tr>
 				<%
@@ -83,19 +83,19 @@
 		if(startPage > 10) { 
 			// 첫 번째 페이지 그룹이 아닐 때..
 	%>
-		<a href = "messageReceiveList.msg?pageNum=<%=startPage - 10 %>">[이전]</a>
+		<a href = "messageSendList.msg?pageNum=<%=startPage - 10 %>">[이전]</a>
 	<%
 		}
 		// 이전 그룹의 startPage로 이동
 		for(int i = startPage; i <= endPage; i++) {
 	%>
-		<a href = "messageReceiveList.msg?pageNum=<%=i %>">[<%=i %>]</a>
+		<a href = "messageSendList.msg?pageNum=<%=i %>">[<%=i %>]</a>
 		<!-- startPage부터 endPage까지 출력하기 -->
 	<%
 		}
 		if(endPage < pageCount) {
 	%>
-		<a href = "messageReceiveList.msg?pageNum=<%=startPage + 10 %>">[다음]</a>
+		<a href = "messageSendList.msg?pageNum=<%=startPage + 10 %>">[다음]</a>
 	<%
 		// 다음 그룹의 페이지로 넘어간다.
 		}

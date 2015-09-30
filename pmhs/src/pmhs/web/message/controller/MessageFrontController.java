@@ -14,6 +14,9 @@ import pmhs.vo.ActionForward;
 import pmhs.web.message.action.MessageContentAction;
 import pmhs.web.message.action.MessageDeleteAction;
 import pmhs.web.message.action.MessageReceiveListAction;
+import pmhs.web.message.action.MessageReplyFormAction;
+import pmhs.web.message.action.MessageReplyProAction;
+import pmhs.web.message.action.MessageSendListAction;
 import pmhs.web.message.action.MessageWriteFormAction;
 import pmhs.web.message.action.MessageWriteProAction;
 
@@ -77,6 +80,16 @@ public class MessageFrontController extends HttpServlet {
 	            e.printStackTrace();
 	         }
 	      }
+	      else if(command.equals("/messageSendList.msg")) {
+	    	  action = new MessageSendListAction();
+	    	  try {
+	    		  forward = action.execute(request, response);
+	    	  } catch (Exception e) {
+	    		  // TODO: handle exception
+	    		  e.printStackTrace();
+	    	  }
+	      }
+
 	      else if(command.equals("/messageContent.msg")) {
 	         action = new MessageContentAction();
 	         try {
@@ -94,6 +107,24 @@ public class MessageFrontController extends HttpServlet {
 	            // TODO: handle exception
 	            e.printStackTrace();
 	         }
+	      }
+	      else if(command.equals("/messageReplyForm.msg")) {
+	    	  action = new MessageReplyFormAction();
+	    	  try {
+	    		  forward = action.execute(request, response);
+	    	  } catch (Exception e) {
+	    		  // TODO: handle exception
+	    		  e.printStackTrace();
+	    	  }
+	      }
+	      else if(command.equals("/messageReplyPro.msg")) {
+	    	  action = new MessageReplyProAction();
+	    	  try {
+	    		  forward = action.execute(request, response);
+	    	  } catch (Exception e) {
+	    		  // TODO: handle exception
+	    		  e.printStackTrace();
+	    	  }
 	      }
 		
 		// 비지니스로직 처리가 끝나면 포워딩

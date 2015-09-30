@@ -26,9 +26,8 @@ public class CommentAction implements Action {
 	    CommentVO commentVO = new CommentVO(q_num, c_writer, c_content, new Timestamp(System.currentTimeMillis()));
 		CommentService commentService = new CommentService();
 		boolean isRegistSuccess = commentService.registComment(commentVO);
-		ArrayList<CommentVO> comment = commentService.selectqnaReplyList(q_num);
-		
-		request.setAttribute("comment", comment);
+		/*ArrayList<CommentVO> comment = commentService.selectqnaReplyList(q_num);
+		request.setAttribute("comment", comment);*/
 		
 		ActionForward forward = new ActionForward();
 		if (isRegistSuccess) {

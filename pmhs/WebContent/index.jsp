@@ -15,6 +15,7 @@
 <a href = "noticeBoardList.bo">공지사항</a>
 <a href = "qnABoardList.bo">문의사항</a>
 <a href = "memberMain.mem">회원정보</a>
+<a href = "memberAdminMain.mema">회원관리</a>
 <a href = "errorPcList.pca">PC정보</a>
 <a href = "memberRegistForm.mem">회원가입</a>
 <a href = "reservationList.pca">예약정보</a>

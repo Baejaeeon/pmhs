@@ -13,7 +13,7 @@ public class MessageVO {
 	public MessageVO() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public int getMessageNum() {
 		return messageNum;
 	}

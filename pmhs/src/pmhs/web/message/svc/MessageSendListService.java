@@ -7,27 +7,27 @@ import pmhs.web.message.dao.MessageDAO;
 import pmhs.web.message.vo.MessageVO;
 
 
-public class MessageReceiveListService {
+public class MessageSendListService {
 
-	public int getReceiveCount() {
+	public int getSendCount() {
 		// TODO Auto-generated method stub
 		Connection con = getConnect();
 		MessageDAO messageDAO = MessageDAO.getInstance();
 		messageDAO.setConnection(con);
-		int receiveCount = messageDAO.selectReceiveCount();
+		int sendCount = messageDAO.selectSendCount();
 		close(con);
-		return receiveCount;
+		return sendCount;
 	}
 	
-	public List<MessageVO> getReceiveList(String m_id, int startRow, int pageSize) {
+	public List<MessageVO> getSendList(String m_id, int startRow, int pageSize) {
 		// TODO Auto-generated method stub
 		Connection con = getConnect();
 		MessageDAO messageDAO = MessageDAO.getInstance();
 		messageDAO.setConnection(con);
 		
-		List<MessageVO> receiveList = messageDAO.selectReceiveList(m_id, startRow, pageSize);
+		List<MessageVO> sendList = messageDAO.selectSendList(m_id, startRow, pageSize);
 		close(con);
-		return receiveList;
+		return sendList;
 	}
 
 }

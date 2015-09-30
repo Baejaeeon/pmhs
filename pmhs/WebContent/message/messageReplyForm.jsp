@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>메시지 작성</title>
+<title>답 장</title>
 </head>
 <body>
-      <h2>메시지 작성</h2>
-      <form action="messageWritePro.msg" method = "POST">
+      <h2>답 장</h2>
+      <form action="messageReplyPro.msg" method = "POST">
          <table>
             <tr>
                <td class = "td_left">
@@ -23,7 +23,7 @@
                   <label for = "receiver">받는사람</label>
                </td>
                <td class = "td_right">
-                  <input type = "text" name = "receiver" id = "receiver" />
+                  <input type = "text" name = "receiver" id = "receiver" value="${writer }" readonly="readonly" />
                </td>
             </tr>
             <tr>

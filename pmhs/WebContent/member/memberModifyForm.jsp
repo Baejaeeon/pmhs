@@ -170,8 +170,8 @@ Member loginUser = (Member)request.getAttribute("loginUser");
 				<label id = "gender">성별</label>
 				</td>
 				<td class="td_right">
-				<input type = "radio" name = "gender" id = "gender" value=${loginUser.m_gender eq M } checked />남자
-				<input type = "radio" name = "gender" id = "gender" value=${loginUser.m_gender eq F } checked />여자
+				<input type = "radio" name = "gender" id = "gender" value="${loginUser.m_gender eq M }" checked />남자
+				<input type = "radio" name = "gender" id = "gender" value="${loginUser.m_gender eq F }" checked />여자
 				
 				</td>
 				</tr>
@@ -180,7 +180,6 @@ Member loginUser = (Member)request.getAttribute("loginUser");
 				   <td colspan="2" id = "td_command">
 				      <input type = "submit" value = "회원정보수정"/>
 				   </td>
-				
 		</table>
 </form>
 

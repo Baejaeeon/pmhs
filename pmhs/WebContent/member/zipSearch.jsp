@@ -18,10 +18,10 @@
 }
 </style>
 <script>
-function winClose(zip1,zip2,addr) {
-   opener.document.forms[0].zip1.value = zip1;
-   opener.document.forms[0].zip2.value = zip2;
-   opener.document.forms[0].addr1.value = addr;
+function winClose(zipcode1,zipcode2,address) {
+   opener.document.forms[0].zipcode1.value = zipcode1;
+   opener.document.forms[0].zipcode2.value = zipcode2;
+   opener.document.forms[0].address1.value = address;
     window.close();
 }
 </script>

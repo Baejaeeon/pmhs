@@ -20,8 +20,8 @@ public class MemberRegistProAction implements Action {
 		String m_name = request.getParameter("name");
 		int m_studentNum = Integer.parseInt(request.getParameter("studentNum"));
 		String m_passwd = request.getParameter("passwd");
-		int m_zipcode1 = Integer.parseInt(request.getParameter("zip1"));
-		int m_zipcode2 = Integer.parseInt(request.getParameter("zip2"));
+		int m_zipcode1 = Integer.parseInt(request.getParameter("zipcode1"));
+		int m_zipcode2 = Integer.parseInt(request.getParameter("zipcode2"));
 		String m_address1 = request.getParameter("address1");
 		String m_address2 = request.getParameter("address2");
 		String m_birthDay = request.getParameter("birthDay");

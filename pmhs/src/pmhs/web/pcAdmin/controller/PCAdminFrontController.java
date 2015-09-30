@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
+import pmhs.web.pcAdmin.action.ErrorPCDetailAction;
 import pmhs.web.pcAdmin.action.ErrorPCListAction;
 import pmhs.web.pcAdmin.action.ErrorPCSelectFormAction;
 import pmhs.web.pcAdmin.action.ReservationListAction;
@@ -77,6 +78,15 @@ public class PCAdminFrontController extends HttpServlet {
 		}
 		else if(command.equals("/errorPCSelectForm.pca")) { // 고장 PC 리스트
 			action = new ErrorPCSelectFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/errorPCDetail.pca")) { // 고장 PC 리스트
+			action = new ErrorPCDetailAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

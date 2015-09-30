@@ -1,6 +1,3 @@
-<%@page import="pmhs.web.board.vo.PageInfo"%>
-<%@page import="pmhs.web.board.dao.BoardDAO"%>
-<%@page import="pmhs.web.board.vo.QnABoardVO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -19,7 +16,7 @@
 		height: 500px;
 		border: 1px double orange;
 	}
-	#list2Area{
+		#list2Area{
 		margin: auto;
 		width: 500px;
 	}
@@ -69,12 +66,6 @@
 </style>
 </head>
 <body>
-	<%!
-		
-		// 한 페이지 당 출력될 글의 개수 지정
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // 날짜 포맷 지정
-	%>
-	
 <form action="qnABoardWriteForm.bo">	
 	<section id = "listArea">
 	<c:if test="${empty articleList }">
@@ -108,13 +99,6 @@
 					</td>
 					<c:set var = "number" value = "${number - 1 }"></c:set>
 					<td class = "td_subject">
-						<c:forEach begin="1" end = "${article.re_level }"> <!-- 답글 레벨을 하나씩 가져와서  -->
-						&nbsp;&nbsp;&nbsp;
-						</c:forEach>
-						<c:if test="${article.re_level > 0 }"> <!-- 답글 레벨이 0보다 크면 re를 출력해준다. -->
-						re :
-						<!-- 게시물 상세보기 요청 링크를 걸어준다. 해당 글을 구분할 수 있는 값인 num값을 파라미터로 던져준다. --> 
-						</c:if>
 						<a href = "qnABoardContent.bo?num=${article.num }&pageNum=${pageInfo.currentPage}">${article.subject }</a>
 					</td>
 					<td class = "td_writer">
@@ -132,7 +116,7 @@
 			</table>
 		</c:if>
 	</section>
-	<section id = "list2Area">
+		<section id = "list2Area">
 		<input type = "submit" value = "글등록" />
 	</section>
 	<c:if test="${pageInfo.count > 0 }">

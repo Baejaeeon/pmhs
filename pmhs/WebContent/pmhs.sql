@@ -50,6 +50,7 @@ DROP SEQUENCE qnaboard_seq;
 CREATE TABLE noticeBoard(
 	n_num NUMBER NOT NULL,
 	n_writer VARCHAR2(12) NOT NULL,
+	n_email VARCHAR2(30),
 	n_subject VARCHAR2(50) NOT NULL,
 	n_passwd VARCHAR2(12),
 	n_reg_date TIMESTAMP NOT NULL,
@@ -83,6 +84,8 @@ CREATE TABLE commentInfo(
 	FOREIGN KEY(q_num) REFERENCES qnABoard(q_num),
 	FOREIGN KEY(m_id) REFERENCES member(m_id)
 )
+
+CREATE SEQUENCE comment_seq;
 
 CREATE TABLE pcInfo(
 	p_num NUMBER NOT NULL,
@@ -164,7 +167,7 @@ DROP TABLE errorPCInfo PURGE;
 DROP TABLE commentInfo PURGE;
 DROP TABLE messageInfo PURGE;
 DROP TABLE member PURGE;
-DROP TABLE board PURGE;
+DROP TABLE noticeBoard PURGE;
 
 select * from pcInfo;
 select * from RESERVATIONINFO;
@@ -172,6 +175,7 @@ select * from messageInfo;
 select * from member;
 select * from zipcode;
 select * from errorPCInfo;
+select * from commentInfo;
 DROP TABLE zipcode PURGE;
 DROP TABLE qnaBoard PURGE;
 DROP TABLE pcInfo PURGE;

@@ -24,7 +24,7 @@ public class NoticeBoardContentAction implements Action {
 		request.setAttribute("pageNum", pageNum);
 		
 		ActionForward forward = new ActionForward();
-		forward.setUrl("/board/noticeContent.jsp"); // content.jsp 페이지 포워딩
+		forward.setUrl("/board/noticeContent.jsp"); 
 		return forward;
 	}
 

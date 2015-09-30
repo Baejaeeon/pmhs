@@ -83,6 +83,8 @@ int pageSize = 10; // 한 페이지 당 출력될 글의 개수 지정
 		
 		// 포워딩 하기 전, 가져 온 글 공유
 		request.setAttribute("errorPCList", errorPCList);
+		System.out.println(errorPCList.get(0).getE_name());
+		System.out.println(errorPCList.get(0).getE_phone());
 		PageInfo pageInfo = new PageInfo(); // 페이지에 관한 정보를 처리하는 객체 생성
 		pageInfo.setCount(count);
 		pageInfo.setCurrentPage(currentPage);

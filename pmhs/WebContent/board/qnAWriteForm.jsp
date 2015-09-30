@@ -40,7 +40,7 @@
 </style>
 </head>
 <%
-	ReplyInfo replyInfo = (ReplyInfo)request.getAttribute("replyInfo"); // replyInfo 객체를 얻어옴.
+	ReplyInfo replyInfo = (ReplyInfo)request.getAttribute("replyInfo"); 
 	int num = replyInfo.getNum();
 	int ref = replyInfo.getRef();
 	int re_step = replyInfo.getRe_step();
@@ -48,7 +48,7 @@
 %>
 <body>
 	<section id = "writeFormArea">
-		<h2>게시판 글쓰기</h2>
+		<h2>문의 게시판 글쓰기</h2>
 		<form action="qnABoardWritePro.bo" method = "POST">
 			<input type = "hidden" name = "num" value = "${replyInfo.num }">
 			<input type = "hidden" name = "ref" value = "${replyInfo.ref}">
@@ -71,7 +71,7 @@
 					<td class = "td_right">
 						<%
 							if(request.getParameter("num") != null) { 
-							// request.getParameter("num")이 null이 아니면 답변글을 쓰는것이다.
+						
 						%>
 						<input type = "text" name = "subject" id = "subject" value = "[답변]" />
 						<%
@@ -114,7 +114,7 @@
 						<input type = "submit" value = "글등록" />
 						<input type = "reset" value = "취소" />
 						<input type = "button" value = "목록보기" onClick = "window.location.href='qnABoardList.bo'" />
-						<!-- location : 현재 url을 가지고 있다. 목록보기를 누르면 목록리스트로 페이지를 이동한다. -->
+						
 					</td>
 				</tr>
 			</table>

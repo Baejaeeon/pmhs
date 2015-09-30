@@ -14,9 +14,9 @@ public class NoticeBoardListService {
 
 	public int getNoticeArticleCount() {
 		// TODO Auto-generated method stub
-		Connection con = getConnect(); // 커넥션 객체 생성
+		Connection con = getConnect(); 
 		BoardDAO boardDAO = BoardDAO.getInstance();
-		boardDAO.setConnection(con); // 커넥션 주입
+		boardDAO.setConnection(con); 
 		int articleCount = boardDAO.selectNoticeArticleCount();
 		
 		close(con);
@@ -26,11 +26,10 @@ public class NoticeBoardListService {
 
 	public List<NoticeBoardVO> getNoticeArticleList(int startRow, int pageSize) {
 		// TODO Auto-generated method stub
-		Connection con = getConnect(); // 커넥션 객체 생성
+		Connection con = getConnect(); 
 		BoardDAO boardDAO = BoardDAO.getInstance();
-		boardDAO.setConnection(con); // 커넥션 주입
-		
-		// 글이 하나라도 있으면 리스팅할 글 정보 얻어오기
+		boardDAO.setConnection(con); 
+	
 		List<NoticeBoardVO> articleList = boardDAO.selectNoticeArticleList(startRow, pageSize);
 		
 		close(con);

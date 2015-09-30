@@ -11,7 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
+import pmhs.web.boardAdmin.action.NoticeBoardContentAction;
+import pmhs.web.boardAdmin.action.NoticeBoardDeleteFormAction;
+import pmhs.web.boardAdmin.action.NoticeBoardDeleteProAction;
 import pmhs.web.boardAdmin.action.NoticeBoardListAction;
+import pmhs.web.boardAdmin.action.NoticeBoardUpdateFormAction;
+import pmhs.web.boardAdmin.action.NoticeBoardUpdateProAction;
+import pmhs.web.boardAdmin.action.NoticeBoardWriteFormAction;
+import pmhs.web.boardAdmin.action.NoticeBoardWriteProAction;
+import pmhs.web.boardAdmin.action.QnABoardContentAction;
+import pmhs.web.boardAdmin.action.QnABoardDeleteProAction;
+import pmhs.web.boardAdmin.action.QnABoardListAction;
 
 /**
  * Servlet implementation class BoardAdminFrontController
@@ -30,23 +40,14 @@ public class BoardAdminFrontController extends HttpServlet {
 
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// doGet, doPost의 공통된 작업들을 doProcess에서 요청 처리
-		// 1. 요청 파악(무슨 요청이 넘어왔는지 파악)
 		String requestURI = request.getRequestURI();
-		// 요청 주소 : http://localhost:8088/BoardProject/boardWriteForm.bo가 넘어오면..
-		// reqeustURI : /BoardProject/boardWriteForm.bo
-		
 		String contextPath = request.getContextPath();
-		// /BoardProject가 반환됨.
-		
-		String command = requestURI.substring(contextPath.length()); // 명령 파악
-		// contextPath 다음부터 끝까지의 문자를 가져옴. ----> /boardWriteForm.bo를 가져오게 됨.
-		
-		Action action = null; // Action 인터페이스 정의
-		ActionForward forward = null; // 포워딩될 뷰페이지 정보를 담을 foward정의
+		String command = requestURI.substring(contextPath.length()); 
+		Action action = null; 
+		ActionForward forward = null; 
 		
 		// 각각의 요청 처리
-		if(command.equals("/noticeBoardList.boa")) { // 공지사항 리스트
+		if(command.equals("/adminNoticeBoardList.boa")) {
 			action = new NoticeBoardListAction();
 			try {
 				forward = action.execute(request, response);
@@ -55,6 +56,98 @@ public class BoardAdminFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/adminNoticeBoardContent.boa")) { 
+			action = new NoticeBoardContentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/noticeBoardWriteForm.boa")) { 
+			action = new NoticeBoardWriteFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/noticeBoardWritePro.boa")) {
+			action = new NoticeBoardWriteProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		
+		else if(command.equals("/noticeBoardUpdateForm.boa")) { 
+			action = new NoticeBoardUpdateFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/noticeBoardUpdatePro.boa")) { 
+			action = new NoticeBoardUpdateProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/noticeBoardDeleteForm.boa")) { 
+			action = new NoticeBoardDeleteFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/noticeBoardDeletePro.boa")) { 
+			action = new NoticeBoardDeleteProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/adminQnABoardList.boa")) {
+			action = new QnABoardListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/adminQnABoardContent.boa")) { 
+			action = new QnABoardContentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/adminQnABoardDeletePro.boa")) { 
+			action = new QnABoardDeleteProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		
 		
 		// 비지니스로직 처리가 끝나면 포워딩
 		if(forward != null) {

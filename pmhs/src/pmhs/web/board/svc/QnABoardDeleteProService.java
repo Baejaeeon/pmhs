@@ -8,12 +8,11 @@ public class QnABoardDeleteProService {
 
 	public boolean removeQnAArticle(int num, String passwd) {
 		// TODO Auto-generated method stub
-		Connection con = getConnect(); // 커넥션 객체 생성
+		Connection con = getConnect(); 
 		BoardDAO boardDAO = BoardDAO.getInstance();
-		boardDAO.setConnection(con); // 커넥션 주입
+		boardDAO.setConnection(con); 
 		
 		boolean removeSuccess = false;
-		// DB에서 업데이트 수행
 		int deleteCount = boardDAO.deleteQnAArticle(num, passwd);
 		if(deleteCount > 0) {
 			commit(con);
@@ -21,7 +20,7 @@ public class QnABoardDeleteProService {
 		} else {
 			rollback(con);
 		}
-		close(con); // 작업을 수행 후 닫아준다.
+		close(con); 
 		
 		return removeSuccess;
 	}

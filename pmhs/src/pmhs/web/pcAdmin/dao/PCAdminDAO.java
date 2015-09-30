@@ -178,4 +178,37 @@ public class PCAdminDAO {
 		
 		return errorPCList;
 	}
+
+	public ErrorPCInfo selectErrorPCInfo(int pcNum) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ErrorPCInfo errorPCInfo = null;
+		
+		try {
+			pstmt = con.prepareStatement("SELECT * FROM errorPCInfo WHERE p_num = ?");
+			pstmt.setInt(1, pcNum);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				errorPCInfo = new ErrorPCInfo();
+				errorPCInfo.setE_declarenum(rs.getInt("e_declarenum"));
+				errorPCInfo.setE_declaredate(rs.getTimestamp("e_declaredate"));
+				errorPCInfo.setE_errorsymptom(rs.getString("e_errorsymptom"));
+				errorPCInfo.setE_unit(rs.getString("p_unit"));
+				errorPCInfo.setE_department(rs.getString("p_department"));
+				errorPCInfo.setE_lectureRoom(rs.getInt("p_lectureRoom"));
+				errorPCInfo.setP_num(rs.getInt("p_num"));
+				errorPCInfo.setE_name(rs.getString("e_name"));
+				errorPCInfo.setE_phone(rs.getString("e_phone"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return errorPCInfo;
+	}
 }

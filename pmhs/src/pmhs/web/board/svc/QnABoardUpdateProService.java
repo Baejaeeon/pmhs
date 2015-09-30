@@ -9,12 +9,12 @@ public class QnABoardUpdateProService {
 
 	public boolean modifyQnAArticle(QnABoardVO article) {
 		// TODO Auto-generated method stub
-			Connection con = getConnect(); // 커넥션 객체 생성
+			Connection con = getConnect(); 
 			BoardDAO boardDAO = BoardDAO.getInstance();
-			boardDAO.setConnection(con); // 커넥션 주입
+			boardDAO.setConnection(con); 
 			
 			boolean updateSuccess = false;
-			// DB에서 업데이트 수행
+
 			int updateCount = boardDAO.updateQnAArticle(article);
 			if(updateCount > 0) {
 				commit(con);
@@ -22,7 +22,7 @@ public class QnABoardUpdateProService {
 			} else {
 				rollback(con);
 			}
-			close(con); // 작업을 수행 후 닫아준다.
+			close(con); 
 			
 			return updateSuccess;
 		}

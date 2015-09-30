@@ -9,12 +9,12 @@ public class QnABoardUpdateFormService {
 
 	public QnABoardVO getUpdateQnAArticle(int num) {
 		// TODO Auto-generated method stub
-		Connection con = getConnect(); // 目池记 按眉 积己
+		Connection con = getConnect();
 		BoardDAO boardDAO = BoardDAO.getInstance();
-		boardDAO.setConnection(con); // 目池记 林涝
+		boardDAO.setConnection(con); 
 		
 		QnABoardVO article = boardDAO.selectUpdateQnAArticle(num);
-		close(con); // 荤侩 饶 摧酒霖促.
+		close(con); 
 		
 		return article;
 	}

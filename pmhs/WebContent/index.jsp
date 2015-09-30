@@ -10,6 +10,8 @@
 <body>
 <a href = "index.jsp">Home</a>
 <a href = "introduceForm.jsp">시스템 소개</a>
+<a href = "adminNoticeBoardList.boa">공지사항</a>
+<a href = "adminQnABoardList.boa">문의사항</a>
 <a href = "noticeBoardList.bo">공지사항</a>
 <a href = "qnABoardList.bo">문의사항</a>
 <a href = "memberMain.mem">회원정보</a>

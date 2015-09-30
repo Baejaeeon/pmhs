@@ -26,13 +26,13 @@
 <body>
 <section id = "basicInfo">
 작성자 : ${article.writer } 글제목 : ${article.subject } 
-작성일 : ${article.reg_date }  조회수 : ${article.readcount } 
+작성일 : ${article.reg_date }  조회수 : ${article.readCount } 
 </section>
 <section id = "contentInfo">
 	${article.content } 
 </section>
 <section id = "commandList">
-	<a href = "list.jsp?pageNum=${pageNum}">글목록보기</a>	
+	<a href = "noticeBoardList.bo?pageNum=${pageNum}">글목록보기</a>	
 </section>
 </body>
 </html>

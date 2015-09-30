@@ -11,7 +11,7 @@ public class QnABoardDeleteFormAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		int num = Integer.parseInt(request.getParameter("num")); // 글 번호, 페이지 번호를 받아온다.
+		int num = Integer.parseInt(request.getParameter("num")); 
 		String pageNum = request.getParameter("pageNum");
 		
 		request.setAttribute("num", num);

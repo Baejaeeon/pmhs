@@ -24,7 +24,7 @@ public class QnABoardContentAction implements Action{
 		request.setAttribute("pageNum", pageNum);
 		
 		ActionForward forward = new ActionForward();
-		forward.setUrl("/board/qnAContent.jsp"); // content.jsp 페이지 포워딩
+		forward.setUrl("/board/qnAContent.jsp"); 
 		return forward;
 	}
 

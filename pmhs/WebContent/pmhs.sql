@@ -88,21 +88,58 @@ CREATE TABLE pcInfo(
 	p_department VARCHAR2(50),
 	p_lectureroom NUMBER NOT NULL,
 	p_isdeclare NUMBER DEFAULT 0,
+	p_isreservation NUMBER DEFAULT 0,
 	PRIMARY KEY(p_num)
 )
+
+INSERT INTO pcInfo VALUES(1,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(2,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(3,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(4,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(5,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(6,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(7,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(8,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(9,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(10,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(11,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(12,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(13,'공과대학','IT 공학부', '504', 1, 0);
+INSERT INTO pcInfo VALUES(14,'공과대학','IT 공학부', '504', 0, 1);
+INSERT INTO pcInfo VALUES(15,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(16,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(17,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(18,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(19,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(20,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(21,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(22,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(23,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(24,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(25,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(26,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(27,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(28,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(29,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(30,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(31,'공과대학','IT 공학부', '504', 0, 0);
 
 CREATE TABLE errorPCInfo(
 	e_declarenum NUMBER NOT NULL,
 	e_declaredate TIMESTAMP NOT NULL,
 	e_errorsymptom VARCHAR2(15),
+	p_unit VARCHAR2(50) NOT NULL,
+	p_department VARCHAR2(50) NOT NULL,
+	p_lectureroom NUMBER NOT NULL,
 	p_num NUMBER NOT NULL,
-	m_id VARCHAR2(12) NOT NULL,
 	e_name VARCHAR2(12) NOT NULL,
 	e_phone VARCHAR2(13) NOT NULL,
 	PRIMARY KEY(e_declarenum),
-	FOREIGN KEY(p_num) REFERENCES pcInfo(p_num),
-	FOREIGN KEY(m_id) REFERENCES member(m_id)
+	FOREIGN KEY(p_num) REFERENCES pcInfo(p_num)
 )
+
+CREATE SEQUENCE errorInfo_seq;
+DROP SEQUENCE errorInfo_seq;
 
 CREATE TABLE reservationInfo(
 	e_declarenum NUMBER NOT NULL,
@@ -132,9 +169,10 @@ select * from RESERVATIONINFO;
 select * from messageInfo;
 select * from member;
 select * from zipcode;
+select * from errorPCInfo;
 DROP TABLE zipcode PURGE;
 DROP TABLE qnaBoard PURGE;
-DROP TABLE reservationInfo PURGE;
+DROP TABLE pcInfo PURGE;
 DROP TABLE errorPCInfo PURGE;
 DROP TABLE pcInfo PURGE;
 

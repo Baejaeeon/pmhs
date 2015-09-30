@@ -18,8 +18,8 @@ public class PCDeclareFormAction implements Action {
 		// TODO Auto-generated method stub
 		String floor = request.getParameter("floor");
 		int pcNum = Integer.parseInt(request.getParameter("pcSitNum"));
-		ArrayList<PCInfo> pcSiteList = (ArrayList<PCInfo>)request.getAttribute("pcSiteList"); 
-	 	HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
+		ArrayList<PCInfo> pcSiteList = (ArrayList<PCInfo>)session.getAttribute("pcSiteList"); 
 		Member member = (Member)session.getAttribute("loginUser");
 		
 		request.setAttribute("pcNum", pcNum);

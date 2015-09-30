@@ -6,13 +6,13 @@ public class ErrorPCInfo {
 	private int e_declarenum;
 	private Timestamp e_declaredate;
 	private String e_errorsymptom;
+	private String e_unit;
+	private String e_department;
+	private int e_lectureRoom;
 	private int p_num;
-	private int m_num;
-	private String m_id;
 	private String e_name;
 	private String e_phone;
 	
-	// getter & setter
 	public int getE_declarenum() {
 		return e_declarenum;
 	}
@@ -31,23 +31,29 @@ public class ErrorPCInfo {
 	public void setE_errorsymptom(String e_errorsymptom) {
 		this.e_errorsymptom = e_errorsymptom;
 	}
+	public String getE_unit() {
+		return e_unit;
+	}
+	public void setE_unit(String e_unit) {
+		this.e_unit = e_unit;
+	}
+	public String getE_department() {
+		return e_department;
+	}
+	public void setE_department(String e_department) {
+		this.e_department = e_department;
+	}
+	public int getE_lectureRoom() {
+		return e_lectureRoom;
+	}
+	public void setE_lectureRoom(int e_lectureRoom) {
+		this.e_lectureRoom = e_lectureRoom;
+	}
 	public int getP_num() {
 		return p_num;
 	}
 	public void setP_num(int p_num) {
 		this.p_num = p_num;
-	}
-	public int getM_num() {
-		return m_num;
-	}
-	public void setM_num(int m_num) {
-		this.m_num = m_num;
-	}
-	public String getM_id() {
-		return m_id;
-	}
-	public void setM_id(String m_id) {
-		this.m_id = m_id;
 	}
 	public String getE_name() {
 		return e_name;
@@ -61,4 +67,5 @@ public class ErrorPCInfo {
 	public void setE_phone(String e_phone) {
 		this.e_phone = e_phone;
 	}
+	
 }

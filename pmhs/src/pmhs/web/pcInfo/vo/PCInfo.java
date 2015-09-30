@@ -6,6 +6,7 @@ public class PCInfo {
 	private String department;
 	private int lectureRoom;
 	private int isDeclare;
+	private int isReservation;
 	
 	public int getNum() {
 		return num;
@@ -36,6 +37,12 @@ public class PCInfo {
 	}
 	public void setIsDeclare(int isDeclare) {
 		this.isDeclare = isDeclare;
+	}
+	public int getIsReservation() {
+		return isReservation;
+	}
+	public void setIsReservation(int isReservation) {
+		this.isReservation = isReservation;
 	}
 	
 }

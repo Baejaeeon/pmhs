@@ -20,11 +20,10 @@ public class PCSelectFormAction implements Action {
 		String unit = null;
 		String department = null;
 		int lectureRoom = 0;
-		String lectureImage = null;
 		if(request.getParameter("unit") != null || request.getParameter("department") != null || request.getParameter("lectureRoom") != null) {
 			unit = request.getParameter("unit");
 			department = request.getParameter("department");
-			lectureRoom = Integer.parseInt(request.getParameter("lectureImage"));
+			lectureRoom = Integer.parseInt(request.getParameter("lectureRoom"));
 		}
 		
 		PCSelectFormService pcSelectFormService = new PCSelectFormService();

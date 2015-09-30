@@ -26,6 +26,18 @@
 		margin: auto;
 	}
 </style>
+<script>
+function declareSuccess() {
+		/* document.tofile.action='pcDelarePro.pc';
+		document.tofile.submit();*/
+		alert("신고 완료.")
+	    parent.window.opener.document.location.href="index.jsp"; 
+	    window.close();
+	}
+function winClose() {
+	    window.close();
+	}
+</script>
 </head>
 <body>
 	<h2>고장 신고서 작성</h2>
@@ -38,7 +50,7 @@
 				</td>
 				<td width="6px" />
 				<td>
-					<input type="text" name="unit" id="unit" value="${pcSiteList.get(pcNum).unit }" readonly="readonly" />
+					<input type="text" name="unit" id="unit" value="${pcSiteList.get(pcNum-1).unit }" readonly="readonly" />
 				</td>
 				<td width="15px" />
 				<td>
@@ -46,7 +58,7 @@
 				</td>
 				<td width="6px" />
 				<td>
-				<input type="text" name="department" id="department" value="${pcSiteList.get(pcNum).department }" readonly="readonly" />
+				<input type="text" name="department" id="department" value="${pcSiteList.get(pcNum-1).department }" readonly="readonly" />
 				</td>
 			</tr>
 			<tr height="8px" />
@@ -56,7 +68,7 @@
 				</td>
 				<td width="6px" />
 				<td>
-					<input type="text" name="lectureRoom" id="lectureRoom" value="${pcSiteList.get(pcNum).lectureRoom }" readonly="readonly" />
+					<input type="text" name="lectureRoom" id="lectureRoom" value="${pcSiteList.get(pcNum-1).lectureRoom }" readonly="readonly" />
 				</td>
 				<td width="15px" />
 				<td>
@@ -82,7 +94,7 @@
 				</td>
 				<td width="6px" />
 				<td>
-					<input type="text" name="pcNum" id="pcNum" value="${member.m_phone }" readonly="readonly" />
+					<input type="text" name="phone" id="phone" value="${member.m_phone }" readonly="readonly" />
 				</td>
 			</tr>
 			<tr height="8px" />
@@ -101,8 +113,8 @@
 			<tr height="8px" />
 			<tr>
 				<td colspan="10" id = "td_command">
-					<input type = "submit" value = "작성"/>
-					<input type = "reset" value = "취소"/>
+					<input type = "submit" value = "작성" onclick="javaScript:declareSuccess();"/>
+					<input type = "reset" value = "취소" onclick="javaScript:winClose()"/>
 				</td>
 			</tr>
 		</table>

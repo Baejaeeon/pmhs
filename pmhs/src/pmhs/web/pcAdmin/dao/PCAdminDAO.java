@@ -81,12 +81,14 @@ public class PCAdminDAO {
 				reservationList = new ArrayList<ReservationInfo>(); // 글 목록을 저장할 컬렉션을 만듬.
 				do {
 					reservation = new ReservationInfo();
-					reservation.setDeclareNum(rs.getInt("e_declarenum"));
+					reservation.setReservationNum(rs.getInt("e_reservationnum"));
 					reservation.setSubject(rs.getString("e_subject"));
 					reservation.setDeclareDate(rs.getTimestamp("e_declaredate"));
 					reservation.setErrorSymptom(rs.getString("e_errorsymptom"));
-					reservation.setNum(rs.getInt("p_num"));
-					reservation.setId(rs.getString("m_id"));
+					reservation.setUnit(rs.getString("p_unit"));
+					reservation.setDepartment(rs.getString("p_department"));
+					reservation.setLectureRoom(rs.getInt("p_lectureroom"));
+					reservation.setPcNum(rs.getInt("p_num"));
 					reservation.setName(rs.getString("e_name"));
 					reservation.setPhone(rs.getString("e_phone"));
 					reservation.setTime(rs.getString("e_time"));
@@ -142,7 +144,7 @@ public class PCAdminDAO {
 			// subQuery 이용
 			// 서브 쿼리 중 FROM 절 뒤에 제공되는 서브쿼리를 "인라인뷰"라고 한다. = 인라인 뷰는 별칭이 필요하다.
 			pstmt = con.prepareStatement("SELECT list2.* FROM (SELECT rownum r, list1.* "
-					+ "FROM (SELECT * FROM errorPCInfo ORDER BY e_declarenum DESC) list1 ) list2 "
+					+ "FROM (SELECT * FROM errorPCInfo ORDER BY e_declarenum ASC) list1 ) list2 "
 					+ "WHERE r BETWEEN ? AND ?");
 			// 레코드 번호로 조건을 주기 위해 rownum(레코드번호)을 사용한다.
 			// ()안의 DESC된 값들을 가져와서 출력하면서 rownum을 붙여준다.
@@ -210,5 +212,125 @@ public class PCAdminDAO {
 		}
 		
 		return errorPCInfo;
+	}
+
+	public int insertReservation(ReservationInfo reservationInfo) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int insertCount = 0;
+		String sql = "INSERT INTO reservationInfo VALUES(reservation_seq.nextval, ?,?,?,?,?,?,?,?,?,?)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, reservationInfo.getSubject());
+			pstmt.setTimestamp(2, reservationInfo.getDeclareDate());
+			pstmt.setString(3, reservationInfo.getErrorSymptom());
+			pstmt.setString(4, reservationInfo.getUnit());
+			pstmt.setString(5, reservationInfo.getDepartment());
+			pstmt.setInt(6, reservationInfo.getLectureRoom());
+			pstmt.setInt(7, reservationInfo.getPcNum());
+			pstmt.setString(8, reservationInfo.getName());
+			pstmt.setString(9, reservationInfo.getPhone());
+			pstmt.setString(10, reservationInfo.getTime());
+			insertCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return insertCount;
+	}
+
+	public int updateReservationState(ReservationInfo reservationInfo) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int updateCount = 0;
+		String sql = "UPDATE pcInfo SET p_isreservation = 1 WHERE p_num = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, reservationInfo.getPcNum());
+			updateCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return updateCount;
+	}
+
+	public int deleteReservation(String[] deleteNumArray) {
+		// TODO Auto-generated method stub
+		StringBuffer sqlStr = new StringBuffer("DELETE reservationInfo "); // StringBuffer를 만들어줌(동적으로 동작할수 있도록)
+		for(int i = 0; i < deleteNumArray.length; i++) {
+			if(i == 0 && i == deleteNumArray.length-1) {
+				sqlStr.append("WHERE e_reservationnum IN ( '" + Integer.parseInt(deleteNumArray[i]) + "')");
+			}
+			if(i == 0 && i != deleteNumArray.length-1) {
+				sqlStr.append("WHERE e_reservationnum IN ( '" + Integer.parseInt(deleteNumArray[i]) + "'");
+			}
+			if(i != 0) {
+				sqlStr.append(",'" + Integer.parseInt(deleteNumArray[i]) + "'");
+			}
+			if(i != 0 && i == deleteNumArray.length-1) {
+				sqlStr.append(")");
+			}
+		}
+		
+		PreparedStatement pstmt = null;
+		int deleteCount = 0;
+		
+		try {
+			pstmt = con.prepareStatement(sqlStr.toString()); // 문자열로 바꿔준다.
+			deleteCount = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return deleteCount;
+	}
+
+	public int updatePCInfoState(String[] deleteNumArray) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int updateCount = 0;
+		String sql = "UPDATE pcInfo SET p_isreservation = 0, p_isdeclare = 0 WHERE p_num = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(deleteNumArray[0]));
+			updateCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return updateCount;
+	}
+
+	public int deleteErrorPCInfo(ReservationInfo reservationInfo) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int deleteCount = 0;
+		String sql = "DELETE FROM errorPCInfo WHERE p_num = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, reservationInfo.getPcNum());
+			deleteCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return deleteCount;
 	}
 }

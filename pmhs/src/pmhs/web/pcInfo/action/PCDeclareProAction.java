@@ -28,22 +28,21 @@ public class PCDeclareProAction implements Action {
 		
 		PCDeClareProService pcDeClareProService = new PCDeClareProService();
 		boolean declareSuccess = pcDeClareProService.declarePC(errorPCInfo);
-		
 		boolean changeSuccess = pcDeClareProService.changeState(errorPCInfo);
 		
 		ActionForward forward = null;
-	      if(declareSuccess && changeSuccess){
-	    	  PrintWriter out = response.getWriter();
-	         forward = new ActionForward();
-	         forward.setUrl("index.jsp");
-	      }
-	      else{
-	         response.setContentType("text/html;charset=UTF-8");
-	         PrintWriter out = response.getWriter();
-	         out.println("<script>");
-	         out.println("alert('신고 실패')");
-	         out.println("history.back()");
-	         out.println("</script>");
+	    if(declareSuccess && changeSuccess){
+	    	PrintWriter out = response.getWriter();
+	        forward = new ActionForward();
+	        forward.setUrl("index.jsp");
+	     }
+	     else{
+	        response.setContentType("text/html;charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>");
+	        out.println("alert('신고 실패')");
+	        out.println("history.back()");
+	        out.println("</script>");
 	      }
 	      return forward;
 	}

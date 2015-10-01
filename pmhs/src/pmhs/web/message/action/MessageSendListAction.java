@@ -79,6 +79,7 @@ public class MessageSendListAction implements Action {
 					}
 					
 		request.setAttribute("sendList", sendList);
+		request.setAttribute("pageNum", pageNum);
 		PageInfo pageInfo = new PageInfo();
 		pageInfo.setCount(count);
 		pageInfo.setCurrentPage(currentPage);

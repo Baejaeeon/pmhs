@@ -1,3 +1,4 @@
+<%@page import="pmhs.web.member.vo.Member"%>
 <%@page import="pmhs.web.board.vo.CommentVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="pmhs.web.board.vo.QnABoardVO"%>
@@ -82,6 +83,75 @@ ArrayList<CommentVO> comment = (ArrayList<CommentVO>)request.getAttribute("comme
 					<input type="hidden" name="q_num" id="q_num" value="${article.num }">
 					<textarea rows="2" cols="80" name="content" id="content"></textarea>
 					<input type="submit" value="등록">
+	
+			<form action='qnAComment.bo' method="post">
+                 <form action='qnACommentDelete.bo' method="post">
+				<%
+				  Member loginUser = (Member)session.getAttribute("loginUser");
+       				if(loginUser != null){
+       					
+       				if (comment != null && comment.size() > 0) {
+				    %>
+
+				<table id="reply">
+					<tr>
+						<td width="100px" class="name"><font color="black" style="font-family:a탈영고딕L">번호</font></td>
+						<td width="100px" class="name"><font color="black" style="font-family:a탈영고딕L">작성자</font></td>
+						<td width="440px" class="name"><font color="black" style="font-family:a탈영고딕L">내용</font></td>
+						<td class="name"><font color="black" style="font-family:a탈영고딕L">등록일자</font></td>
+						<td class="name"><font color="black" style="font-family:a탈영고딕L">삭제</font></td>
+						
+					</tr>
+					<%
+						for (int i = 0; i < comment.size(); i++) {
+					%>
+					<tr>
+						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_num()%></font></td>
+						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_writer()%></font></td>
+						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_content()%></font></td>
+						<td><font color="black" style="font-family:a탈영고딕L"><%=sdf.format(comment.get(i).getC_reg_date())%></font></td>
+					    <input type = "reset" value = "삭제"/>
+					</tr>
+					</table>
+					<%
+						}
+					  }
+       				}
+       				else{
+       				
+       					if (comment != null && comment.size() > 0) {
+					%>
+					<table id="reply">
+					<tr>
+						<td width="100px" class="name"><font color="black" style="font-family:a탈영고딕L">번호</font></td>
+						<td width="100px" class="name"><font color="black" style="font-family:a탈영고딕L">작성자</font></td>
+						<td width="440px" class="name"><font color="black" style="font-family:a탈영고딕L">내용</font></td>
+						<td class="name"><font color="black" style="font-family:a탈영고딕L">등록일자</font></td>
+						<td class="name"><font color="black" style="font-family:a탈영고딕L">삭제</font></td>
+						
+					</tr>
+					<%
+       					
+						for (int i = 0; i < comment.size(); i++) {
+					%>
+					<tr>
+						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_num()%></font></td>
+						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_writer()%></font></td>
+						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_content()%></font></td>
+						<td><font color="black" style="font-family:a탈영고딕L"><%=sdf.format(comment.get(i).getC_reg_date())%></font></td>
+					    <td></td>
+					</tr>
+					<%
+					 }
+       				}
+       			}
+       				%>
+				</table>
+				</form>
+				<input type="hidden" name="q_num" id="q_num" value="${article.num }">
+				<textarea rows="2" cols="80" name="reply_content"></textarea>
+				<input type="submit" value="등록"/>
+		
 <section id = "commandList">
 	<a href = "qnABoardUpdateForm.bo?num=${article.num }&pageNum=${pageNum}">글수정</a>
 	<a href = "qnABoardDeleteForm.bo?num=${article.num }&pageNum=${pageNum}">글삭제</a>

@@ -1,3 +1,5 @@
+<%@page import="pmhs.web.boardAdmin.vo.CommentVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="pmhs.web.board.vo.QnABoardVO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -22,7 +24,16 @@
 		overflow: auto;
 		border: 1px solid orange;
 	}
+	table{
+		width: 500px;
+		margin: auto;
+		text-align: center;
+	}
 </style>
+<%
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+ArrayList<CommentVO> comment = (ArrayList<CommentVO>)request.getAttribute("comment");
+%>
 </head>
 <body>
 <section id = "basicInfo">
@@ -32,6 +43,36 @@
 <section id = "contentInfo">
 	${article.content }
 </section>
+<form action='qnAComment.boa' method="post">
+
+						<%
+					if (comment != null && comment.size() > 0) {
+				%>
+
+				<table id="reply">
+					<tr>
+						<td width="40px" class="name"><font color="black" style="font-family:a탈영고딕L">번호</font></td>
+						<td width="50px" class="name"><font color="black" style="font-family:a탈영고딕L">ID</font></td>
+						<td width="270px" class="name"><font color="black" style="font-family:a탈영고딕L">내용</font></td>
+						<td width="140px" class="name"><font color="black" style="font-family:a탈영고딕L">등록일자</font></td>
+						
+					</tr>
+					<%
+						for (int i = 0; i < comment.size(); i++) {
+					%>
+					<tr>
+						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_num()%></font></td>
+						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_writer()%></font></td>
+						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_content()%></font></td>
+						<td><font color="black" style="font-family:a탈영고딕L"><%=sdf.format(comment.get(i).getC_reg_date())%></font></td>
+					</tr>
+					<%
+						}
+					%>
+					<%
+						}
+					%>
+				</table>
 <section id = "commandList">
 	<a href = "qnABoardDeleteForm.boa?num=${article.num }&pageNum=${pageNum}">글삭제</a>
 	<a href = "qnABoardList.boa?pageNum=${pageNum}">글목록보기</a>

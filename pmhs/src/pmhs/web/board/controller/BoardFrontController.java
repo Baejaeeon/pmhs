@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
 import pmhs.web.board.action.CommentAction;
+import pmhs.web.board.action.CommentDeleteAction;
 import pmhs.web.board.action.NoticeBoardContentAction;
 import pmhs.web.board.action.NoticeBoardListAction;
 import pmhs.web.board.action.QnABoardContentAction;
@@ -136,7 +137,14 @@ public class BoardFrontController extends HttpServlet {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
-		
+		} else if (command.equals("/qnACommentDelete.bo")) {
+			action = new CommentDeleteAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
 	}
 		if (forward != null) {
 			if (forward.isRedirect()) { 

@@ -3,21 +3,23 @@ package pmhs.web.pcAdmin.vo;
 import java.sql.Timestamp;
 
 public class ReservationInfo {
-	private int declareNum;
+	private int reservationNum;
 	private String subject;
 	private Timestamp declareDate;
 	private String errorSymptom;
-	private int num;
-	private String id;
+	private String unit;
+	private String department;
+	private int lectureRoom;
+	private int pcNum;
 	private String name;
 	private String phone;
 	private String time;
 	
-	public int getDeclareNum() {
-		return declareNum;
+	public int getReservationNum() {
+		return reservationNum;
 	}
-	public void setDeclareNum(int declareNum) {
-		this.declareNum = declareNum;
+	public void setReservationNum(int reservationNum) {
+		this.reservationNum = reservationNum;
 	}
 	public String getSubject() {
 		return subject;
@@ -37,17 +39,29 @@ public class ReservationInfo {
 	public void setErrorSymptom(String errorSymptom) {
 		this.errorSymptom = errorSymptom;
 	}
-	public int getNum() {
-		return num;
+	public String getUnit() {
+		return unit;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setUnit(String unit) {
+		this.unit = unit;
 	}
-	public String getId() {
-		return id;
+	public String getDepartment() {
+		return department;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	public int getLectureRoom() {
+		return lectureRoom;
+	}
+	public void setLectureRoom(int lectureRoom) {
+		this.lectureRoom = lectureRoom;
+	}
+	public int getPcNum() {
+		return pcNum;
+	}
+	public void setPcNum(int pcNum) {
+		this.pcNum = pcNum;
 	}
 	public String getName() {
 		return name;

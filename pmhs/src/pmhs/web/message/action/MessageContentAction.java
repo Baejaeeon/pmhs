@@ -15,7 +15,6 @@ public class MessageContentAction implements Action {
 		// TODO Auto-generated method stub
 		int num = Integer.parseInt(request.getParameter("num"));
 	      String pageNum = request.getParameter("pageNum");
-	      
 	      MessageContentService messageContentService = new MessageContentService();
 	      MessageVO article = messageContentService.getArticle(num);
 

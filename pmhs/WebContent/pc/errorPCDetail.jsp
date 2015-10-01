@@ -41,7 +41,7 @@ function winClose() {
 <body>
 	<h2>고장PC 상세보기</h2>
 	<section id="declareFormArea">
-	<form action="pcDeclarePro.pc" method="post">
+	<form action="pcReservationPro.pca" method="post">
 		<table>
 			<tr>
 				<td>
@@ -102,8 +102,37 @@ function winClose() {
 					<label id="symptom">고장증상</label>
 				</td>
 				<td width="6px" />
-				<td colspan="3">
+				<td>
 					<input type="text" name="symptom" id="symptom" value="${errorPCInfo.e_errorsymptom }" readonly="readonly" />
+				</td>
+				<td width="6px" />
+				<td>
+					<label id="symptom">방문시간</label>
+				</td>
+				<td width="6px" />
+				<td>
+					<select name="time" id="time" />
+						<option>9시</option>
+						<option>9시 30분</option>
+						<option>10시</option>
+						<option>10시 30분</option>
+						<option>11시</option>
+						<option>11시 30분</option>
+						<option>12시</option>
+						<option>12시 30분</option>
+						<option>13시</option>
+						<option>13시 30분</option>
+						<option>14시</option>
+						<option>14시 30분</option>
+						<option>15시</option>
+						<option>15시 30분</option>
+						<option>16시</option>
+						<option>16시 30분</option>
+						<option>17시</option>
+						<option>17시 30분</option>
+						<option>18시</option>
+						<option>18시 30분</option>
+					</select>
 				</td>
 			</tr>
 			<tr height="8px" />

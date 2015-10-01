@@ -46,27 +46,19 @@
 		background: orange;
 	}
 	.td_num {
-		width: 80px;
-		text-align: center;
+		width: 50px;
 	}
 	.td_subject {
-		width: 150px;
+		width: 140px;
 	}
-	.td_name {
-		width: 80px;
-		text-align: center;
-	}
-	.td_time {
-		width: 80px;
-		text-align: center;
-	}
-	.td_declaredate {
+	.td_writer {
 		width: 100px;
-		text-align: center;
 	}
-	.td_error{
-		width: 80px;
-		text-align: center;
+	.td_readcount {
+		width: 100px;
+	}
+	.td_regdate {
+		width: 120px;
 	}
 	.td_left {
 		width: 200px;
@@ -107,7 +99,7 @@
 		<h2>문의게시물 목록</h2>
 			<table>
 				<tr id = "tr_title">
-					<td><input type="checkbox" name = "allCheck" onclick="checkAll()" /></td>
+					<td><input type="checkbox" class="td_checkbox" name = "allCheck" onclick="checkAll()" /></td>
 					<td class = "td_num">
 						번호
 					</td>
@@ -129,7 +121,6 @@
 				<c:forEach var = "article" items = "${articleList }"> <!-- for문 수행 -->
 				<tr>
 					<td><input type="checkbox" name = "delete1" id = "delete1" value = "${article.num }" /></td>
-					<tr>
 					<td class = "td_num">
 						${number }
 					</td>
@@ -146,8 +137,6 @@
 					</td>
 					<td class = "td_readcount">
 						${article.readCount }
-					</td>
-				</tr>
 					</td>
 				</tr>
 				</c:forEach>

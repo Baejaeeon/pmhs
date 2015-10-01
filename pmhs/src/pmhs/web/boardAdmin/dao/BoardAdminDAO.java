@@ -3,10 +3,12 @@ package pmhs.web.boardAdmin.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import static pmhs.db.JdbcUtil.*;
 
+import pmhs.web.boardAdmin.vo.CommentVO;
 import pmhs.web.boardAdmin.vo.NoticeBoardVO;
 import pmhs.web.boardAdmin.vo.QnABoardVO;
 
@@ -460,6 +462,58 @@ public class BoardAdminDAO {
 				}
 				
 				return deleteCount;
+	}
+
+	public int insertComment(CommentVO commentVO) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		int insertCount = 0;
+		String sql = "insert into commentInfo values (comment_seq.nextval,?,?,?,?)";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, commentVO.getC_content());
+			pstmt.setTimestamp(2, commentVO.getC_reg_date());
+			pstmt.setInt(3, commentVO.getC_num());
+	     	pstmt.setString(4, commentVO.getC_writer());
+			insertCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close(pstmt);
+		}
+		return insertCount;
+	}
+
+	public ArrayList<CommentVO> selectBoardCommentList(int num) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt=null;
+		ResultSet rs = null;
+		ArrayList<CommentVO> commentList = null;
+
+		try {
+			pstmt = con.prepareStatement("SELECT * FROM commentInfo WHERE q_num= ? ORDER BY c_reg_date desc");
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+		
+			if(rs.next()){
+				commentList = new ArrayList<CommentVO>();
+				CommentVO comment = null;
+			
+				do{
+					comment = new CommentVO(rs.getInt("c_seq"), 
+							rs.getString("m_id"),
+							rs.getString("c_content"),
+							rs.getTimestamp("c_reg_date")); 	
+					commentList.add(comment);
+			}while(rs.next());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close(pstmt);
+			close(rs);
+		}
+		return commentList;
 	}
 
 

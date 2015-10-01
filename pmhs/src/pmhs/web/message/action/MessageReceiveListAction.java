@@ -81,6 +81,7 @@ public class MessageReceiveListAction implements Action {
 			}
 			
 			request.setAttribute("receiveList", receiveList);
+			request.setAttribute("pageNum", pageNum);
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCount(count);
 			pageInfo.setCurrentPage(currentPage);

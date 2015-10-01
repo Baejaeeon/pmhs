@@ -132,7 +132,7 @@
 				<c:set var = "number" value = "${pageInfo.number }"></c:set>
 				<c:forEach var = "reservation" items = "${reservationList }"> <!-- for문 수행 -->
 				<tr>
-					<td><input type="checkbox" name = "delete1" id = "delete1" value = "${reservation.declareNum }" /></td>
+					<td><input type="checkbox" name = "delete1" id = "delete1" value = "${reservation.reservationNum }" /></td>
 					<td class = "td_num">
 						${number }
 					</td>
@@ -162,6 +162,7 @@
 	</section>
 	<section id = "list2Area">
 		<td colspan="7" id = "tr_command" >
+				<a href = "index.jsp"><input type = "button" value="Home" /></a>
 				<input type = "submit" value = "수리 완료" />
 		</td>
 	</section>

@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
 import pmhs.web.pcAdmin.action.ErrorPCDetailAction;
+import pmhs.web.pcAdmin.action.ErrorPCFixProAction;
 import pmhs.web.pcAdmin.action.ErrorPCListAction;
 import pmhs.web.pcAdmin.action.ErrorPCSelectFormAction;
+import pmhs.web.pcAdmin.action.PCReservationProAction;
 import pmhs.web.pcAdmin.action.ReservationListAction;
 
 /**
@@ -58,7 +60,7 @@ public class PCAdminFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		else if(command.equals("/reservationList.pca")) { // 고장 PC 리스트
+		else if(command.equals("/reservationList.pca")) { // 예약 리스트
 			action = new ReservationListAction();
 			try {
 				forward = action.execute(request, response);
@@ -76,7 +78,7 @@ public class PCAdminFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		else if(command.equals("/errorPCSelectForm.pca")) { // 고장 PC 리스트
+		else if(command.equals("/errorPCSelectForm.pca")) { // 고장 PC 선택 폼
 			action = new ErrorPCSelectFormAction();
 			try {
 				forward = action.execute(request, response);
@@ -85,8 +87,26 @@ public class PCAdminFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		else if(command.equals("/errorPCDetail.pca")) { // 고장 PC 리스트
+		else if(command.equals("/errorPCDetail.pca")) { // 고장 PC 상세보기
 			action = new ErrorPCDetailAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/pcReservationPro.pca")) { // 고장 PC 예약 처리
+			action = new PCReservationProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/errorPCfixPro.pca")) { // 고장 PC 수리 처리
+			action = new ErrorPCFixProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

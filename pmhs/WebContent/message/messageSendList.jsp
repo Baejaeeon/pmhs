@@ -19,6 +19,7 @@
 	List<MessageVO> sendList = (List<MessageVO>)request.getAttribute("sendList");
 	
 	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
+	int pageNum = Integer.parseInt((String)request.getAttribute("pageNum"));
 	int number = pageInfo.getNumber();
 	int count = pageInfo.getCount();
 	int startPage = pageInfo.getStartPage();
@@ -54,7 +55,7 @@
 				%>
 				<tr>
 					<td class = "td_subject">
-						<a href = "messageContent.msg?num=<%=sendList.get(i).getMessageNum() %>"><%=sendList.get(i).getTitle() %></a>
+						<a href = "messageContent.msg?num=<%=sendList.get(i).getMessageNum() %>&pageNum=<%=pageNum %>"><%=sendList.get(i).getTitle() %></a>
 						<!-- 게시물 상세보기 요청 링크를 걸어준다. 해당 글을 구분할 수 있는 값인 num값을 파라미터로 던져준다. -->
 					</td>
 					<td class = "td_receiver">

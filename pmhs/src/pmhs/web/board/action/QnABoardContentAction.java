@@ -19,7 +19,6 @@ public class QnABoardContentAction implements Action{
 		// TODO Auto-generated method stub
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
-		
 		QnABoardContentService qnABoardContentService = new QnABoardContentService();
 		
 		QnABoardVO article = qnABoardContentService.getQnAArticle(num);

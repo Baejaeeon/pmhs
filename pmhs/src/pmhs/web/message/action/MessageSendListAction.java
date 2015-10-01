@@ -77,9 +77,8 @@ public class MessageSendListAction implements Action {
 					// 마지막 페이지 그룹인 경우..
 					if(endPage > pageCount) endPage = pageCount;
 					}
-					
+					request.setAttribute("pageNum", pageNum);
 		request.setAttribute("sendList", sendList);
-		request.setAttribute("pageNum", pageNum);
 		PageInfo pageInfo = new PageInfo();
 		pageInfo.setCount(count);
 		pageInfo.setCurrentPage(currentPage);

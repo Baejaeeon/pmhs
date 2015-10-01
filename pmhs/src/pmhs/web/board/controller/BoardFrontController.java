@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
 import pmhs.web.board.action.CommentAction;
-import pmhs.web.board.action.CommentDeleteAction;
 import pmhs.web.board.action.NoticeBoardContentAction;
 import pmhs.web.board.action.NoticeBoardListAction;
 import pmhs.web.board.action.QnABoardContentAction;
@@ -23,6 +22,7 @@ import pmhs.web.board.action.QnABoardUpdateFormAction;
 import pmhs.web.board.action.QnABoardUpdateProAction;
 import pmhs.web.board.action.QnABoardWriteFormAction;
 import pmhs.web.board.action.QnABoardWriteProAction;
+import pmhs.web.board.action.QnACommentDeleteAction;
 
 /**
  * Servlet implementation class BoardFrontController
@@ -138,7 +138,7 @@ public class BoardFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else if (command.equals("/qnACommentDelete.bo")) {
-			action = new CommentDeleteAction();
+			action = new QnACommentDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

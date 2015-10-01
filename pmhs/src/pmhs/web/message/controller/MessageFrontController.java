@@ -16,6 +16,8 @@ import pmhs.web.message.action.MessageDeleteAction;
 import pmhs.web.message.action.MessageReceiveListAction;
 import pmhs.web.message.action.MessageReplyFormAction;
 import pmhs.web.message.action.MessageReplyProAction;
+import pmhs.web.message.action.MessageSendContentAction;
+import pmhs.web.message.action.MessageSendDeleteAction;
 import pmhs.web.message.action.MessageSendListAction;
 import pmhs.web.message.action.MessageWriteFormAction;
 import pmhs.web.message.action.MessageWriteProAction;
@@ -99,6 +101,15 @@ public class MessageFrontController extends HttpServlet {
 	            e.printStackTrace();
 	         }
 	      }
+	      else if(command.equals("/messageSendContent.msg")) {
+	    	  action = new MessageSendContentAction();
+	    	  try {
+	    		  forward = action.execute(request, response);
+	    	  } catch (Exception e) {
+	    		  // TODO: handle exception
+	    		  e.printStackTrace();
+	    	  }
+	      }
 	      else if(command.equals("/messageDelete.msg")) {
 	         action = new MessageDeleteAction();
 	         try {
@@ -107,6 +118,15 @@ public class MessageFrontController extends HttpServlet {
 	            // TODO: handle exception
 	            e.printStackTrace();
 	         }
+	      }
+	      else if(command.equals("/messageSendDelete.msg")) {
+	    	  action = new MessageSendDeleteAction();
+	    	  try {
+	    		  forward = action.execute(request, response);
+	    	  } catch (Exception e) {
+	    		  // TODO: handle exception
+	    		  e.printStackTrace();
+	    	  }
 	      }
 	      else if(command.equals("/messageReplyForm.msg")) {
 	    	  action = new MessageReplyFormAction();

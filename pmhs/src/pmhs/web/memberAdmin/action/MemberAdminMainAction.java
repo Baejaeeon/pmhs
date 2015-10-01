@@ -8,13 +8,13 @@ import pmhs.vo.ActionForward;
 
 public class MemberAdminMainAction implements Action {
 
-   @Override
-   public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-      // TODO Auto-generated method stub
-      ActionForward forward = new ActionForward();
-      forward.setUrl("/member/memberAdminMain.jsp");
-      
-      return forward;
-   }
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		ActionForward forward = new ActionForward();
+		forward.setUrl("/member/memberAdminMain.jsp");
+		
+		return forward;
+	}
 
 }

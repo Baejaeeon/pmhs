@@ -484,37 +484,26 @@ public class BoardDAO {
 		return commentList;
 	}
 	
-	public int deleteComment(String c_writer, String c_content) {
+	
+	public int deleteComment(int c_num) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt=null;
-		ResultSet rs = null;
-		CommentVO commentVO = null;
 		int deleteCount = 0;
 		
 		try {
-			pstmt = con.prepareStatement("SELECT c_content FROM commentInfo WHERE m_id = ?"); 
-			pstmt.setString(1, c_writer); 
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) { 
-				c_content = rs.getString("c_content"); 
-				if(c_content.equals(c_content)) { 
-					c_content = "DELETE commentInfo WHERE m_id = ?";
-					pstmt = con.prepareStatement(c_content);
-					pstmt.setString(1, c_writer); 
-					deleteCount = pstmt.executeUpdate();
-				}
-			}
+			pstmt = con.prepareStatement("DELETE FROM commentInfo WHERE c_seq = ?"); 
+			pstmt.setInt(1, c_num); 
+			deleteCount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		} finally {
-			close(rs);
 			close(pstmt);
 		}
 		
 		return deleteCount;
 	}
+
 	
 }
 

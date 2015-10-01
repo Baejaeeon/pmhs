@@ -60,7 +60,6 @@ public class QnABoardListAction implements Action {
 			
 
 			request.setAttribute("articleList", articleList);
-			sesion.setAttribute("articleList", articleList);
 			PageInfo pageInfo = new PageInfo(); 
 			pageInfo.setCount(count);
 			pageInfo.setCurrentPage(currentPage);

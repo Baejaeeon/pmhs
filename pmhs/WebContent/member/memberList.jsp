@@ -32,7 +32,6 @@ h2 {
 </style>
 <script>
  function checkAll(){
-	alert("document.forms[0].allCheck.checked");
 	 if(document.forms[0].delete1.length == undefined){
 		 document.getElementById("delete1").checked = document.forms[0].allCheck.checked;
 	 }
@@ -77,24 +76,27 @@ h2 {
 					}
 				%>
 				<tr>
-				<td class="td_left">
-				<label id = "search">검색 : </label>
-				</td>
-				<td class="td_right">
-				<select id = "search" name = "search">
-				 <option>아이디</option>
-				 <option>이름</option>
-				 <option>학번</option>
-				 <input type = "text" name = "search" id ="search"/><input type = "button" value ="검색"/>
-				</select>
-				</td>
-				</tr>
-				<tr>
 				<td colspan="6" id = "tr_command">
 				  <input type = "submit" value = "삭제"/>
+				  
+		        </form>
+				  <form action="searchList.mema" method="post">
+				  <tr>
+					<td class="td_left">
+					<label id = "search">검색 : </label>
+					</td>
+					<td class="td_right">
+					<select id = "searchOption" name = "searchOption">
+						 <option>아이디</option>
+						 <option>이름</option>
+						 <option>학번</option>
+				 	<input type = "search" name = "search" id ="search"/><input type = "submit" value ="검색"  /></a>
+					</select>
+				</td>
+				</tr>
+				  </form>
 				</tr>
 			</table>
-		</form>
 	</section>
 	<%
 		}

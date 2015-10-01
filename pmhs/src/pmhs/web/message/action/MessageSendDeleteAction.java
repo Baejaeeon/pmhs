@@ -9,12 +9,12 @@ import pmhs.action.Action;
 import pmhs.vo.ActionForward;
 import pmhs.web.message.svc.MessageDeleteService;
 
-public class MessageDeleteAction implements Action {
+public class MessageSendDeleteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		  int messageNum = Integer.parseInt(request.getParameter("num"));
+		int messageNum = Integer.parseInt(request.getParameter("num"));
 	      String pageNum = request.getParameter("pageNum");
 
 	      MessageDeleteService messageDeleteService = new MessageDeleteService();
@@ -25,7 +25,7 @@ public class MessageDeleteAction implements Action {
 	      if(deleteSuccess){
 	    	  forward = new ActionForward();
 	    	  forward.setRedirect(true);
-	    	  forward.setUrl("messageReceiveList.msg");
+	    	  forward.setUrl("messageSendList.msg");
 	         }
 	      else{
 	    	  response.setContentType("text/html;charset=UTF-8");

@@ -9,6 +9,37 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>발신목록보기</title>
+<style type="text/css">
+#sendlistArea {
+		margin: auto;
+		width: 600px;
+		height: 370px;
+		border: 1px double gray;
+	}
+#pageArea {
+		margin: auto;
+		width: 600px;
+		text-align: center;
+	}
+	table {
+		margin: auto;
+		width: 600px;
+		border : 1px dotted gray;
+		text-align: center;
+	}
+</style>
+<script>
+	function checkAll(){
+		if(document.forms[0].deleteMessage.length == undefined){
+			document.getElementById("deleteMessage").checked = document.forms[0].allCheck.checked;
+		}
+		else{
+			for(i = 0; i < document.forms[0].deleteMessage.length; i++){
+				document.forms[0].deleteMessage[i].checked = document.forms[0].allCheck.checked;
+			}
+		}
+	}
+</script>
 </head>
 <body>
 	<a href = "index.jsp">Home</a>
@@ -17,9 +48,8 @@
 	<%
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	List<MessageVO> sendList = (List<MessageVO>)request.getAttribute("sendList");
-	
-	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	int pageNum = Integer.parseInt((String)request.getAttribute("pageNum"));
+	PageInfo pageInfo = (PageInfo)request.getAttribute("pageInfo");
 	int number = pageInfo.getNumber();
 	int count = pageInfo.getCount();
 	int startPage = pageInfo.getStartPage();
@@ -28,7 +58,7 @@
 	int currentPage = pageInfo.getCurrentPage();
 	%>
 	
-	
+<section id = "sendlistArea">
 	<%
 	if(sendList == null || sendList.size() == 0){
 	%>
@@ -38,8 +68,13 @@
 	else{
 	%>
 	<h2>발신목록보기</h2>
+	<form action = "messageSendDelete.msg" method = "post">
+		<tr>
+			<td><input type = "submit" value = "삭제"/> 
+		</tr>
 			<table>
 				<tr id = "tr_title">
+				<td><input type = "checkbox" name = "allCheck" onClick = "checkAll()"/></td>
 					<td class = "td_subject">
 						제목
 					</td>
@@ -54,8 +89,9 @@
 					for(int i = 0; i < sendList.size(); i++) {
 				%>
 				<tr>
+				<td><input type = "checkbox" name = "num" id = "deleteMessage" value="<%=sendList.get(i).getMessageNum() %>"/></td>
 					<td class = "td_subject">
-						<a href = "messageContent.msg?num=<%=sendList.get(i).getMessageNum() %>&pageNum=<%=pageNum %>"><%=sendList.get(i).getTitle() %></a>
+						<a href = "messageSendContent.msg?num=<%=sendList.get(i).getMessageNum() %>&pageNum=<%=pageNum%>"><%=sendList.get(i).getTitle() %></a>
 						<!-- 게시물 상세보기 요청 링크를 걸어준다. 해당 글을 구분할 수 있는 값인 num값을 파라미터로 던져준다. -->
 					</td>
 					<td class = "td_receiver">
@@ -72,6 +108,8 @@
 			<%
 			}
 			%>
+			</form>
+			</section>
 			
 			<%
 		if(count > 0) { // 카운터가 0보다 클때만(글이 있을떄만 페이징 처리)

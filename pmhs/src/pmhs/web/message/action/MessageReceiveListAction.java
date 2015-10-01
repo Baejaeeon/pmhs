@@ -79,9 +79,8 @@ public class MessageReceiveListAction implements Action {
 			// 마지막 페이지 그룹인 경우..
 			if(endPage > pageCount) endPage = pageCount;
 			}
-			
-			request.setAttribute("receiveList", receiveList);
 			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("receiveList", receiveList);
 			PageInfo pageInfo = new PageInfo();
 			pageInfo.setCount(count);
 			pageInfo.setCurrentPage(currentPage);

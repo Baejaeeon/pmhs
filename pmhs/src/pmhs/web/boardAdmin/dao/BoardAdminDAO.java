@@ -516,8 +516,26 @@ public class BoardAdminDAO {
 		return commentList;
 	}
 
-
+	public int deleteComment(int c_num) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt=null;
+		int deleteCount = 0;
+		
+		try {
+			pstmt = con.prepareStatement("DELETE FROM commentInfo WHERE c_seq = ?"); 
+			pstmt.setInt(1, c_num); 
+			deleteCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return deleteCount;
+	}
+}
 
 
 	
-}
+

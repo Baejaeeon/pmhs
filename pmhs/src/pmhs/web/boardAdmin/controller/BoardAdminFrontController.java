@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
+import pmhs.web.boardAdmin.action.CommentAction;
 import pmhs.web.boardAdmin.action.NoticeBoardContentAction;
 import pmhs.web.boardAdmin.action.NoticeBoardDeleteFormAction;
 import pmhs.web.boardAdmin.action.NoticeBoardDeleteProAction;
@@ -22,6 +23,7 @@ import pmhs.web.boardAdmin.action.NoticeBoardWriteProAction;
 import pmhs.web.boardAdmin.action.QnABoardContentAction;
 import pmhs.web.boardAdmin.action.QnABoardDeleteProAction;
 import pmhs.web.boardAdmin.action.QnABoardListAction;
+import pmhs.web.boardAdmin.action.QnACommentDeleteAction;
 
 /**
  * Servlet implementation class BoardAdminFrontController
@@ -140,6 +142,24 @@ public class BoardAdminFrontController extends HttpServlet {
 		}
 		else if(command.equals("/adminQnABoardDeletePro.boa")) { 
 			action = new QnABoardDeleteProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/qnAComment.boa")) { 
+			action = new CommentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/qnACommentDelete.boa")) { 
+			action = new QnACommentDeleteAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

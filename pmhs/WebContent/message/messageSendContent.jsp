@@ -44,8 +44,8 @@
    </section>
    <section id="commandList">
 	  <a href = "messageReplyForm.msg?writer=<%=content.getMessageWriter() %>">답장</a>
-      <a href="messageDelete.msg?num=<%=content.getMessageNum()%>">글삭제</a>
-      <a href="messageReceiveList.msg?pageNum=<%=pageNum%>">목록보기</a>
+      <a href="messageSendDelete.msg?num=<%=content.getMessageNum()%>">글삭제</a>
+      <a href="messageSendList.msg?pageNum=<%=pageNum%>">목록보기</a>
    </section>
 </body>
 </html>

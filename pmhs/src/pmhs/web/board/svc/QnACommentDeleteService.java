@@ -8,18 +8,19 @@ import static pmhs.db.JdbcUtil.rollback;
 import java.sql.Connection;
 
 import pmhs.web.board.dao.BoardDAO;
-import pmhs.web.board.vo.CommentVO;
 
-public class CommentDeleteService {
 
-	public boolean removeComment(String c_writer, String c_content) {
+
+public class QnACommentDeleteService {
+
+	public boolean removeComment(int c_num) {
 		// TODO Auto-generated method stub
 		Connection con = getConnect(); 
 		BoardDAO boardDAO = BoardDAO.getInstance();
-		boardDAO.setConnection(con); 
+		boardDAO.setConnection(con);
 		
 		boolean removeSuccess = false;
-		int deleteCount = boardDAO.deleteComment(c_writer,c_content);
+		int deleteCount = boardDAO.deleteComment(c_num);
 		if(deleteCount > 0) {
 			commit(con);
 			removeSuccess = true;
@@ -31,5 +32,6 @@ public class CommentDeleteService {
 		return removeSuccess;
 	}
 }
+
 
 

@@ -14,6 +14,7 @@ import pmhs.vo.ActionForward;
 import pmhs.web.memberAdmin.action.MemberAdminMainAction;
 import pmhs.web.memberAdmin.action.MemberListAction;
 import pmhs.web.memberAdmin.action.MemberRemoveAction;
+import pmhs.web.memberAdmin.action.SearchListAction;
 
 /**
  * Servlet implementation class MemberAdminFrontController
@@ -75,6 +76,16 @@ public class MemberAdminFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		else if(command.equals("/searchList.mema")) { // 공지사항 리스트
+			action = new SearchListAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		
 		
 		// 비지니스로직 처리가 끝나면 포워딩
 		if(forward != null) {

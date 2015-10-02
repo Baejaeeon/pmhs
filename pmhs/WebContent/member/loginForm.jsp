@@ -17,7 +17,7 @@ h2,fieldset{
 }
 </style>
 </head>
-<body>
+<body style="background-image: url('img/login-bg.jpg')">
 <section id = "loginFormArea">
 <h2>로그인</h2>
 <form action="loginPro.mem"  method = "post">

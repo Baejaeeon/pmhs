@@ -1,4 +1,4 @@
-package pmhs.web.board.action;
+package pmhs.web.boardAdmin.action;
 
 import java.io.PrintWriter;
 
@@ -8,11 +8,11 @@ import javax.servlet.http.HttpSession;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
-import pmhs.web.board.svc.QnABoardUpdateFormService;
-import pmhs.web.board.vo.QnABoardVO;
+import pmhs.web.boardAdmin.svc.QnABoardUpdateFormService;
+import pmhs.web.boardAdmin.vo.QnABoardVO;
 import pmhs.web.member.vo.Member;
 
-public class QnABoardUpdateFormAction implements Action{
+public class QnABoardUpdateFormAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -31,7 +31,7 @@ public class QnABoardUpdateFormAction implements Action{
 			request.setAttribute("article", article);
 			request.setAttribute("pageNum", pageNum);
 			forward = new ActionForward();
-			forward.setUrl("/board/qnAUpdateForm.jsp");
+			forward.setUrl("/board/adminQnAUpdateForm.jsp");
 		} else {
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -44,4 +44,3 @@ public class QnABoardUpdateFormAction implements Action{
 		return forward;
 	}
 }
-	

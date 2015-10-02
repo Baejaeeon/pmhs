@@ -37,5 +37,6 @@ ${loginUser.m_id }님이 로그인 하셨습니다.<br>
 <%
    }
 %>
+<jsp:forward page="main.do"/>
 </body>
 </html>

@@ -534,7 +534,150 @@ public class BoardAdminDAO {
 		
 		return deleteCount;
 	}
+
+	public int insertQnAArticle(QnABoardVO article) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int insertCount = 0;
+		int num = article.getNum();
+		int ref = article.getRef();
+		int re_step = article.getRe_step();
+		int re_level = article.getRe_level();
+		int number = 0;
+		String sql = "";
+		
+		 try {
+			 pstmt = con.prepareStatement("SELECT MAX(q_num) FROM qnABoard");
+			 rs = pstmt.executeQuery();
+			 if(rs.next()) { 
+				 number = rs.getInt(1) + 1; 
+			 } else {
+				 number = 1; 
+			 }
+			 
+			 if(num != 0) {
+				 sql = "UPDATE qnABoard SET q_re_step = q_re_step + 1"
+				 		+ " WHERE q_ref = ? AND q_re_step > ?";
+				 pstmt = con.prepareStatement(sql);
+				 pstmt.setInt(1, ref);
+				 pstmt.setInt(2, re_step);
+				 pstmt.executeUpdate();
+				 re_step = re_step + 1; 
+				 re_level = re_level + 1;
+			 } else { 
+				 ref = number;
+				 re_step = 0;
+				 re_level = 0;
+			 }
+			 
+			 sql = "INSERT INTO qnABoard"
+			 		+ "(q_num, q_writer, q_email, q_subject, q_passwd, q_reg_date, "
+			 		+ "q_ref, q_re_step, q_re_level, q_content, q_ip) "
+			 		+ "VALUES(qnABoard_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			 pstmt = con.prepareStatement(sql);
+			 pstmt.setString(1, article.getWriter());
+			 pstmt.setString(2, article.getEmail());
+			 pstmt.setString(3, article.getSubject());
+			 pstmt.setString(4, article.getPasswd());
+			 pstmt.setTimestamp(5, article.getReg_date());
+			 pstmt.setInt(6, ref);
+			 pstmt.setInt(7, re_step);
+			 pstmt.setInt(8, re_level);
+			 pstmt.setString(9, article.getContent());
+			 pstmt.setString(10, article.getIp());
+			 insertCount = pstmt.executeUpdate();
+			 
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		 
+		 return insertCount;
+	}
+
+	public QnABoardVO selectUpdateQnAArticle(int num) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		QnABoardVO article = null;
+		try {
+			
+			pstmt = con.prepareStatement("SELECT * FROM qnABoard WHERE q_num = ?"); // 선택한 글의 번호를 가져온다.
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) { 
+		
+					article = new QnABoardVO();
+					article.setNum(rs.getInt("q_num"));
+					article.setWriter(rs.getString("q_writer"));
+					article.setEmail(rs.getString("q_email"));
+					article.setSubject(rs.getString("q_subject"));
+					article.setPasswd(rs.getString("q_passwd"));
+					article.setReg_date(rs.getTimestamp("q_reg_date"));
+					article.setReadCount(rs.getInt("q_readCount"));
+					article.setRef(rs.getInt("q_ref"));
+					article.setRe_step(rs.getInt("q_re_step"));
+					article.setRe_level(rs.getInt("q_re_level"));
+					article.setContent(rs.getString("q_content"));
+					article.setIp(rs.getString("q_ip"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return article;
+	}
+
+	public int updateQnAArticle(QnABoardVO article) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String dbPasswd = ""; 
+		String sql = ""; 
+		int updateCount = 0;
+		
+		try {
+			pstmt = con.prepareStatement("SELECT q_passwd FROM qnABoard WHERE q_num = ?");
+			pstmt.setInt(1, article.getNum()); 
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { 
+				dbPasswd = rs.getString("q_passwd"); 
+				if(dbPasswd.equals(article.getPasswd())) {
+					sql = "UPDATE qnABoard SET q_writer = ?, q_email = ?, q_subject = ?, q_passwd = ?, "
+							+ "q_content = ? WHERE q_num = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, article.getWriter()); 
+					pstmt.setString(2, article.getEmail());
+					pstmt.setString(3, article.getSubject());
+					pstmt.setString(4, article.getPasswd());
+					pstmt.setString(5, article.getContent());
+					pstmt.setInt(6, article.getNum());
+					
+					updateCount = pstmt.executeUpdate();
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return updateCount;
+	}
 }
+
 
 
 	

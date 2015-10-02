@@ -90,10 +90,6 @@ public class MessageReceiveListAction implements Action {
 			pageInfo.setStartPage(startPage);
 			request.setAttribute("pageInfo", pageInfo);
 			forward.setUrl("/message/messageReceiveList.jsp");
-			
-			
-			
-			
 		}
 		else { // ¾Æ´Ï¸é..
 			response.setContentType("text/html;charset=UTF-8");

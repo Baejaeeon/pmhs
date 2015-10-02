@@ -37,7 +37,7 @@
 <body>
 	<section id = "writeFormArea">
 		<h2>게시판 글 수정</h2>
-		<form action="qnABoardUpdatePro.bo" method = "POST">
+		<form action="adminQnABoardUpdatePro.boa" method = "POST">
 			<input type = "hidden" name = "num" value = "${article.num }">
 			<input type = "hidden" name = "pageNum" value = "${pageNum }">
 			<!-- 원래 페이지로 되 돌아갈 수 있게 pageNum을 던져준다. -->

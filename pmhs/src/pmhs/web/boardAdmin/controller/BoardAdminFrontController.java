@@ -23,6 +23,10 @@ import pmhs.web.boardAdmin.action.NoticeBoardWriteProAction;
 import pmhs.web.boardAdmin.action.QnABoardContentAction;
 import pmhs.web.boardAdmin.action.QnABoardDeleteProAction;
 import pmhs.web.boardAdmin.action.QnABoardListAction;
+import pmhs.web.boardAdmin.action.QnABoardUpdateFormAction;
+import pmhs.web.boardAdmin.action.QnABoardUpdateProAction;
+import pmhs.web.boardAdmin.action.QnABoardWriteFormAction;
+import pmhs.web.boardAdmin.action.QnABoardWriteProAction;
 import pmhs.web.boardAdmin.action.QnACommentDeleteAction;
 
 /**
@@ -133,6 +137,42 @@ public class BoardAdminFrontController extends HttpServlet {
 		}
 		else if(command.equals("/adminQnABoardContent.boa")) { 
 			action = new QnABoardContentAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/adminQnABoardWriteForm.boa")) { 
+			action = new QnABoardWriteFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/adminQnABoardWritePro.boa")) { 
+			action = new QnABoardWriteProAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/adminQnABoardUpdateForm.boa")) { 
+			action = new QnABoardUpdateFormAction();
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
+		}
+		else if(command.equals("/adminQnABoardUpdatePro.boa")) { 
+			action = new QnABoardUpdateProAction();
 			try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {

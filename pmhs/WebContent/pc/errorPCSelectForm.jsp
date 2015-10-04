@@ -165,7 +165,7 @@
 				<table BORDER="0">
 					<tr>
 						<td>
-							<h1>고장 PC 정보</h1>
+							<h1>고장 PC 정보</h1><font color="red" size="3px">해당 고장 PC 자리를 클릭해서 고장PC 상세정보를 볼 수 있습니다.</font>
 						</td>
 					</tr>
 				</table>

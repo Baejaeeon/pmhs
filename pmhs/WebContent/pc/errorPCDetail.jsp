@@ -164,7 +164,7 @@ function winClose() {
 						<option>18시분에 방문 수리 예약되었습니다.</option>
 						<option>18시 30분에 방문 수리 예약되었습니다.</option>
 					</select>
-					<input type = "submit" value="전송" />
+					<input type = "button" value="전송" />
 				</td>
 			</tr>
 			<tr height="8px" />

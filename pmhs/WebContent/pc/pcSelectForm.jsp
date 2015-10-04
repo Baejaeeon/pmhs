@@ -123,7 +123,7 @@
  	ArrayList<PCInfo> pcSiteList = (ArrayList<PCInfo>)session.getAttribute("pcSiteList"); 
  	Member member = (Member)session.getAttribute("loginUser");
  %>
-
+<jsp:include page="../header.jsp"/>
 <form action="pcSelectForm.pc" method = "post">
 	<span style="font-weight: bold; margin-left: 50px">PC 선택 : </span>
 	<select id="unit">	
@@ -158,14 +158,14 @@
 	<div>
 	</div>		
 	
-	<div style="margin-left: 50px">
-	<table width=750px border=0>
+	<div style="margin-left: 250px">
+	<table width=750px border=0">
 		<tr>
 			<td align=center>
 				<table BORDER="0">
 					<tr>
 						<td>
-							<h1>고장 PC 정보</h1>
+							<h1>PC 정보</h1><font color="red" size="3px">해당 고장 PC 자리를 클릭해서 고장신고서를 작성하면 됩니다.</font>
 						</td>
 					</tr>
 				</table>
@@ -249,5 +249,6 @@
 		</td>
 	</table>	
 	</div>
+<jsp:include page="../footer.jsp"/>
 </body>
 </html>

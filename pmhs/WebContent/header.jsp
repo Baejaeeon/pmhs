@@ -1,7 +1,9 @@
 <%@page import="pmhs.web.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -58,12 +60,22 @@
                     <li>
                         <a href="introduceForm.jsp">About</a>
                     </li>
+                    <c:if test="${loginUser.m_id eq 'admin' }">
+                    	<li>
+                       		<a href = "adminNoticeBoardList.boa">공지사항</a>
+                    	</li>
+                    	<li>
+                        	<a href = "adminQnABoardList.boa">문의사항</a>
+                    	</li>
+                    </c:if>
+                    <c:if test="${loginUser.m_id ne 'admin' }">
                     <li>
                         <a href="noticeBoardList.bo">공지사항</a>
                     </li>
                     <li>
                         <a href="qnABoardList.bo">문의사항</a>
                     </li>
+                    </c:if>
                     <li>
                         <a href="memberMain.mem">회원정보</a>
                     </li>
@@ -71,10 +83,13 @@
                         <a href="errorPcList.pca">PC 정보</a>
                     </li>
                     <li>
+                        <a href = "messageReceiveList.msg">메시지</a>
+                    </li>
+                    <li>
                     	<%
                         if(loginUser != null){
 						%>
-						${loginUser.m_id }님이 로그인 하셨습니다.<br>
+						<font color="#ffffff;">${loginUser.m_id }님이 로그인 하셨습니다.</font>
 						   <a href = "logout.mem">로그아웃</a>
 						<%
 						   }

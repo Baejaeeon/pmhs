@@ -123,7 +123,7 @@
  	ArrayList<PCInfo> pcSiteList = (ArrayList<PCInfo>)session.getAttribute("pcSiteList"); 
  	Member member = (Member)session.getAttribute("loginUser");
  %>
-
+<jsp:include page="../header.jsp"/>
 <form action="pcSelectForm.pc" method = "post">
 	<span style="font-weight: bold; margin-left: 50px">PC º±≈√ : </span>
 	<select id="unit">	
@@ -158,7 +158,7 @@
 	<div>
 	</div>		
 	
-	<div style="margin-left: 50px">
+	<div style="margin-left: 250px">
 	<table width=750px border=0>
 		<tr>
 			<td align=center>
@@ -174,7 +174,7 @@
 	</table>
 	<br>
 	
-	<table border=2 width=750px height="400px" cellspacing='0' cellpadding='0' bordercolor='skyblue' bbgcolor='808080'>
+	<table border=2 width=750px height="400px" cellspacing='0' cellpadding='0' bordercolor='#424242' bbgcolor='808080'>
 		<tr>
 			<td valign=top>
 	
@@ -249,5 +249,6 @@
 		</td>
 	</table>	
 	</div>
+<jsp:include page="../footer.jsp"/>
 </body>
 </html>

@@ -17,7 +17,6 @@
 	#declareFormArea {
 		margin: auto;
 		width: 540px;
-		border-top: 1px double black;
 	}
 	#td_command {
 		text-align: center;
@@ -40,7 +39,9 @@ function winClose() {
 </script>
 </head>
 <body>
-	<h2>고장 신고서 작성</h2>
+	<div style="background-color: #424242;">
+	<font color="#ffffff"><h2>고장 신고서 작성</h2></font>
+	</div>
 	<section id="declareFormArea">
 	<form action="pcDeclarePro.pc" method="post">
 		<table>
@@ -112,7 +113,7 @@ function winClose() {
 			</tr>
 			<tr height="8px" />
 			<tr>
-				<td colspan="10" id = "td_command">
+				<td colspan="10" id = "td_command" style="border-top: solid;">
 					<input type = "submit" value = "작성" onclick="javaScript:declareSuccess();"/>
 					<input type = "reset" value = "취소" onclick="javaScript:winClose()"/>
 				</td>

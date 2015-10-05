@@ -174,7 +174,7 @@
 	</table>
 	<br>
 	
-	<table border=2 width=750px height="400px" cellspacing='0' cellpadding='0' bordercolor='#48D1CC' bbgcolor='808080'>
+	<table border=2 width=750px height="400px" cellspacing='0' cellpadding='0' bordercolor='#424242' bbgcolor='808080'>
 		<tr>
 			<td valign=top>
 	

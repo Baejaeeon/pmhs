@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 
@@ -31,7 +31,92 @@
     <![endif]-->
 
 </head>
+<script>
+	function regist(){
+	   	window.open("memberRegistForm.mem");
+	   }
+</script>
 <body>
-
+<div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <form action="loginPro.mem" method="post">
+                <div class="post-preview">
+            		<div class="container">
+              			 <div class="row colored">
+                  		<div class="contcustom">
+                     	<h2>Log-In</h2>
+                     	<div>
+	                        <input type="text" name="id" id="id" placeholder="Enter your ID">
+	                        <input type="password" name="passwd" id="passwd" placeholder="Enter your Password">
+	                        <input type="submit" class="btn" value="LOG-IN">
+	                        <input type="button" class="btn" value="회원가입" onclick = "regist()">
+                     </div>
+                  </div>
+               </div>
+               </div>
+                </div>
+                </form>
+                <hr>
+                <div class="post-preview">
+                        <h2 class="post-title">
+                            	PC 선택 &nbsp;&nbsp;&nbsp; <font color="red" size="3px">단대, 학과 및 강의실을 선택해서 검색해주세요.</font>
+                        </h2>
+                    <h3 class="post-subtitle">
+                        	단대 : 
+                            <select id = "unit">
+                            	<option>공과 대학</option>
+                            	<option>교양관</option>
+                            </select>
+                            &nbsp;
+                        	학과 : 
+                            <select id = "department">
+                            	<option>IT 공학부</option>
+                            	<option>기초교양교육원</option>
+                            </select>
+                            <br/>
+                            <br/>
+                        	강의실 : 
+                            <select id = "lectureRoom">
+                            	<option>504</option>
+                            	<option>517</option>
+                            </select>호
+                            <a href="pcSelectForm.pc" style="margin-left: 220px;"><input type="button" class="btn" value="검색" /></a>
+                        </h3>
+                </div>
+                <hr>
+                <div class="post-preview">
+                    <a href="post.html">
+                        <h2 class="post-title">
+                           	 공지사항
+                        </h2>
+                        <h3 class="post-subtitle">
+                            We predict too much for the next year and yet far too little for the next ten.
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</p>
+                </div>
+                <hr>
+                <div class="post-preview">
+                    <a href="post.html">
+                        <h2 class="post-title">
+                            	문의사항
+                        </h2>
+                        <h3 class="post-subtitle">
+                            Many say exploration is part of our destiny, but it’s actually our duty to future generations.
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on July 8, 2014</p>
+                </div>
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    <li class="next">
+                        <a href="#">Top &rarr;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

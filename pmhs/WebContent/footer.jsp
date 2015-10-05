@@ -33,11 +33,12 @@
 </head>
 <body>
 <footer>
-        <div class="container">
+        <div class="container" style="border-top: solid">
+        <br>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <ul class="list-inline text-center">
-                        약관 | 소개 | 찾아오시는길 | 기타
+                        <img width="150px" height="50px" src="img/logo.png">&nbsp;&nbsp;<font size="3px;"> 도움말 | 소개 | 찾아오시는 길 | 기타</font>
                     </ul>
                     <p class="copyright text-muted">Copyright &copy; PMHS 2015</p>
                 </div>

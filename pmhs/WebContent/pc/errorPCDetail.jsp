@@ -16,7 +16,6 @@
 	#declareFormArea {
 		margin: auto;
 		width: 560px;
-		border-top: 1px double black;
 	}
 	#td_command {
 		text-align: center;
@@ -24,6 +23,9 @@
 	table {
 		margin: auto;
 	}
+    html, body {
+       background-color: white;
+     }
 </style>
 <script>
 function reservationSuccess() {
@@ -39,7 +41,9 @@ function winClose() {
 </script>
 </head>
 <body>
-	<h2>고장PC 상세보기</h2>
+	<div style="background-color: #424242;">
+	<font color="#ffffff"><h2>고장PC 상세보기</h2></font>
+	</div>
 	<section id="declareFormArea">
 	<form action="pcReservationPro.pca" method="post">
 		<table>
@@ -167,9 +171,9 @@ function winClose() {
 					<input type = "button" value="전송" />
 				</td>
 			</tr>
-			<tr height="8px" />
+			<tr height="8px" sty />
 			<tr>
-				<td colspan="10" id = "td_command">
+				<td colspan="10" id = "td_command" style="border-top: solid;">
 					<input type = "submit" value = "예약" onclick="javaScript:reservationSuccess();"/>
 					<input type = "reset" value = "취소" onclick="javaScript:winClose()"/>
 				</td>

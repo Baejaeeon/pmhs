@@ -216,3 +216,5 @@ DROP TABLE errorPCInfo PURGE;
 DROP TABLE pcInfo PURGE;
 
 select * from qnaBoard;
+
+select q_num from (select * from QNABOARD order by q_reg_date DESC) WHERE rownum <=4;

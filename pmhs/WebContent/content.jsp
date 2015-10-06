@@ -1,3 +1,8 @@
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="pmhs.web.member.vo.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -42,8 +47,16 @@
 		href.location="memberDetail.mem";
 	}
 </script>
+<style>
+.list{
+    font-family: "맑은고딕";
+    font-size: 15px;
+    border-bottom-style: inset;
+    border-bottom-color: white;
+    
+   }
+</style>
 <body>
-<jsp:forward page="noticeContentList.bo"/>
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
 %>
@@ -161,7 +174,32 @@
                             	문의사항
                         </h2></a>
                         <div>
-                        
+							        <%             
+							              try {
+							                int q_num;
+							                String q_subject;
+							                Timestamp q_reg_date;
+							                
+							                Class.forName("oracle.jdbc.driver.OracleDriver");
+							                Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","java", "java");
+							                Statement stmt = con.createStatement();
+							                
+							                ResultSet rs = stmt.executeQuery("select q_num, q_subject, q_reg_date from (select * from QNABOARD order by q_reg_date DESC) WHERE rownum <=4");
+							                while(rs.next()){
+								                q_num=rs.getInt(1);
+								                q_subject=rs.getString(2);
+								                q_reg_date=rs.getTimestamp(3);
+							    	%>   
+										<tr class="list">		
+							             <p><a href=""><%=q_subject %></a> | <%=q_reg_date %></p>
+										</tr>
+							            
+							     <%     
+							                }
+							          }catch(Exception e){
+							          out.println(e);
+							          }
+							     %>
                         </div>
                 </div>
                 <hr>

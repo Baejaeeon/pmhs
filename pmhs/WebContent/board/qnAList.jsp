@@ -12,48 +12,77 @@
 <style type="text/css">
 	#listArea {
 		margin: auto;
-		width: 500px;
+		width: 80%;
 		height: 500px;
-		border: 1px double orange;
+		border: 1px;
+		border-bottom: 1px dotted; 
 	}
-		#list2Area{
+
+	img{
 		margin: auto;
-		width: 500px;
+		float: right;
+		}
+	#command{
+		margin: auto;
+		width: 60%;
+		
 	}
-	
 	#pageArea {
 		margin: auto;
-		width: 500px;
+		width: 80%;
+		height: 100%;
 		text-align: center;
+		font-size: 15px;
+		
 	}
 	
-	h2, #td_command {
+	 #td_command {
 		text-align: center;
-		border-bottom: 1px dotted red;
+		border-bottom: 1px dotted ;
+	}
+	h2{
+	text-align: left;
+	border-bottom: 1px dotted ;
+    
 	}
 	
 	table {
 		margin: auto;
-		width: 480px;
+		width: 80%;
+	    font-family: "맑은고딕";
+	    
 	}
-	
+   .list{
+    font-family: "맑은고딕";
+    font-size: 15px;
+    border-bottom-style: inset;
+    border-bottom-color: white;
+    
+   }
 	#tr_title {
-		background: orange;
+		background: #424242;
+		color: white;
+		text-align: center;
+		height: 20px;
 	}
 	.td_num {
-		width: 40px;
+		width: 55px;
+		text-align: center;
 	}
 	.td_subject {
-		width: 130px;
+		width: 280px;
 	}
 	.td_writer {
-		width: 100px;
+		width: 70px;
+		text-align: center;
 	}
 	.td_readcount {
-		width: 100px;
+		width: 55px;
+		text-align: center;
 	}
 	.td_regdate {
-		width: 100px;
+		width: 40px;
+		text-align: center;
 	}
 	
 	.td_left {
@@ -66,19 +95,20 @@
 </style>
 </head>
 <body>
+<jsp:include page="../header.jsp"/>
 <form action="qnABoardWriteForm.bo">	
 	<section id = "listArea">
 	<c:if test="${empty articleList }">
 			<h2>등록된 글이 없습니다.</h2>
 		</c:if>
 	<c:if test="${not empty articleList }">	
-		<h2> 문의 게시글 목록</h2>
+		<h2> 문의 사항</h2>
 			<table>
 				<tr id = "tr_title">
 					<td class = "td_num">
 						번호
 					</td>
-					<td class = "td_subject">
+					<td class = "td_subject" style="text-align: center;">
 						제목
 					</td>
 					<td class = "td_writer">
@@ -93,12 +123,19 @@
 				</tr>
 			<c:set var = "number" value="${pageInfo.number }"></c:set>
 			<c:forEach var="article" items="${articleList }">
-				<tr>
+				<tr class="list">
 					<td class = "td_num">
 						${number }
 					</td>
 					<c:set var = "number" value = "${number - 1 }"></c:set>
 					<td class = "td_subject">
+					<c:forEach begin="1" end = "${article.re_level }"> <!-- 답글 레벨을 하나씩 가져와서  -->
+						&nbsp;&nbsp;&nbsp;
+						</c:forEach>
+						<c:if test="${article.re_level > 0 }"> <!-- 답글 레벨이 0보다 크면 re를 출력해준다. -->
+						<!-- 게시물 상세보기 요청 링크를 걸어준다. 해당 글을 구분할 수 있는 값인 num값을 파라미터로 던져준다. --> 
+						<img src="img/re.gif" style="height: 18px; width: 30px; float: left; margin-left: 10px;">
+						</c:if>
 						<a href = "qnABoardContent.bo?num=${article.num }&pageNum=${pageInfo.currentPage}">${article.subject }</a>
 					</td>
 					<td class = "td_writer">
@@ -116,23 +153,26 @@
 			</table>
 		</c:if>
 	</section>
-		<section id = "list2Area">
-		<input type = "submit" value = "글등록" />
-	</section>
+	<div id="command">
+	 <a href="qnABoardWriteForm.bo"><img src="img/boardWrite.jpg" alt="글쓰기" style="margin-top: 5px;"></a>
+    </div>
 	<c:if test="${pageInfo.count > 0 }">
 	<section id = "pageArea">
-	<c:if test="${pageInfo.startPage > 20 }">
-		<a href = "qnABoardList.bo?pageNum=${pageInfo.startPage-20 }">[이전]</a>
+	<c:if test="${pageInfo.startPage > 20  }"> <!-- [이전] 출력 -->
+		<a href = "qnABoardList.bo?pageNum=${pageInfo.startPage - 20 }">[이전]</a>
+		<!-- 이전 그룹의 첫 페이지를 가져온다. -->
 	</c:if>
-	<c:forEach var = "i" begin="${pageInfo.startPage }" end="${pageInfp.endPage }">
+	<c:forEach var = "i" begin="${pageInfo.startPage }" end = "${pageInfo.endPage }">
+		<!-- forEach문을 통해 startPage부터 endPage까지 출력하기 -->
 		<a href = "qnABoardList.bo?pageNum=${i }">[${i }]</a>
-		<!-- startPage부터 endPage까지 출력하기 -->
 	</c:forEach>
-	<c:if test="${pageInfoendPage < pageInfo.pageCount }">
-		<a href = "qnABoardList.bo?pageNum=${pageInfo.startPage+20 }">[다음]</a>
+	<c:if test="${pageInfo.endPage < pageInfo.pageCount }"> <!-- 마지막 페이지가 아닐때, -->
+		<!-- 마지막 그룹이 아니면 다음 그룹으로 넘어갈 수 있다. -->
+		<a href = "qnABoardList.bo?pageNum=${pageInfo.startPage + 20 }">[다음]</a>
 	</c:if>
 	</section>
 	</c:if>
 	</form>
+	<jsp:include page="../footer.jsp"/>
 </body>
 </html>

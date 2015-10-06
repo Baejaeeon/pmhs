@@ -15,35 +15,53 @@
 <style type="text/css">
 	#listArea {
 		margin: auto;
-		width: 600px;
+		width: 80%;
 		height: 500px;
-		border: 1px double orange;
+		border: 1px;
+		border-bottom: 1px dotted;
 	}
-	
+	#command{
+		margin: auto;
+		width: 60%;
+	}
 	#list2Area{
 		margin: auto;
 		text-align: right;
 		width: 600px;
 	}
-	
 	#pageArea {
 		margin: auto;
-		width: 600px;
+		width: 80%;
+		height: 100%;
 		text-align: center;
+		font-size: 15px;
 	}
-	
-	h2, #td_command {
+	.list{
+	    font-family: "맑은고딕";
+	    font-size: 15px;
+	    border-bottom-style: inset;
+	    border-bottom-color: white;
+   }
+	h2{
+		text-align: left;
+		border-bottom: 1px dotted ;
+	}
+	#td_command {
 		text-align: center;
 		border-bottom: 1px dotted red;
 	}
 	
 	table {
 		margin: auto;
-		width: 580px;
+		width: 80%;
+	    font-family: "맑은고딕";
 	}
 	
 	#tr_title {
-		background: orange;
+		background: #424242;
+		color: white;
+		text-align: center;
+		height: 20px;
 	}
 	.td_num {
 		width: 80px;
@@ -71,7 +89,10 @@
 	.td_left {
 		width: 200px;
 	}
-	
+	.td_checkbox{
+	    width: 55px;
+	    text-align: center;
+	}
 	.td_right {
 		width: 280px;
 	}
@@ -95,7 +116,8 @@
 </script>
 </head>
 <body>
-<form action="errorPCfixPro.pca">
+<jsp:include page="../header.jsp"/>
+<form action="errorPCfixPro.pca" method="post" name="form">
 	<%!
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		// 날짜 포맷 지정
@@ -131,8 +153,8 @@
 				<!-- pageInfo에 공유되어 있는 값을 가져와서 number변수에 저장 -->
 				<c:set var = "number" value = "${pageInfo.number }"></c:set>
 				<c:forEach var = "reservation" items = "${reservationList }"> <!-- for문 수행 -->
-				<tr>
-					<td><input type="checkbox" name = "delete1" id = "delete1" value = "${reservation.reservationNum }" /></td>
+				<tr class="list">
+					<td class = "td_checkbox"><input type="checkbox" name = "delete1" id = "delete1" value = "${reservation.reservationNum }" /></td>
 					<td class = "td_num">
 						${number }
 					</td>
@@ -162,8 +184,8 @@
 	</section>
 	<section id = "list2Area">
 		<td colspan="7" id = "tr_command" >
-				<a href = "index.jsp"><input type = "button" value="Home" /></a>
-				<input type = "submit" value = "수리 완료" />
+				<!-- <a href = "index.jsp"><input type = "button" value="Home" /></a> -->
+				<input type = "submit" value = "수리 완료" onclick="document.form.submit()" />
 		</td>
 	</section>
 	<c:if test="${pageInfo.count > 0 }">
@@ -183,5 +205,6 @@
 	</section>
 	</c:if>
 	</form>
+<jsp:include page="../footer.jsp"/>
 </body>
 </html>

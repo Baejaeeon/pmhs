@@ -15,9 +15,15 @@
 <style type="text/css">
 	#listArea {
 		margin: auto;
-		width: 600px;
+		width: 80%;
 		height: 500px;
-		border: 1px double orange;
+		border: 1px;
+		border-bottom: 1px dotted; 
+	}
+	#command{
+		margin: auto;
+		width: 60%;
+		
 	}
 	
 	#list2Area{
@@ -28,22 +34,37 @@
 	
 	#pageArea {
 		margin: auto;
-		width: 600px;
+		width: 80%;
+		height: 100%;
 		text-align: center;
+		font-size: 15px;
 	}
-	
-	h2, #td_command {
+	.list{
+    font-family: "맑은고딕";
+    font-size: 15px;
+    border-bottom-style: inset;
+    border-bottom-color: white;
+    
+   }
+	h2{
+		text-align: left;
+		border-bottom: 1px dotted ;
+	} 
+	#td_command {
 		text-align: center;
 		border-bottom: 1px dotted red;
 	}
-	
 	table {
 		margin: auto;
-		width: 580px;
+		width: 80%;
+	    font-family: "맑은고딕";
 	}
 	
 	#tr_title {
-		background: orange;
+		background: #424242;
+		color: white;
+		text-align: center;
+		height: 20px;
 	}
 	.td_num {
 		width: 40px;
@@ -51,12 +72,15 @@
 	}
 	.td_unit {
 		width: 100px;
+		text-align: center;
 	}
 	.td_department {
 		width: 120px;
+		text-align: center;
 	}
 	.td_lectureRoom {
 		width: 60px;
+		text-align: center;
 	}
 	.td_name {
 		width: 60px;
@@ -101,6 +125,7 @@
 </script>
 </head>
 <body>
+<jsp:include page="../header.jsp"/>
 	<%!
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		// 날짜 포맷 지정
@@ -138,7 +163,7 @@
 				<!-- pageInfo에 공유되어 있는 값을 가져와서 number변수에 저장 -->
 				<c:set var = "number" value = "${pageInfo.number }"></c:set>
 				<c:forEach var = "errorPC" items = "${errorPCList }"> <!-- for문 수행 -->
-				<tr>
+				<tr class = "list">
 					<td class = "td_num">
 						${number }
 					</td>
@@ -186,5 +211,6 @@
 	</section>
 	</c:if>
 	</form>
+<jsp:include page="../footer.jsp"/>
 </body>
 </html>

@@ -31,7 +31,7 @@
 function reservationSuccess() {
 		/* document.tofile.action='pcDelarePro.pc';
 		document.tofile.submit();*/
-		alert("신고 완료.")
+		alert("예약 완료.")
 	    parent.window.opener.document.location.href="index.jsp"; 
 	    window.close();
 	}

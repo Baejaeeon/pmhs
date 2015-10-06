@@ -10,34 +10,50 @@
 <style type="text/css">
 	#writeFormArea {
 		margin: auto;
-		width: 500px;
-		height: 500px;
-		border: 1px double orange;
+		width: 80%;
+		height: 550px;
+		border: 1px;
+		border-bottom: 1px dotted; 
+		font-family: "맑은고딕";
+		font-size: 15px;	
 	}
-	
-	h2, #td_command {
-		text-align: center;
-		border-bottom: 1px dotted red;
+
+	h2{
+		text-align: left;
+		border-bottom: 1px dotted;
 	}
-	
 	table {
+
 		margin: auto;
-		width: 480px;
-	}
-	
+		width: 80%;
+		
+	}	
 	.td_left {
-		width: 200px;
+		width: 50px;
+		font-size: 15px; 
+	
 	}
 	
 	.td_right {
-		width: 280px;
+		width: 300px;
+		margin: auto;
+		
 	}
+	#command{
+
+		margin: auto;
+		width: 60%;
+		
+	}
+
+
 </style>
 </head>
 <body>
+<jsp:include page="../header.jsp"/>
 	<section id = "writeFormArea">
-		<h2>게시판 글 수정</h2>
-		<form action="qnABoardUpdatePro.bo" method = "POST">
+		<h2>문의 사항</h2>
+		<form action="qnABoardUpdatePro.bo" name="form1" method = "POST">
 			<input type = "hidden" name = "num" value = "${article.num }">
 			<input type = "hidden" name = "pageNum" value = "${pageNum }">
 			<!-- 원래 페이지로 되 돌아갈 수 있게 pageNum을 던져준다. -->
@@ -48,7 +64,7 @@
 					</td>
 					<td class = "td_right">
 						<input type = "text" name = "writer" id = "writer"
-						value = "${article.writer }" />
+						value = "${article.writer }" readonly="readonly"/>
 						<!-- 각각의 정보를 value를 통해서 가져와서 보여준다. -->
 					</td>
 				</tr>
@@ -57,8 +73,7 @@
 						<label for = "subject">제목</label>
 					</td>
 					<td class = "td_right">
-						<input type = "text" name = "subject" id = "subject"
-						 value="${loginUser.m_id }" readonly="readonly"  />
+						<input type = "text" name = "subject" id = "subject" value="${article.subject }" />
 					</td>
 				</tr>
 				<tr>
@@ -76,7 +91,7 @@
 					</td>
 					<td class = "td_right">
 						<textarea name = "content" id = "content" 
-						rows = "10" cols = "15">${article.content }</textarea>
+						rows = "16" cols = "50" >${article.content }</textarea>
 						<!-- textArea는 textArea태그 사이에 이전 값을 넣어준다. -->
 					</td>
 				</tr>
@@ -88,16 +103,16 @@
 						<input type = "password" name = "passwd" id = "passwd" />
 					</td>
 				</tr>
-				<tr>
-					<td colspan = "2" id = "td_command"> <!-- colspan : 셀 합치기 -->
-						<input type = "submit" value = "글수정" />
-						<input type = "reset" value = "취소" />
-						<input type = "button" value = "목록보기" onClick = "window.location.href='qnABoardList.bo'" />
-						<!-- location : 현재 url을 가지고 있다. 목록보기를 누르면 목록리스트로 페이지를 이동한다. -->
-					</td>
-				</tr>
 			</table>
+				</section>
+			<div id="command">
+				 	<div id="command">
+				 	<input type="image" src="img/boardWrite.jpg" onclick="javaScript:document.form1.submit()" style="float: right; margin-top: 5px;"/>
+				 	<a href="qnABoardList.bo"><img src ="img/boardCancel.jpg" style="float: right; margin-top: 5px;"/></a>				
+	             </div>
 		</form>
-	</section>
+
+	
+	<jsp:include page="../footer.jsp"/>	
 </body>
 </html>

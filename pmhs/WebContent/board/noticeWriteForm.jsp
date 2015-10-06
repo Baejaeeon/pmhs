@@ -7,37 +7,53 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	#writeFormArea {
+#writeFormArea {	
 		margin: auto;
-		width: 500px;
+		width: 80%;
 		height: 500px;
-		border: 1px double orange;
+		border: 1px;
+		border-bottom: 1px dotted; 
+		font-family: "맑은고딕";
+		font-size: 15px;
+		
 	}
-	
-	h2, #td_command {
-		text-align: center;
-		border-bottom: 1px dotted red;
+
+	h2{
+		text-align: left;
+		border-bottom: 1px dotted;
 	}
-	
 	table {
+
 		margin: auto;
-		width: 480px;
-	}
-	
+		width: 80%;
+		
+	}	
 	.td_left {
-		width: 200px;
+		width: 50px;
+		font-size: 15px; 
+	
 	}
 	
 	.td_right {
-		width: 280px;
+		width: 300px;
+		margin: auto;
+		
 	}
+	#command{
+
+		margin: auto;
+		width: 60%;
+		
+	}
+
 </style>
 </head>
 
 <body>
+<jsp:include page="../header.jsp"/>
 	<section id = "writeFormArea">
-		<h2>공지 게시판 글쓰기</h2>
-		<form action="noticeBoardWritePro.boa" method = "POST">
+		<h2>공지 사항</h2>
+		<form action="noticeBoardWritePro.boa" name="form1" method = "POST">
 			<input type = "hidden" name = "num" value = "${num }">
 			
 			<table>
@@ -46,7 +62,7 @@
 						<label for = "writer">작성자</label>
 					</td>
 					<td class = "td_right">
-						<input type = "text" name = "writer" id = "writer" />
+						<input type = "text" name = "writer" id = "writer" value="${loginUser.m_id }" readonly="readonly"/>
 					</td>
 				</tr>
 				<tr>
@@ -73,7 +89,7 @@
 					</td>
 					<td class = "td_right">
 						<textarea name = "content" id = "content" 
-						rows = "10" cols = "15"></textarea>
+						rows = "16" cols = "50"></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -84,16 +100,15 @@
 						<input type = "password" name = "passwd" id = "passwd" />
 					</td>
 				</tr>
-				<tr>
-					<td colspan = "2" id = "td_command"> 
-						<input type = "submit" value = "글등록" />
-						<input type = "reset" value = "취소" />
-						<input type = "button" value = "목록보기" onClick = "window.location.href='noticeBoardList.boa'" />
-					
-					</td>
-				</tr>
-			</table>
+				</table>
+				</section>
+				<div id="command">
+				 	<input type="image" src="img/boardWrite.jpg" onclick="javaScript:document.form1.submit()" style="float: right; margin-top: 5px;" />
+				 	<a href="noticeBoardList.bo"><img src ="img/boardCancel.jpg" style="float: right; margin-top: 5px;"/></a>				
+	            </div>	
+			
 		</form>
-	</section>
+	
+	<jsp:include page="../footer.jsp"/>	
 </body>
 </html>

@@ -88,46 +88,78 @@ CREATE TABLE commentInfo(
 CREATE SEQUENCE comment_seq;
 
 CREATE TABLE pcInfo(
+	p_seq NUMBER NOT NULL,
 	p_num NUMBER NOT NULL,
 	p_unit VARCHAR2(50) NOT NULL,
 	p_department VARCHAR2(50),
 	p_lectureroom NUMBER NOT NULL,
 	p_isdeclare NUMBER DEFAULT 0,
 	p_isreservation NUMBER DEFAULT 0,
-	PRIMARY KEY(p_num)
+	PRIMARY KEY(p_seq)
 )
 
-INSERT INTO pcInfo VALUES(1,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(2,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(3,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(4,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(5,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(6,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(7,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(8,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(9,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(10,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(11,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(12,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(13,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(14,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(15,'공과대학','IT 공학부', '504', 0, 1);
-INSERT INTO pcInfo VALUES(16,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(17,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(18,'공과대학','IT 공학부', '504', 1, 0);
-INSERT INTO pcInfo VALUES(19,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(20,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(21,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(22,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(23,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(24,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(25,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(26,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(27,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(28,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(29,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(30,'공과대학','IT 공학부', '504', 0, 0);
-INSERT INTO pcInfo VALUES(31,'공과대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(1,1,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(2,2,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(3,3,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(4,4,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(5,5,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(6,6,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(7,7,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(8,8,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(9,9,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(10,10,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(11,11,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(12,12,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(13,13,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(14,14,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(15,15,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(16,16,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(17,17,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(18,18,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(19,19,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(20,20,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(21,21,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(22,22,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(23,23,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(24,24,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(25,25,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(26,26,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(27,27,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(28,28,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(29,29,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(30,30,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(31,31,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(32,1,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(33,2,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(34,3,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(35,4,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(36,5,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(37,6,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(38,7,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(39,8,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(40,9,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(41,10,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(42,11,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(43,12,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(44,13,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(45,14,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(46,15,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(47,16,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(48,17,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(49,18,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(50,19,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(51,20,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(52,21,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(53,22,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(54,23,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(55,24,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(56,25,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(57,26,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(58,27,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(59,28,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(60,29,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(61,30,'공과 대학','IT 공학부', '504', 0, 0);
+INSERT INTO pcInfo VALUES(62,31,'공과 대학','IT 공학부', '504', 0, 0);
 
 CREATE TABLE errorPCInfo(
 	e_declarenum NUMBER NOT NULL,
@@ -139,8 +171,7 @@ CREATE TABLE errorPCInfo(
 	p_num NUMBER NOT NULL,
 	e_name VARCHAR2(12) NOT NULL,
 	e_phone VARCHAR2(13) NOT NULL,
-	PRIMARY KEY(e_declarenum),
-	FOREIGN KEY(p_num) REFERENCES pcInfo(p_num)
+	PRIMARY KEY(e_declarenum)
 )
 
 CREATE SEQUENCE errorInfo_seq;
@@ -158,8 +189,7 @@ CREATE TABLE reservationInfo(
 	e_name VARCHAR2(12) NOT NULL,
 	e_phone VARCHAR2(13) NOT NULL,
 	e_time VARCHAR2(15) NOT NULL,
-	PRIMARY KEY(e_reservationnum),
-	FOREIGN KEY(p_num) REFERENCES pcInfo(p_num)
+	PRIMARY KEY(e_reservationnum)
 )
 
 CREATE SEQUENCE reservation_seq;

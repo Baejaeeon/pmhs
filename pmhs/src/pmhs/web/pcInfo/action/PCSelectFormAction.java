@@ -26,6 +26,9 @@ public class PCSelectFormAction implements Action {
 			lectureRoom = Integer.parseInt(request.getParameter("lectureRoom"));
 		}
 		
+		System.out.println(unit);
+		System.out.println(department);
+		System.out.println(lectureRoom);
 		PCSelectFormService pcSelectFormService = new PCSelectFormService();
 		ArrayList<PCInfo> pcSiteList = pcSelectFormService.getPCSitList(unit, department, lectureRoom);
 		

@@ -11,33 +11,98 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	#basicInfo, #commandList {
-		width: 500px;
-		height: 40px;
+	#basicInfo {
+		width: 80%;
+		height: 70px;
 		margin: auto;
-		background: orange;
-		text-align: center;
+		background: #424242;
+		text-align: left;
+		font-family: "맑은고딕";
+		color:white;
+		font-size: 16px;
 	}
+
+   #commandList{
+        width: 80%;
+		height: 70px;
+		margin: auto;
+		border-top-style: outset;
+		text-align: center;
+		font-family: "맑은고딕";
+		font-size: 16px;
+   }
 	#contentInfo{
-		width: 500px;
+		width: 80%;
 		height: 300px;
 		margin: auto;
 		overflow: auto;
-		border: 1px solid orange;
+		border: 1px solid ;
+		font-family: "맑은고딕";
+		font-size: 16px;
 	}
 	#commentArea{
-	    width: 500px;
+	    width: 80%;
 		height: 40px;
     	margin: auto;
 		overflow: auto;
 		border: 1px solid orange;
 		text-align: center;
+	    font-family: "맑은고딕";
+		color:white;
+		font-size: 16px;
 	}
 	table{
-		width: 500px;
+		width: 80%;
 		margin: auto;
 		text-align: center;
+		margin-bottom: 60px;
+		border-bottom: 1px dotted;
 	}
+	#reply_content{
+	margin-left: 10%;
+	margin-top:1%;
+	border: solid 1px;
+	font-family: "맑은고딕";
+	font-size: 16px;
+	}
+	#reply{
+	width: 80%;
+	font-family: "맑은고딕";
+	font-size: 16px;
+    border-bottom-style: inset;
+    border-bottom-color: white;
+	}
+	#title {
+		background: #424242;
+		color: white;
+		text-align: center;
+		height: 20px;
+		font-size: 18px;
+	}
+	#commentList{
+	border-bottom-style: inset;
+    border-bottom-color: white;
+	}
+	.num {
+		width: 55px;
+		text-align: center;
+	}
+	.content {
+		width: 500px;
+	}
+	.writer {
+		width: 70px;
+		text-align: center;
+	}
+	.regdate {
+		width: 200px;
+		text-align: center;
+	}
+	.delete {
+		width: 55px;
+		text-align: center;
+	}
+	
 </style>
 <%
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -45,46 +110,49 @@ ArrayList<CommentVO> comment = (ArrayList<CommentVO>)request.getAttribute("comme
 Member loginUser = (Member)session.getAttribute("loginUser");
 %>
 </head>
+<jsp:include page="../header.jsp"/>
 <body>
 <section id = "basicInfo">
-작성자 : ${article.writer } 글제목 : ${article.subject } 
-작성일 : ${article.reg_date }  조회수 : ${article.readCount }
+글제목 : ${article.subject }<br>
+작성자 : ${article.writer } 작성일 : ${article.reg_date }  조회수 : ${article.readCount }
 </section>
 <section id = "contentInfo">
 	${article.content }
 </section>
 	
 			<form action='qnAComment.bo' method="post">
-
-						<%
-					if (comment != null && comment.size() > 0) {
-				%>
-
 				<table id="reply">
-					<tr>
+					<tr style="display: inline;">
 						<input type="hidden" name="q_num" id="q_num" value="${article.num }">
-						<textarea rows="2" cols="80" name="reply_content" id = "reply_content"></textarea>
-						<input type="submit" value="등록"/>
+						<textarea rows="3" cols="128" name="reply_content" id = "reply_content"></textarea>
+							<input type="image" src="img/commentRegist.jpg" onclick="javaScript:document.form2.submit()" style="width: 90px;height:65px;margin:3px;margin-top:7px;"/>
 					</tr>
-					<tr>
-						<td width="40px" class="name"><font color="black" style="font-family:a탈영고딕L">번호</font></td>
-						<td width="80px" class="name"><font color="black" style="font-family:a탈영고딕L">작성자</font></td>
-						<td width="200px" class="name"><font color="black" style="font-family:a탈영고딕L">내용</font></td>
-						<td width="180px" class="name"><font color="black" style="font-family:a탈영고딕L">등록일자</font></td>
-						
+					<%
+					if (comment != null && comment.size() > 0) {
+					%>
+					
+					<tr id="title">
+						<td class="num">번호</td>
+						<td class="writer">작성자</td>
+						<td class="content">내용</td>
+						<td class="regdate">등록일자</td>
+						<td class="delete"></td>
 					</tr>
+					
+					
 					<%
 						for (int i = 0; i < comment.size(); i++) {
 					%>
-					<tr>
-						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_num()%></font></td>
-						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_writer()%></font></td>
-						<td><font color="black" style="font-family:a탈영고딕L"><%=comment.get(i).getC_content()%></font></td>
-						<td><font color="black" style="font-family:a탈영고딕L"><%=sdf.format(comment.get(i).getC_reg_date())%></font></td>
+					<tr id="commentList">
+						<td><%=comment.get(i).getC_num()%></td>
+						<td><%=comment.get(i).getC_writer()%></td>
+						<td><%=comment.get(i).getC_content()%></td>
+						<td><%=sdf.format(comment.get(i).getC_reg_date())%></td>
 						<%
 						 if(loginUser.getM_name().equals(comment.get(i).getC_writer())) {
 						%>
-							<td><input type = "button" value = "삭제" onClick = "window.location.href='qnACommentDelete.bo?c_num=<%=comment.get(i).getC_num()%>&num=${article.num }&pageNum=${pageNum }'" /></td>
+							<td><a href="qnACommentDelete.bo?c_num=<%=comment.get(i).getC_num()%>&num=${article.num }&pageNum=${pageNum }"><img src="img/com_del.gif" /></a></td>
+					   
 					   <%
 					   }
 					   %>
@@ -92,16 +160,17 @@ Member loginUser = (Member)session.getAttribute("loginUser");
 					<%
 						}
 					%>
+				</table>
 					<%
 						}
 					%>
-				</table>
+				</form>	
 <section id = "commandList">
-	<a href = "qnABoardUpdateForm.bo?num=${article.num }&pageNum=${pageNum}">글수정</a>
-	<a href = "qnABoardDeleteForm.bo?num=${article.num }&pageNum=${pageNum}">글삭제</a>
-	<a href = "qnABoardList.bo?pageNum=${pageNum}">글목록보기</a>
-	<a href = "qnABoardWriteForm.bo?num=${article.num }&ref=${article.ref }&re_step=${article.re_step }&re_level=${article.re_level}">답변글쓰기</a>
-</form>
+	<a href = "qnABoardUpdateForm.bo?num=${article.num }&pageNum=${pageNum}&writer=${article.writer }"><img src ="img/boardUpdate.jpg" style="margin-top: 5px;"/></a>
+	<a href = "qnABoardDeleteForm.bo?num=${article.num }&pageNum=${pageNum}"><img src ="img/boardDelete.jpg" style="margin-top: 5px;"/></a>
+	<a href = "qnABoardList.bo?pageNum=${pageNum}"><img src ="img/boardList.jpg" style="margin-top: 5px;"/></a>
+	<a href = "qnABoardWriteForm.bo?num=${article.num }&ref=${article.ref }&re_step=${article.re_step }&re_level=${article.re_level}"><img src ="img/boardRe.jpg" style="margin-top: 5px;"/></a>
 </section>
+<jsp:include page="../footer.jsp"/>	
 </body>
 </html>

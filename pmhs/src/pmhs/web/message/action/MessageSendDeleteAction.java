@@ -14,13 +14,14 @@ public class MessageSendDeleteAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		int messageNum = Integer.parseInt(request.getParameter("num"));
+		ActionForward forward = null;
+		if(request.getParameter("num")!=null){
 	      String pageNum = request.getParameter("pageNum");
-
+	      String[] deleteArray = request.getParameterValues("num");
 	      MessageDeleteService messageDeleteService = new MessageDeleteService();
 
-	      boolean deleteSuccess = messageDeleteService.removeArticle(messageNum);
-	      ActionForward forward = null;
+	      boolean deleteSuccess = messageDeleteService.removeArticle(deleteArray);
+	      
 
 	      if(deleteSuccess){
 	    	  forward = new ActionForward();
@@ -35,6 +36,14 @@ public class MessageSendDeleteAction implements Action {
 	          out.println("history.back()");
 	          out.println("</script>");
 	      }
+		}else{
+			response.setContentType("text/html;charset=UTF-8");
+	    	  PrintWriter out = response.getWriter();
+	    	  out.println("<script>");
+	          out.println("alert('삭제할 항목을 선택하세요.')");
+	          out.println("history.back()");
+	          out.println("</script>");
+		}
 	      return forward;
 	}
 

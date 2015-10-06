@@ -42,8 +42,9 @@ self.moveTo(0,0) self.resizeTo(screen.availWidth,screen.availHeight)
 	Member loginUser = (Member)session.getAttribute("loginUser");
 %>
     <!-- Navigation -->
-    <jsp:include page="header.jsp"/>
 
+    <jsp:include page="header.jsp"/>
+    
     <!-- Main Content -->
     <jsp:include page="content.jsp"/>
 

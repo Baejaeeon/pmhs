@@ -17,5 +17,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/taglibs-standard-jstlel-1.2.5.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar"/>
+	<classpathentry kind="lib" path="libs/gcm-server.jar"/>
+	<classpathentry kind="lib" path="libs/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

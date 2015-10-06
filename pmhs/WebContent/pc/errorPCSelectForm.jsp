@@ -128,30 +128,12 @@
 	<span style="font-weight: bold; margin-left: 50px">PC 선택 : </span>
 	<select id="unit">	
 		<option value="">공과 대학</option>
-		<option value="1" >B 1</option>
-		<option value="2">1 F</option>
-		<option value="3">2 F</option>
-		<option value="4">3 F</option>
-		<option value="5">4 F</option>		
-		<option value="6">5 F</option>
 	</select>
 	<select id="department">	
 		<option value="">IT 공학부</option>
-		<option value="1" >B 1</option>
-		<option value="2">1 F</option>
-		<option value="3">2 F</option>
-		<option value="4">3 F</option>
-		<option value="5">4 F</option>		
-		<option value="6">5 F</option>
 	</select>
 	<select id="lectureRoom">	
 		<option value="">504</option>
-		<option value="1" >B 1</option>
-		<option value="2">1 F</option>
-		<option value="3">2 F</option>
-		<option value="4">3 F</option>
-		<option value="5">4 F</option>		
-		<option value="6">5 F</option>
 	</select>
 	<input type = "submit" value = "검색" />
 	</form>

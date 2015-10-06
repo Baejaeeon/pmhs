@@ -33,7 +33,7 @@ ${loginUser.m_id }님이 로그인 하셨습니다.<br>
    else{
 %>	   
    <a href = "loginForm.mem">로그인</a>
-<%
+<%	
    }
 %>
 <jsp:forward page="main.do"/>

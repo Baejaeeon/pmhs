@@ -91,11 +91,14 @@ public class PCInfoDAO {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		int updateCount = 0;
-		String sql = "UPDATE pcInfo SET p_isdeclare = 1 WHERE p_num = ?";
+		String sql = "UPDATE pcInfo SET p_isdeclare = 1 WHERE p_unit=? AND p_department=? AND p_lectureRoom=? AND p_num = ?";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, errorPCInfo.getP_num());
+			pstmt.setString(1, errorPCInfo.getE_unit());
+			pstmt.setString(2, errorPCInfo.getE_department());
+			pstmt.setInt(3, errorPCInfo.getE_lectureRoom());
+			pstmt.setInt(4, errorPCInfo.getP_num());
 			updateCount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception

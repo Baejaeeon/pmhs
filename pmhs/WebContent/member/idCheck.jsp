@@ -13,11 +13,13 @@
 <style>
 	section {
 		margin: auto;
-		width: 200px;
-		border: 1px solid red;
+		width: 210px;
+		border: 1px solid black;
 	}
 	
 	h2 {
+	    
+	    font-size: 15px;
 		text-align: center;
 	}
 </style>
@@ -34,9 +36,11 @@
 	if(idExists) {
 %>
 	<section>
-	<h2><%=id %> 아이디가 이미 존재합니다.</h2>
-	<form action="idCheck">
-		아이디 : <input type = "text" name = "id" id = "id" /><br>
+	<h2> <%=id %> 
+	<br>아이디가 이미 존재합니다.  
+ 	  새로운아이디를 입력하세요.</h2>
+	<form action="idCheckPro.mem">
+		<input type = "text" name = "id" id = "id" placeholder="아이디" /><br>
 		<input type = "submit" value = "아이디중복체크" />
 	</form>
 	</section>
@@ -45,7 +49,8 @@
 	else {
 %>
 	<section>
-		<h2><%=id %> 아이디는 사용가능한 아이디 입니다.</h2>
+		<h2><%=id %>
+		<br>아이디는 사용가능한 아이디 입니다.</h2>
 		<a href = "javascript:winClose()">닫기</a>
 		<!-- 자바 스크립트로 링크를 걸어준다 -->
 	</section>

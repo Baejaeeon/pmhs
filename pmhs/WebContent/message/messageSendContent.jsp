@@ -6,46 +6,63 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-#basicInfo, #commandList {
-   width: 500px;
-   height: 40px;
-   margin: auto;
-   background: gray;
-   text-align: center;
-}
+<title>발신내용보기</title>
 
-#contentInfo {
-   width: 500px;
-   height: 300px;
-   margin: auto;
-   overflow: auto;
-   border: 1px solid gray;
-}
+<style>
+#top{height:30px; background-color: #424242; text-align: right; color: white; font-size: 130%; font-weight: bolder;}
+#button{text-align: right;}
+#subject{margin: auto; float: center;}
+#sb_title{height:30px; background-color: #bdbdbd; color: white; font-weight: bolder;}
+#sb_content{width: 450px; border-style: inset; background-color: white;}
+#sender{margin: auto; float: center;}
+#s_title{height:30px; background-color: #bdbdbd; color: white; font-weight: bolder;}
+#s_content{width: 220px; border-style: inset; background-color: white;}
+#s_datetitle{width: 55px; text-align: left;}
+#s_datecontent{width: 220px; border-style: inset; background-color: white;}
+#content{margin: auto; float: center;}
+#c_title{height:30px; background-color: #bdbdbd; color: white; font-weight: bolder;}
+#c_content{width: 450px; height: 100px;}
 </style>
 </head>
+
 <body>
    <%
       MessageVO content = (MessageVO) request.getAttribute("article");
       String pageNum = (String) request.getAttribute("pageNum");
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // 날짜 포맷 지정
+      SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd hh:mm"); // 날짜 포맷 지정
    %>
-   <section id="basicInfo">
-      보낸사람 :
-      <%=content.getMessageWriter()%>
-      글제목 :
-      <%=content.getTitle()%>
-      작성일 :
-      <%=sdf.format(content.getMessageReg_date())%>
-   </section>
-   <section id="contentInfo">
-      <%=content.getMessageContent()%>
-   </section>
-   <section id="commandList">
-	  <a href = "messageReplyForm.msg?writer=<%=content.getMessageWriter() %>">답장</a>
-      <a href="messageSendDelete.msg?num=<%=content.getMessageNum()%>">글삭제</a>
-      <a href="messageSendList.msg?pageNum=<%=pageNum%>">목록보기</a>
-   </section>
+   <div id=top>
+	<pre><font>발신내용보기   </font></pre>
+	</div>
+	<br>
+	
+	<section id=button>
+	<a href="messageResendForm.msg?receiver=<%=content.getMessageReceiver()%>"><img src="img/messageResend.jpg"></a>
+	<a href="messageSendDelete.msg?num=<%=content.getMessageNum()%>"><img src="img/messageDelete.jpg"></a>
+	<a href="messageSendList.msg?pageNum=<%=pageNum%>"><img src="img/messageSendList.jpg"></a>
+	</section>
+	
+	<section id=sb_title><font>제목</font></section>
+	
+	<table id=subject>
+   	<tr><td id=sb_content><%=content.getTitle()%></td></tr>
+   	</table>
+   	
+   	<section id=s_title><pre><font>받는사람				   작성일</font></pre></section>
+   	
+   	<table id=sender>
+   	<tr>
+   		<td id=s_content><%=content.getMessageReceiver()%></td>
+   		<td id=s_datecontent><%=sdf.format(content.getMessageReg_date())%></td>
+   	</tr>
+    </table><br>
+    
+    <section id=c_title><font>내용</font></section>
+	
+	<table id=content>
+    <tr>
+    	<td><textarea id=c_content style="border-style: inset;"><%=content.getMessageContent()%></textarea></td>
+    </tr>
+    </table>
 </body>
 </html>

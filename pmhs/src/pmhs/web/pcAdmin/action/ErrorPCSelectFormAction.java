@@ -19,11 +19,9 @@ public class ErrorPCSelectFormAction implements Action {
 		String unit = null;
 		String department = null;
 		int lectureRoom = 0;
-		if(request.getParameter("unit") != null || request.getParameter("department") != null || request.getParameter("lectureRoom") != null) {
-			unit = request.getParameter("unit");
-			department = request.getParameter("department");
-			lectureRoom = Integer.parseInt(request.getParameter("lectureRoom"));
-		}
+		unit = request.getParameter("unit");
+		department = request.getParameter("department");
+		lectureRoom = Integer.parseInt(request.getParameter("lectureRoom"));
 		
 		PCSelectFormService pcSelectFormService = new PCSelectFormService();
 		ArrayList<PCInfo> pcSiteList = pcSelectFormService.getPCSitList(unit, department, lectureRoom);

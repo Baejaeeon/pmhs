@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
@@ -29,7 +30,7 @@ public class QnABoardContentAction implements Action{
 		request.setAttribute("comment", comment);
 		request.setAttribute("article", article);
 		request.setAttribute("pageNum", pageNum);
-		
+		System.out.println(pageNum);
 		ActionForward forward = new ActionForward();
 		forward.setUrl("/board/adminQnAContent.jsp"); 
 		return forward;

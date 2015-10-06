@@ -6,25 +6,87 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>회원정보</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.mmain.min.css" rel="stylesheet" type="text/css">
+<link href="font-awesome/css/font-awesome.mmain.min.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.10.2.mmain.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.mmain.js" type="text/javascript"></script>
+<script>
+function winMemberDetail(){
+	window.open("memberDetail.mem")
+}
+</script>
 </head>
+
+
+
 <body>
+<jsp:include page="../header.jsp"/>
 <%
   Member loginUser = (Member)session.getAttribute("loginUser");
 %>
 <% if(loginUser != null){
 	%>
-<h2>회원 정보</h2>
-  ${loginUser.m_name }님<br>  
-  ${loginUser.m_email }<br>
-         <br>
-         <br>
-         <a href = "memberDetail.mem">회원정보상세보기</a>
-         <a href = "logout.mem">로그아웃</a>
 <%
 }
 %>
-         
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form action ="logout.mem" class="form-horizontal" method="post">
+                    <fieldset>
+                        <legend class="text-center header">회원 정보</legend>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                 <span STYLE ="font-size: 20px; font-weight:bold; font-color: #4169E1;"> ${loginUser.m_name }</span> 님<br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                            <div class="col-md-8">
+                            <span STYLE ="font-size: 20px; font-weight:bold;">  ${loginUser.m_email } </span><br>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+                            <div class="col-md-8">
+                           <span STYLE ="font-size: 20px; font-weight:bold;">  ${loginUser.m_phone } </span><br>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <input type="button" class="btn btn-primary btn-lg" value = "회원 정보상세보기" onclick = "winMemberDetail() ">
+                                <button type="submit" class="btn btn-primary btn-lg">로그 아웃</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .header {
+        color: #36A0FF;
+        font-size: 27px;
+        padding: 10px;
+    }
+
+    .bigicon {
+        font-size: 35px;
+        color: #36A0FF;
+    }
+</style>
+<jsp:include page="../footer.jsp"/>        
 </body>
 </html>

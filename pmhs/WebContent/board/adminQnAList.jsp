@@ -14,51 +14,83 @@
 <title>Insert title here</title>
 <style type="text/css">
 	#listArea {
-		margin: auto;
-		width: 600px;
+	    margin: auto;
+		width: 80%;
 		height: 500px;
-		border: 1px double orange;
+		border: 1px;
+		border-bottom: 1px dotted; 
 	}
-	
-	#list2Area{
+
+	img{
 		margin: auto;
-		text-align: right;
-		width: 600px;
+		border:0;
+		float: right;
 	}
-	
+	#command{
+		margin: auto;
+		width: 60%;
+		
+	}
 	#pageArea {
 		margin: auto;
-		width: 600px;
+		width: 80%;
+		height: 100%;
 		text-align: center;
+		font-size: 15px;
+		
 	}
 	
-	h2, #td_command {
+	 #td_command {
 		text-align: center;
-		border-bottom: 1px dotted red;
+		border-bottom: 1px dotted ;
+	}
+	h2{
+	text-align: left;
+	border-bottom: 1px dotted ;
+
 	}
 	
 	table {
 		margin: auto;
-		width: 580px;
+		width: 80%;
+	    font-family: "맑은고딕";
+	    
 	}
+   .list{
+    font-family: "맑은고딕";
+    font-size: 15px;
+    border-bottom-style: inset;
+    border-bottom-color: white;
+
+   }
+   #tr_title {
+		background: #424242;
+		color: white;
+		text-align: center;
 	
-	#tr_title {
-		background: orange;
+	}
+	.td_checkbox{
+	    width: 55px;
+	    text-align: center;
 	}
 	.td_num {
-		width: 50px;
+		width: 55px;
+		text-align: center;
 	}
 	.td_subject {
-		width: 140px;
+		width: 280px;
 	}
 	.td_writer {
-		width: 100px;
+		width: 70px;
+		text-align: center;
 	}
 	.td_readcount {
-		width: 100px;
+		width: 55px;
+		text-align: center;
 	}
 	.td_regdate {
-		width: 120px;
+		width: 40px;
+		text-align: center;
 	}
 	.td_left {
 		width: 200px;
@@ -67,9 +99,7 @@
 	.td_right {
 		width: 280px;
 	}
-	#tr_command {
-		text-align: right;
-	}
+
 </style>
 <script>
 	function checkAll() {
@@ -87,7 +117,8 @@
 </script>
 </head>
 <body>
-<form action="adminQnABoardDeletePro.boa">
+<jsp:include page="../header.jsp"/>
+<form action="adminQnABoardDeletePro.boa" name="form3">
 	<%!
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		// 날짜 포맷 지정
@@ -96,14 +127,14 @@
 		<c:if test="${empty articleList }"> <!-- 예약이 없으면... -->
 		</c:if>
 		<c:if test="${not empty articleList }"> <!-- 예약이 있으면... -->
-		<h2>문의게시물 목록</h2>
+		<h2>문의 사항</h2>
 			<table>
 				<tr id = "tr_title">
 					<td><input type="checkbox" class="td_checkbox" name = "allCheck" onclick="checkAll()" /></td>
 					<td class = "td_num">
 						번호
 					</td>
-					<td class = "td_subject">
+					<td class = "td_subject" style="text-align: center;">
 						제목
 					</td>
 					<td class = "td_writer">
@@ -119,13 +150,20 @@
 				<!-- pageInfo에 공유되어 있는 값을 가져와서 number변수에 저장 -->
 				<c:set var = "number" value = "${pageInfo.number }"></c:set>
 				<c:forEach var = "article" items = "${articleList }"> <!-- for문 수행 -->
-				<tr>
-					<td><input type="checkbox" name = "delete1" id = "delete1" value = "${article.num }" /></td>
+				<tr class="list">
+					<td class="td_checkbox"><input type="checkbox" name = "delete1" id = "delete1" value = "${article.num }" /></td>
 					<td class = "td_num">
 						${number }
 					</td>
 					<c:set var = "number" value = "${number - 1 }"></c:set>
 					<td class = "td_subject">
+					<c:forEach begin="1" end = "${article.re_level }"> <!-- 답글 레벨을 하나씩 가져와서  -->
+						&nbsp;&nbsp;&nbsp;
+						</c:forEach>
+						<c:if test="${article.re_level > 0 }"> <!-- 답글 레벨이 0보다 크면 re를 출력해준다. -->
+						<img src="img/re.gif" style="height: 18px; width: 30px; float: left; margin-left: 10px;">
+						<!-- 게시물 상세보기 요청 링크를 걸어준다. 해당 글을 구분할 수 있는 값인 num값을 파라미터로 던져준다. --> 
+						</c:if>
 						<a href = "adminQnABoardContent.boa?num=${article.num }&pageNum=${pageInfo.currentPage}">${article.subject }</a>
 					</td>
 					<td class = "td_writer">
@@ -145,14 +183,14 @@
 		</tr>
 		</c:if>
 	</section>
-	<section id = "list2Area">
-		<td colspan="7" id = "tr_command" >
-				<input type = "submit" value = "삭제" />
-		</td>
+	<section id = "command">
+
+	 <a href="adminQnABoardList.boa"><input type="image" src="img/boardDelete.jpg" onclick="document.form3.submit()" style="margin-left:80%; margin-top: 5px; "/></a>
+
 	</section>
 	<c:if test="${pageInfo.count > 0 }">
 	<section id = "pageArea">
-	<c:if test="${pageInfo.startPage > 10  }"> <!-- [이전] 출력 -->
+	<c:if test="${pageInfo.startPage > 20  }"> <!-- [이전] 출력 -->
 		<a href = "adminQnABoardList.boa?pageNum=${pageInfo.startPage - 20 }">[이전]</a>
 		<!-- 이전 그룹의 첫 페이지를 가져온다. -->
 	</c:if>
@@ -167,5 +205,6 @@
 	</section>
 	</c:if>
 	</form>
+<jsp:include page="../footer.jsp"/>
 </body>
 </html>

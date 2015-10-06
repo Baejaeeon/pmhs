@@ -1,49 +1,73 @@
+<%@page import="pmhs.web.message.vo.MessageVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<form action="messageWritePro.msg" method = "POST"  enctype="multipart/form=data" name="messageWrite" onsubmit="javascript:return checkit(this)">
 <head>
 <meta charset="UTF-8">
 <title>답 장</title>
+
+<script>
+	function messageReceiveList(){<%--목록--%>
+		location.href = "messageReceiveList.msg"
+	}
+</script>
+
+<style>
+#top{height:30px; background-color: #424242; text-align: right; color: white; font-size: 130%; font-weight: bolder;}
+#button{text-align: right;}
+#subject{margin: auto; float: center;}
+#small{color: white; font-size: 50%; text-align: right;}
+#sb_title{height:30px; background-color: #bdbdbd; color: white; font-weight: bolder;}
+#sb_content{width: 450px; border-style: inset; background-color: white;}
+#receiver{margin: auto; float: center;}
+#r_title{height:30px; background-color: #bdbdbd; color: white; font-weight: bolder;}
+#r_content{width: 450px; border-style: inset; background-color: white;}
+#content{margin: auto; float: center;}
+#c_title{height:30px; background-color: #bdbdbd; color: white; font-weight: bolder;}
+#c_content{width: 450px; height: 100px;}
+</style>
 </head>
 <body>
-      <h2>답 장</h2>
-      <form action="messageReplyPro.msg" method = "POST">
-         <table>
-            <tr>
-               <td class = "td_left">
-                  <label for = "title">제목</label>
-               </td>
-               <td class = "td_right">
-                  <input type = "text" name = "title" id = "title" />
-               </td>
-            </tr>
-            <tr>
-               <td class = "td_left">
-                  <label for = "receiver">받는사람</label>
-               </td>
-               <td class = "td_right">
-                  <input type = "text" name = "receiver" id = "receiver" value="${writer }" readonly="readonly" />
-               </td>
-            </tr>
-            <tr>
-               <td class = "td_left">
-                  <label for = "content">내용</label>
-               </td>
-               <td class = "td_right">
-                  <textarea name = "content" id = "content" 
-                  rows = "10" cols = "25"></textarea>
-               </td>
-            </tr>
-            
-            <tr>
-               <td colspan = "2" id = "td_command"> <!-- colspan : 셀 합치기 -->
-                  <input type = "submit" value = "전송" />
-                  <a href="messageReceiveList.msg"><input type = "button" value = "취소" /></a>
-                  <!-- location : 현재 url을 가지고 있다. 취소를 누르면 수신목록보기로 페이지를 이동한다. -->
-               </td>
-            </tr>
-         </table>
+	<%
+      String pageNum = (String) request.getAttribute("pageNum");
+	%>
+
+	
+      
+	<div id=top>
+	<pre><font>답 장   </font></pre>
+	</div>
+	<br>
+      
+    <section id=button>
+	<input type="image" src="img/messageReply.jpg">
+	<a href="javascript:messageReceiveList()"><img src="img/messageCancel.jpg"></a>
+	</section>
+	
+	<section id=sb_title><font>제목</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <font id=small>최대 10글자 입력 가능</font></section>
+	
+	<table id=subject>
+   	<tr><td><input type = "text" name = "title" id = "sb_content" /></td></tr>
+   	</table><br>
+   	
+   	<section id=r_title><font>받는사람</font></section>
+   	
+   	<table id=receiver>
+   	<tr>
+   		<td><input type = "text" name = "receiver" id = "r_content" value="${writer }" readonly="readonly" /></td>
+   	</tr>
+    </table><br>
+   	
+   	<section id=c_title><font>내용</font></section>
+   	
+   	<table id=content>
+    <tr>
+    	<td><textarea name = "content" id = "c_content" rows = "10" cols = "25"></textarea></td>
+    </tr>
+    </table>           
       </form>
 </body>
 </html>

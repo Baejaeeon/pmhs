@@ -34,6 +34,11 @@
     <![endif]-->
 
 </head>
+<script>
+	function messageOpen_click(){
+		window.open("messageReceiveList.msg", "messageReceiveList", "width=480, height=440");		
+	}
+</script>
 <body>
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
@@ -58,14 +63,14 @@
                         <a href="main.do">Home</a>
                     </li>
                     <li>
-                        <a href="introduceForm.jsp">About</a>
+                        <a href="introduceForm.jsp">시스템 소개</a>
                     </li>
                     <c:if test="${loginUser.m_id eq 'admin' }">
                     	<li>
-                       		<a href = "adminNoticeBoardList.boa">공지사항</a>
+                       		<a href = "adminNoticeBoardList.boa">공지관리</a>
                     	</li>
                     	<li>
-                        	<a href = "adminQnABoardList.boa">문의사항</a>
+                        	<a href = "adminQnABoardList.boa">문의관리</a>
                     	</li>
                     </c:if>
                     <c:if test="${loginUser.m_id ne 'admin' }">
@@ -80,16 +85,27 @@
                         <a href="memberMain.mem">회원정보</a>
                     </li>
                     <li>
-                        <a href="errorPcList.pca">PC 정보</a>
+                    <c:if test="${loginUser.m_id eq 'admin' }">
+                        <a href="errorPcList.pca">PC 관리</a>
+                    </c:if>
                     </li>
                     <li>
-                        <a href = "messageReceiveList.msg">메시지</a>
+                    <c:if test="${loginUser.m_id eq 'admin' }">
+                    	<a href = "reservationList.pca">예약정보</a>
+                    </c:if>
+                    </li>
+                    <li>
+                    <c:if test="${loginUser.m_id eq 'admin' }">
+                    	<a href = "memberAdminMain.mema">회원관리</a>
+                    </c:if>
+                    </li>
+                    <li>
+                        <a href = "javaScript:messageOpen_click()">메시지</a>
                     </li>
                     <li>
                     	<%
                         if(loginUser != null){
 						%>
-						<font color="#ffffff;">${loginUser.m_id }님이 로그인 하셨습니다.</font>
 						   <a href = "logout.mem">로그아웃</a>
 						<%
 						   }

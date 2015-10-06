@@ -1,14 +1,17 @@
 package pmhs.web.pcAdmin.action;
 
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
 import pmhs.web.board.vo.PageInfo;
+import pmhs.web.member.vo.Member;
 import pmhs.web.pcAdmin.svc.ErrorPCListService;
 import pmhs.web.pcAdmin.svc.ReservationListService;
 import pmhs.web.pcAdmin.vo.ErrorPCInfo;
@@ -19,6 +22,8 @@ public class ErrorPCListAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		
 		int pageSize = 10; // 한 페이지 당 출력될 글의 개수 지정
 		
 		String pageNum = request.getParameter("pageNum"); // 페이지 번호를 받아온다.

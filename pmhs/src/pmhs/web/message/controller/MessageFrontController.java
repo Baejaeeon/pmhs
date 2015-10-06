@@ -1,21 +1,20 @@
 package pmhs.web.message.controller;
 
 import java.io.IOException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import pmhs.action.Action;
 import pmhs.vo.ActionForward;
 import pmhs.web.message.action.MessageContentAction;
 import pmhs.web.message.action.MessageDeleteAction;
 import pmhs.web.message.action.MessageReceiveListAction;
 import pmhs.web.message.action.MessageReplyFormAction;
-import pmhs.web.message.action.MessageReplyProAction;
+import pmhs.web.message.action.MessageResendFormAction;
+import pmhs.web.message.action.MessageResendProAction;
 import pmhs.web.message.action.MessageSendContentAction;
 import pmhs.web.message.action.MessageSendDeleteAction;
 import pmhs.web.message.action.MessageSendListAction;
@@ -137,8 +136,17 @@ public class MessageFrontController extends HttpServlet {
 	    		  e.printStackTrace();
 	    	  }
 	      }
-	      else if(command.equals("/messageReplyPro.msg")) {
-	    	  action = new MessageReplyProAction();
+	      else if(command.equals("/messageResendForm.msg")) {
+	    	  action = new MessageResendFormAction();
+	    	  try {
+	    		  forward = action.execute(request, response);
+	    	  } catch (Exception e) {
+	    		  // TODO: handle exception
+	    		  e.printStackTrace();
+	    	  }
+	      }
+	      else if(command.equals("/messageResendPro.msg")) {
+	    	  action = new MessageResendProAction();
 	    	  try {
 	    		  forward = action.execute(request, response);
 	    	  } catch (Exception e) {

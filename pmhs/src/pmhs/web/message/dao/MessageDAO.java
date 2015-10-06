@@ -157,14 +157,45 @@ public class MessageDAO {
 	      return article;
 	   }
 
-	   public int deleteMessageArticle(int messageNum) {
+	   public int deleteMessageArticle(String[] deleteArray) {
 	      // TODO Auto-generated method stub
-	      PreparedStatement pstmt = null;
+		   StringBuffer sqlStr = new StringBuffer("DELETE messageInfo "); // StringBuffer를 만들어줌(동적으로 동작할수 있도록)
+		      for(int i = 0; i < deleteArray.length; i++) {
+		         if(i == 0 && i == deleteArray.length-1) {
+		            sqlStr.append("WHERE msg_num IN ( '" + Integer.parseInt(deleteArray[i]) + "')");
+		         }
+		         if(i == 0 && i != deleteArray.length-1) {
+		            sqlStr.append("WHERE msg_num IN ( '" + Integer.parseInt(deleteArray[i]) + "'");
+		         }
+		         if(i != 0) {
+		            sqlStr.append(",'" + Integer.parseInt(deleteArray[i]) + "'");
+		         }
+		         if(i != 0 && i == deleteArray.length-1) {
+		            sqlStr.append(")");
+		         }
+		      }
+		      
+		      PreparedStatement pstmt = null;
+		      int deleteCount = 0;
+		      
+		      try {
+		         pstmt = con.prepareStatement(sqlStr.toString()); // 문자열로 바꿔준다.
+		         deleteCount = pstmt.executeUpdate();
+		         
+		      } catch (Exception e) {
+		         // TODO: handle exception
+		         e.printStackTrace();
+		      } finally {
+		         close(pstmt);
+		      }
+		      
+		      return deleteCount;
+		   /*PreparedStatement pstmt = null;
 	      int deleteCount = 0;
 	      String sql = "delete from messageInfo where msg_num = ?";
 	      try {
 	         pstmt = con.prepareStatement(sql);
-	         pstmt.setInt(1, messageNum);
+	         pstmt.setInt(1, deleteArray);
 	         deleteCount=pstmt.executeUpdate();
 
 	      } catch (Exception e) {
@@ -172,7 +203,7 @@ public class MessageDAO {
 	      }finally{
 	         close(pstmt);
 	      }
-	      return deleteCount;
+	      return deleteCount;*/
 	   }
 
 	public int selectReceiveCount() {

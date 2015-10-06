@@ -7,10 +7,15 @@
 <title>Insert title here</title>
 <style>
 	#deleteForm {
-		width: 300px;
-		height: 200px;
-		margin: auto;
-		border: 1px solid blue;
+	    margin: auto;
+		width: 80%;
+		height: 500px;
+		border: 1px;
+		border-bottom: 1px dotted; 
+		font-family: "맑은고딕";
+		font-size: 15px;
+	    font-weight: bold;
+	
 	}
 	fieldset {
 		text-align: center;
@@ -18,18 +23,21 @@
 </style>
 </head>
 <body>
+<jsp:include page="../header.jsp"/>
 <section id = "deleteForm">
 <form action="noticeBoardDeletePro.boa" method="POST">
 	<input type = "hidden" name = "num" value = "${num }" />
 	<input type = "hidden" name = "pageNum" value = "${pageNum }" />
 	
 	<fieldset>
-		<legend>비밀번호 입력</legend>
+		<legend>비밀번호를 입력해주세요</legend>
 		<label id = "passwd">비밀번호 : </label>
 		<input type = "password" name = "passwd" id = "passwd" />
 		<input type = "submit" value = "삭제" />
+		
 	</fieldset>
 </form>
 </section>
+<jsp:include page="../footer.jsp"/>	
 </body>
 </html>

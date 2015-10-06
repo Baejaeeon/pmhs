@@ -5,6 +5,7 @@ import static pmhs.db.JdbcUtil.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -246,11 +247,14 @@ public class PCAdminDAO {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		int updateCount = 0;
-		String sql = "UPDATE pcInfo SET p_isreservation = 1 WHERE p_num = ?";
+		String sql = "UPDATE pcInfo SET p_isreservation = 1 WHERE p_unit=? AND p_department=? AND p_lectureRoom=? AND p_num = ?";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, reservationInfo.getPcNum());
+			pstmt.setString(1, reservationInfo.getUnit());
+			pstmt.setString(2, reservationInfo.getDepartment());
+			pstmt.setInt(3, reservationInfo.getLectureRoom());
+			pstmt.setInt(4, reservationInfo.getPcNum());
 			updateCount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -296,15 +300,18 @@ public class PCAdminDAO {
 		return deleteCount;
 	}
 
-	public int updatePCInfoState(String[] deleteNumArray) {
+	public int updatePCInfoState(ReservationInfo reservationPC) {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		int updateCount = 0;
-		String sql = "UPDATE pcInfo SET p_isreservation = 0, p_isdeclare = 0 WHERE p_num = ?";
+		String sql = "UPDATE pcInfo SET p_isreservation = 0, p_isdeclare = 0 WHERE p_unit=? AND p_department=? AND p_lectureRoom=? AND p_num = ?";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(deleteNumArray[0]));
+			pstmt.setString(1, reservationPC.getUnit());
+			pstmt.setString(2, reservationPC.getDepartment());
+			pstmt.setInt(3, reservationPC.getLectureRoom());
+			pstmt.setInt(4, reservationPC.getPcNum());
 			updateCount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -319,11 +326,14 @@ public class PCAdminDAO {
 		// TODO Auto-generated method stub
 		PreparedStatement pstmt = null;
 		int deleteCount = 0;
-		String sql = "DELETE FROM errorPCInfo WHERE p_num = ?";
+		String sql = "DELETE FROM errorPCInfo WHERE p_unit=? AND p_department=? AND p_lectureRoom=? AND p_num = ?";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, reservationInfo.getPcNum());
+			pstmt.setString(1, reservationInfo.getUnit());
+			pstmt.setString(2, reservationInfo.getDepartment());
+			pstmt.setInt(3, reservationInfo.getLectureRoom());
+			pstmt.setInt(4, reservationInfo.getPcNum());
 			deleteCount = pstmt.executeUpdate();
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -332,5 +342,67 @@ public class PCAdminDAO {
 			close(pstmt);
 		}
 		return deleteCount;
+	}
+
+	public ReservationInfo getReservationInfo(String[] deleteNumArray) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ReservationInfo reservationInfo = null;
+		
+		try {
+			pstmt = con.prepareStatement("SELECT * FROM reservationInfo WHERE e_reservationnum = ?");
+			pstmt.setInt(1, Integer.parseInt(deleteNumArray[0]));
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				/*
+				 * e_reservationnum NUMBER NOT NULL,
+					e_subject VARCHAR2(25) NOT NULL,
+					e_declaredate TIMESTAMP NOT NULL,
+					e_errorsymptom VARCHAR2(15),
+					p_unit VARCHAR2(50) NOT NULL,
+					p_department VARCHAR2(50) NOT NULL,
+					p_lectureroom NUMBER NOT NULL,
+					p_num NUMBER NOT NULL,
+					e_name VARCHAR2(12) NOT NULL,
+					e_phone VARCHAR2(13) NOT NULL,
+					e_time VARCHAR2(15) NOT NULL,
+					
+					private int reservationNum;
+					private String subject;
+					private Timestamp declareDate;
+					private String errorSymptom;
+					private String unit;
+					private String department;
+					private int lectureRoom;
+					private int pcNum;
+					private String name;
+					private String phone;
+					private String time;
+					
+				 * 
+				 */
+				reservationInfo = new ReservationInfo();
+				reservationInfo.setReservationNum(rs.getInt("e_reservationnum"));
+				reservationInfo.setSubject(rs.getString("e_subject"));
+				reservationInfo.setDeclareDate(rs.getTimestamp("e_declaredate"));
+				reservationInfo.setErrorSymptom(rs.getString("e_errorsymptom"));
+				reservationInfo.setUnit(rs.getString("p_unit"));
+				reservationInfo.setDepartment(rs.getString("p_department"));
+				reservationInfo.setLectureRoom(rs.getInt("p_lectureroom"));
+				reservationInfo.setPcNum(rs.getInt("p_num"));
+				reservationInfo.setName(rs.getString("e_name"));
+				reservationInfo.setPhone(rs.getString("e_phone"));
+				reservationInfo.setTime(rs.getString("e_time"));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return reservationInfo;
 	}
 }

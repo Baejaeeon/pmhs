@@ -504,7 +504,48 @@ public class BoardDAO {
 		return deleteCount;
 	}
 
-	
+	public List<NoticeBoardVO> selectNoticeArticleList(int startRow) {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<NoticeBoardVO> articleList = null;
+		NoticeBoardVO article = null; 
+		
+		try {
+			pstmt = con.prepareStatement("SELECT list2.* FROM (SELECT rownum r, list1.* "
+					+ "FROM (SELECT * FROM noticeBoard) list1 ) list2 "
+					+ "WHERE r BETWEEN ? AND ?");
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, startRow + 5); 
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { 
+				articleList = new ArrayList<NoticeBoardVO>(); 
+				do {
+					article = new NoticeBoardVO();
+					article.setNum(rs.getInt("n_num"));
+					article.setWriter(rs.getString("n_writer"));
+					article.setEmail(rs.getString("n_email"));
+					article.setSubject(rs.getString("n_subject"));
+					article.setPasswd(rs.getString("n_passwd"));
+					article.setReg_date(rs.getTimestamp("n_reg_date"));
+					article.setReadCount(rs.getInt("n_readCount"));
+					article.setContent(rs.getString("n_content"));
+					article.setIp(rs.getString("n_ip"));
+					articleList.add(article); 
+				} while (rs.next());
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return articleList;
+	}
 }
 
 

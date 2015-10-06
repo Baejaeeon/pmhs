@@ -145,7 +145,8 @@ public class BoardFrontController extends HttpServlet {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
-	}
+		} 
+		
 		if (forward != null) {
 			if (forward.isRedirect()) { 
 				response.sendRedirect(forward.getUrl());

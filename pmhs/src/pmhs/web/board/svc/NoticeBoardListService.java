@@ -36,6 +36,19 @@ public class NoticeBoardListService {
 		
 		return articleList;
 	}
+
+	public List<NoticeBoardVO> getNoticeArticleList(int startRow) {
+		// TODO Auto-generated method stub
+		Connection con = getConnect(); 
+		BoardDAO boardDAO = BoardDAO.getInstance();
+		boardDAO.setConnection(con); 
+	
+		List<NoticeBoardVO> articleList = boardDAO.selectNoticeArticleList(startRow);
+		
+		close(con);
+		
+		return articleList;
+	}
 	
 
 }

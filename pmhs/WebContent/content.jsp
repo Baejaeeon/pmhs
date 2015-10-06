@@ -43,6 +43,7 @@
 	}
 </script>
 <body>
+<jsp:forward page="noticeContentList.bo"/>
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
 %>
@@ -150,7 +151,7 @@
                            	 공지사항
                         </h2></a>
                         <div>
-                         	
+                        
                         </div>
                 </div>
                 <hr>

@@ -16,7 +16,7 @@ public class QnABoardListAction implements Action {
 	   
 		public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 			// TODO Auto-generated method stub
-			int pageSize = 10; 
+			int pageSize = 10;
 			
 			String pageNum = request.getParameter("pageNum"); 
 			if(pageNum == null) {

@@ -8,34 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href = "index.jsp">Home</a>
-<a href = "introduceForm.jsp">시스템 소개</a>
-<a href = "adminNoticeBoardList.boa">공지사항</a>
-<a href = "adminQnABoardList.boa">문의사항</a>
-<a href = "noticeBoardList.bo">공지사항</a>
-<a href = "qnABoardList.bo">문의사항</a>
-<a href = "memberMain.mem">회원정보</a>
-<a href = "memberAdminMain.mema">회원관리</a>
-<a href = "errorPcList.pca">PC정보</a>
-<a href = "memberRegistForm.mem">회원가입</a>
-<a href = "reservationList.pca">예약정보</a>
-<a href = "messageReceiveList.msg">메시지</a>
-<a href = "pcSelectForm.pc">PC선택하기</a>
-<%
-   Member loginUser = (Member)session.getAttribute("loginUser");
-
-if(loginUser != null){
-%>
-${loginUser.m_id }님이 로그인 하셨습니다.<br>
-   <a href = "logout.mem">로그아웃</a>
-<%
-   }
-   else{
-%>	   
-   <a href = "loginForm.mem">로그인</a>
-<%	
-   }
-%>
 <jsp:forward page="main.do"/>
 </body>
 </html>

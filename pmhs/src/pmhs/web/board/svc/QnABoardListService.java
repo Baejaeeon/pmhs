@@ -33,4 +33,18 @@ public class QnABoardListService {
 		
 		return articleList;
 	}
+
+	public List<QnABoardVO> getQnAContentArticleList() {
+		// TODO Auto-generated method stub
+		Connection con = getConnect();
+		BoardDAO boardDAO = BoardDAO.getInstance();
+		boardDAO.setConnection(con);
+		
+		List<QnABoardVO> qnaContentArticleList = boardDAO.selectQnAContentArticleList();
+		
+		close(con);
+		
+		return qnaContentArticleList;
+		
+	}
 }

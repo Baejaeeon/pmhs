@@ -546,6 +546,84 @@ public class BoardDAO {
 		
 		return articleList;
 	}
+
+	public List<NoticeBoardVO> selectNoticeContentArticleList() {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<NoticeBoardVO> noticeCotentArticleList = null;
+		NoticeBoardVO article = null; 
+		
+		try {
+			pstmt = con.prepareStatement("select * from (select * from noticeBOARD order by n_reg_date DESC) WHERE rownum <= 4");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { 
+				noticeCotentArticleList = new ArrayList<NoticeBoardVO>(); 
+				do {
+					article = new NoticeBoardVO();
+					article.setNum(rs.getInt("n_num"));
+					article.setWriter(rs.getString("n_writer"));
+					article.setEmail(rs.getString("n_email"));
+					article.setSubject(rs.getString("n_subject"));
+					article.setPasswd(rs.getString("n_passwd"));
+					article.setReg_date(rs.getTimestamp("n_reg_date"));
+					article.setReadCount(rs.getInt("n_readCount"));
+					article.setContent(rs.getString("n_content"));
+					article.setIp(rs.getString("n_ip"));
+					noticeCotentArticleList.add(article); 
+				} while (rs.next());
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return noticeCotentArticleList;
+	}
+
+	public List<QnABoardVO> selectQnAContentArticleList() {
+		// TODO Auto-generated method stub
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<QnABoardVO> qnaCotentArticleList = null;
+		QnABoardVO article = null; 
+		
+		try {
+			pstmt = con.prepareStatement("select * from (select * from QNABOARD order by q_reg_date DESC) WHERE rownum <= 4");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) { 
+				qnaCotentArticleList = new ArrayList<QnABoardVO>(); 
+				do {
+					article = new QnABoardVO();
+					article.setNum(rs.getInt("q_num"));
+					article.setWriter(rs.getString("q_writer"));
+					article.setEmail(rs.getString("q_email"));
+					article.setSubject(rs.getString("q_subject"));
+					article.setPasswd(rs.getString("q_passwd"));
+					article.setReg_date(rs.getTimestamp("q_reg_date"));
+					article.setReadCount(rs.getInt("q_readCount"));
+					article.setContent(rs.getString("q_content"));
+					article.setIp(rs.getString("q_ip"));
+					qnaCotentArticleList.add(article); 
+				} while (rs.next());
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return qnaCotentArticleList;
+	}
 }
 
 

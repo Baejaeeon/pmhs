@@ -164,7 +164,9 @@
                            	 공지사항
                         </h2></a>
                         <div>
-                        
+                        <c:forEach var = "noticeArticle" items = "${noticeArticleList }"> 
+							    	&nbsp; <a href="noticeBoardContent.bo?num=${noticeArticle.num }&pageNum=${pageNum }">${noticeArticle.subject }</a> &nbsp; ${noticeArticle.reg_date }
+						</c:forEach>
                         </div>
                 </div>
                 <hr>
@@ -174,7 +176,7 @@
                             	문의사항
                         </h2></a>
                         <div>
-							        <%             
+							        <%-- <%             
 							              try {
 							                int q_num;
 							                String q_subject;
@@ -193,13 +195,15 @@
 										<tr class="list">		
 							             <p><a href=""><%=q_subject %></a> | <%=q_reg_date %></p>
 										</tr>
-							            
 							     <%     
 							                }
 							          }catch(Exception e){
 							          out.println(e);
 							          }
-							     %>
+							     %> --%>
+							    <c:forEach var = "qnaArticle" items = "${qnaArticleList }">
+							    	&nbsp; <a href="qnABoardContent.bo?num=${qnaArticle.num }&pageNum=${pageNum }">${qnaArticle.subject }</a> &nbsp; ${qnaArticle.reg_date }<br>
+							    </c:forEach>
                         </div>
                 </div>
                 <hr>

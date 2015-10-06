@@ -48,29 +48,278 @@
 	}
 </script>
 <style>
-.list{
-    font-family: "맑은고딕";
-    font-size: 15px;
+.row {
+	padding: 20px 0px;
+}
+
+
+.contcustom {
+	text-align: center;
+	width: 500px;
+	border-radius: 0.5rem;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 10px auto;
+	background-color: white;
+	padding: 20px;
+}
+
+input {
+	width: 80%;
+	margin-bottom: 17px;
+	padding: 15px;
+	background-color: #ECF4F4;
+	border-radius: 2px;
+	border: none;
+}
+
+
+h2 {
+	margin-bottom: 20px;
+	font-size: 39px;
+	font-weight: bold;
+	color: #ABABAB;
+}
+
+.btn {
+    background-color: #48D1CC;
+	border-radius: 2px;
+	font-weight: bold;
+	padding: 10px;
+	color: white;
+}
+
+.med {
+	font-size: 27px;
+	color: white;
+}
+
+.wide {
+	background-color: #8EB7E4;
+	width: 100%;
+	-webkit-border-top-right-radius: 0;
+	-webkit-border-bottom-right-radius: 0;
+	-moz-border-radius-topright: 0;
+	-moz-border-radius-bottomright: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+table{
     border-bottom-style: inset;
     border-bottom-color: white;
-    
-   }
+}
+.td_left{
+    width: 550px;
+    font-family: "맑은고딕";
+    font-size: 13px;
+    font-weight: bold;
+   
+}
+.td_right{
+     width:300px;
+    float: right;
+    font-family: "맑은고딕";
+    font-size: 13px; 
+}
+
+#container1 {
+    background-color: #e2dada;
+}
+
+.centered-forms {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+.centered-forms .panel {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
 </style>
 <body>
+
 <%
 	Member loginUser = (Member)session.getAttribute("loginUser");
 %>
-<div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <%
                 if(loginUser == null){
                 %>
+           <section>
+			<form action="loginPro.mem" name="forms" method="post">
+       <div class="panel-body">
+				<div class="container">
+					<div class="row colored">
+						<div class="contcustom">
+						<span><img src="img/logo1.jpg" style="height: 70px; width: 70px;" /></span>
+							<h2>Log-In</h2>
+							<div>
+								<input type="text" name="id" id="id" placeholder="Enter your ID">
+								<input type="password" name="passwd" id="passwd"
+									placeholder="Enter your Password"> <input type="submit"
+									class="btn" value="LOG-IN" onclick="javaScript:document.forms.submit()">
+									<input type="button"
+									class="btn" value="회원가입" onclick = "regist()">
+									
+							</div>
+						</div>
+					</div>
+			</form>
+	
+	</section>
+               
+                <%
+                	}
+                	else{
+                %>
+                	<fieldset>
+					        <div class="col-md-4" style="width: 42%; margin-left: 130px;">
+					            <div class="well well-sm">
+					                <form action ="logout.mem" name="logout" class="form-horizontal" method="post">
+					                    <fieldset>
+					                        <div class="form-group">
+					                            <span class="col-md-1 col-md-offset-2 text-center" ><i class="fa fa-user bigicon"></i></span>
+					                            <div class="col-md-8">
+					                                 <span STYLE ="font-size: 20px; font-weight:bold; font-color: #4169E1; margin-top: 210px;"> ${loginUser.m_name }</span> 님 로그인하셨습니다.<br>
+					                            </div>
+					                        </div>
+					
+					                        <div class="form-group">
+					                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+					                            <div class="col-md-8">
+					                            <span STYLE ="font-size: 20px; font-weight:bold;">  ${loginUser.m_email } </span><br>
+					                            </div>
+					                        </div>
+					
+					                        <div class="form-group">
+					                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+					                            <div class="col-md-8">
+					                           <span STYLE ="font-size: 20px; font-weight:bold;">  ${loginUser.m_phone } </span><br>
+					                            </div>
+					                        </div>
+					
+					
+					                        <div class="form-group">
+					                            <div class="col-md-12 text-center">
+					                                <a href="memberDetail.mem"><input type="button"  class="btn" value = "회원 정보상세보기" style =  "margin-bottom: 5px; background-color: #424242;"></a>
+					                                <input type="submit"  value="로그아웃" class="btn" onclick="document.logout.submit()" style="background-color: #424242;">
+					                            </div>
+					                        </div>
+					                    </fieldset>
+					                </form>
+					            </div>
+					    </div>
+			<div class="col-md-4" style="width: 42%; height: 50%;">
+			<div class="well well-sm" >
+                <form action="pcSelectForm.pc" name="forms2" method="post">
                 <div class="post-preview">
+                        <h2 class="post-title">
+                            	PC 선택 &nbsp;&nbsp;&nbsp; <font color="red" size="3px">단대, 학과 및 강의실을 선택해서 검색해주세요.</font>
+                        </h2>
+                    <h3 class="post-subtitle" style="margin-left: 55px; margin-top: 50px;font-size: 20px;" >
+                        	단대 : 
+                            <select id = "unit" name="unit" style="font-size: 18px;">
+                            	<option value="공과 대학">공과 대학</option>
+                            </select>
+                            &nbsp;
+                            &nbsp;
+                        	학과 : 
+                            <select id = "department" name="department" style="font-size: 18px;">
+                            	<option value="IT 공학부">IT 공학부</option>
+                            </select>
+                            <br>
+                            <br>
+                            
+                        	강의실 : 
+                            <select id = "lectureRoom" name="lectureRoom" style="font-size: 18px;">
+                            	<option value="504">504</option>
+                            </select>호
+                            <!-- <a href="pcSelectForm.pc" style="margin-left: 220px;"><input type="button" class="btn" value="검색" /></a> -->
+                        	<input type="submit"  class="btn" value="검색" onclick = "javaScript:document.forms2.submit(unit, department, lectureRoom)" style="margin-top: 10px; background-color: #424242; width:150px; margin-left:50px; margin-bottom: 30px;"/>
+                        </h3>
+                </div>
+               </form>
+               
+                </div>
+                </div>
+               </div>
+               
+                
+			<div class="col-md-4" style="width: 42%; margin-left: 130px;">
+			<!-- <div class="well well-sm" > -->
+                <hr>
+                <div class="post-preview">
+                    <a href="noticeBoardList.bo">
+                        <h2 class="post-title">
+                           	 공지사항
+                        </h2></a>
+                        
+                        <c:forEach var = "noticeArticle" items = "${noticeArticleList }">
+                        <table >
+                        <tr>
+                        <td class = "td_left">	
+                        <img src="img/nth_theme_smart_smart02_new.gif" />  
+							    	&nbsp; <a href="noticeBoardContent.bo?num=${noticeArticle.num }&pageNum=${pageNum }">${noticeArticle.subject }</a></td>
+						<td class = "td_right">	    	
+							    	 &nbsp; ${noticeArticle.reg_date }</td></tr><br>
+						
+                        </table>
+                        </c:forEach>
+                </div>
+                <!-- </div> -->
+                </div>
+ 
+			<div class="col-md-4" style="width: 42%;">
+			<!-- <div class="well well-sm" > -->
+                 <hr>
+                <div class="post-preview">
+                    <a href="qnABoardList.bo">
+                        <h2 class="post-title">
+                            	문의사항
+                        </h2></a>
+                     		<c:forEach var = "qnaArticle" items = "${qnaArticleList }">
+                        <table>
+                        <tr>
+                       <td class = "td_left">	
+							     <img src="img/nth_theme_smart_smart02_new.gif" />  
+							    	&nbsp; <a href="qnABoardContent.bo?num=${qnaArticle.num }&pageNum=${pageNum }">${qnaArticle.subject }</a></td>
+						<td class = "td_right">
+							    	 &nbsp; ${qnaArticle.reg_date }</td></tr><br>
+							     </table>
+						</c:forEach>
+                       
+                </div>
+                <hr>
+                         <ul class="pager">
+                    <li class="next">
+                        <a href="#">Top &rarr;</a>
+                    </li>
+                </ul>
+                <!-- </div> -->
+                </div>
+                </div> 
+                </div>
+                
+                </fieldset>
+            	<%
+                	}
+					%>
+            <!-- /.col-md-4 -->
+          
+        </div>
+<%-- <div class="container">
+        <div class="row" >
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" >
+                <%
+                if(loginUser == null){
+                %>
+                <div class="post-preview" >
               <form action="loginPro.mem" name="forms" method="post">
-            		<div class="container">
-              			 <div class="row colored">
-                  		<div class="contcustom">
+            		<div class="container" >
+              			 <div class="row colored" >
+                  		<div class="contcustom" >
                      	<h2>Log-In</h2>
                      	<div>
 	                        <input type="text" name="id" id="id" placeholder="Enter your ID">
@@ -163,11 +412,17 @@
                         <h2 class="post-title">
                            	 공지사항
                         </h2></a>
-                        <div>
-                        <c:forEach var = "noticeArticle" items = "${noticeArticleList }"> 
-							    	&nbsp; <a href="noticeBoardContent.bo?num=${noticeArticle.num }&pageNum=${pageNum }">${noticeArticle.subject }</a> &nbsp; ${noticeArticle.reg_date }
-						</c:forEach>
-                        </div>
+                     
+                        <c:forEach var = "noticeArticle" items = "${noticeArticleList }">
+                        <table>
+                        <td class = "td_left">	
+                        <img src="img/nth_theme_smart_smart02_new.gif" />  
+							    	&nbsp; <a href="noticeBoardContent.bo?num=${noticeArticle.num }&pageNum=${pageNum }">${noticeArticle.subject }</a></td>
+						<td class = "td_right">	    	
+							    	 &nbsp; ${noticeArticle.reg_date }</td><br>
+						
+                        </table>
+                        </c:forEach>
                 </div>
                 <hr>
                 <div class="post-preview">
@@ -176,7 +431,7 @@
                             	문의사항
                         </h2></a>
                         <div>
-							        <%-- <%             
+							        <%             
 							              try {
 							                int q_num;
 							                String q_subject;
@@ -200,11 +455,18 @@
 							          }catch(Exception e){
 							          out.println(e);
 							          }
-							     %> --%>
-							    <c:forEach var = "qnaArticle" items = "${qnaArticleList }">
-							    	&nbsp; <a href="qnABoardContent.bo?num=${qnaArticle.num }&pageNum=${pageNum }">${qnaArticle.subject }</a> &nbsp; ${qnaArticle.reg_date }<br>
-							    </c:forEach>
-                        </div>
+							     %>
+							    
+					<c:forEach var = "qnaArticle" items = "${qnaArticleList }">
+                        <table>
+                       <td class = "td_left">	
+							     <img src="img/nth_theme_smart_smart02_new.gif" />  
+							    	&nbsp; <a href="qnABoardContent.bo?num=${qnaArticle.num }&pageNum=${pageNum }">${qnaArticle.subject }</a></td>
+						<td class = "td_right">
+							    	 &nbsp; ${qnaArticle.reg_date }</td><br>
+							     </table>
+						</c:forEach>
+                       
                 </div>
                 <hr>
                 <!-- Pager -->
@@ -215,6 +477,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> --%>
+  </fieldset>
 </body>
 </html>

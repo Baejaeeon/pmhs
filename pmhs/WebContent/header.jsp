@@ -57,7 +57,7 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color: #3B3B3B;">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color:#3B3B3B;">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="main.do">Home</a>
@@ -126,18 +126,18 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/main5.jpg')">
+    <header class="intro-header" style="background-image: url('img/dg1.jpg'); " >
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
                         &nbsp;<br>
                         &nbsp;<br>
-                        &nbsp;<br>
-                        &nbsp;<br>
-                        &nbsp;<br>
-                        &nbsp;<br>
-                        &nbsp;<br>
+                       <div class="site-heading">
+                        <h1>PC Manage Helper</h1>
+                        <hr class="small">
+                        <span class="subheading">CATHOLIC UNIVERSITY OF DAEGU </span>
+                    </div>
                         &nbsp;<br>
                         &nbsp;<br>
                         <span class="subheading"></span>

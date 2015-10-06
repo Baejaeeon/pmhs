@@ -185,7 +185,7 @@
 	<section id = "list2Area">
 		<td colspan="7" id = "tr_command" >
 				<!-- <a href = "index.jsp"><input type = "button" value="Home" /></a> -->
-				<input type = "submit" value = "수리 완료" onclick="document.form.submit()" />
+				<input type = "image" src="img/reservationComplete.jpg" onclick="document.form.submit()" />
 		</td>
 	</section>
 	<c:if test="${pageInfo.count > 0 }">

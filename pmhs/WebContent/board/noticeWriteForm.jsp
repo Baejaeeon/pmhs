@@ -10,7 +10,7 @@
 #writeFormArea {	
 		margin: auto;
 		width: 80%;
-		height: 500px;
+		height: 550px;
 		border: 1px;
 		border-bottom: 1px dotted; 
 		font-family: "맑은고딕";

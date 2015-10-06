@@ -124,7 +124,7 @@
  	Member member = (Member)session.getAttribute("loginUser");
  %>
 <jsp:include page="../header.jsp"/>
-<form action="pcSelectForm.pc" method = "post">
+<form action="pcSelectForm.pc" name="pcSelect" method = "post">
 	<span style="font-weight: bold; margin-left: 50px">PC 선택 : </span>
 	<select id="unit">	
 		<option value="">공과 대학</option>
@@ -135,7 +135,7 @@
 	<select id="lectureRoom">	
 		<option value="">504</option>
 	</select>
-	<input type = "submit" value = "검색" />
+	<input type = "image" src="img/Search.jpg" onclick="javaScript:document.pcSelect.submit()" style="height:23px;" />
 	</form>
 	<div>
 	</div>		

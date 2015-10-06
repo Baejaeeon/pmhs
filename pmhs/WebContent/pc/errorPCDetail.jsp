@@ -174,8 +174,8 @@ function winClose() {
 			<tr height="8px" sty />
 			<tr>
 				<td colspan="10" id = "td_command" style="border-top: solid;">
-					<input type = "submit" value = "예약" onclick="javaScript:reservationSuccess();"/>
-					<input type = "reset" value = "취소" onclick="javaScript:winClose()"/>
+					<input type = "image" src="img/reservation.jpg" onclick="javaScript:reservationSuccess();"/>
+					<input type = "image" src="img/boardCancel.jpg" onclick="javaScript:winClose()"/>
 				</td>
 			</tr>
 		</table>

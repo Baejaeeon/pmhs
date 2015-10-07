@@ -8,7 +8,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.mmain.min.css" rel="stylesheet" type="text/css">
+<link href="font-awesome/css/font-awesome.mmain.min.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.10.2.mmain.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.mmain.js" type="text/javascript"></script>
+<style>
+.bigicon {
+    font-size:50px;
+    color:green;
+}
+</style>
 <script>
 	var xmlHttp;
 	
@@ -147,7 +157,7 @@
 				<table BORDER="0">
 					<tr>
 						<td>
-							<h1>고장 PC 정보</h1><font color="red" size="3px">해당 고장 PC 자리를 클릭해서 고장PC 상세정보를 볼 수 있습니다.</font>
+							<h1><span class= "fa fa-bullhorn bigicon"></span>&nbsp;&nbsp;고장 PC 정보</h1><font color="red" size="3px">해당 고장 PC 자리를 클릭해서 고장PC 상세정보를 볼 수 있습니다.</font>
 						</td>
 					</tr>
 				</table>

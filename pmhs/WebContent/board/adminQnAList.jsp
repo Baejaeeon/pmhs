@@ -19,13 +19,7 @@
 		height: 500px;
 		border: 1px;
 		border-bottom: 1px dotted; 
-	}
-
-	img{
-		margin: auto;
-		border:0;
-		float: right;
-	}
+	} 
 	#command{
 		margin: auto;
 		width: 60%;
@@ -127,7 +121,7 @@
 		<c:if test="${empty articleList }"> <!-- 예약이 없으면... -->
 		</c:if>
 		<c:if test="${not empty articleList }"> <!-- 예약이 있으면... -->
-		<h2>문의 사항</h2>
+		<h2> <img src="img/list.PNG">  문의 사항</h2>
 			<table>
 				<tr id = "tr_title">
 					<td><input type="checkbox" class="td_checkbox" name = "allCheck" onclick="checkAll()" /></td>

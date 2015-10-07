@@ -98,7 +98,6 @@ public class MessageReceiveListAction implements Action {
 			out.println("alert('로그인 해주세요.')");
 			out.println("history.back()");
 			out.println("</script>");
-			forward.setUrl("/member/loginForm.jsp");
 		}
 		return forward;
 	}

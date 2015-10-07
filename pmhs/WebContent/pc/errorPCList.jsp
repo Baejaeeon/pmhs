@@ -135,7 +135,7 @@
 			<h2>접수된 고장 신고가 없습니다.</h2>
 		</c:if>
 		<c:if test="${not empty errorPCList }"> <!-- 고장신고가 있으면... -->
-		<h2>고장PC 목록</h2>
+		<h2>  <img src="img/pclist.PNG">  고장PC 목록</h2>
 			<table>
 				<tr id = "tr_title">
 					<td class = "td_num">

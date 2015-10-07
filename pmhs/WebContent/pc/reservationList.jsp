@@ -127,7 +127,7 @@
 			<h2>등록된 예약이 없습니다.</h2>
 		</c:if>
 		<c:if test="${not empty reservationList }"> <!-- 예약이 있으면... -->
-		<h2>예약 목록</h2>
+		<h2><img src="img/r_list.PNG">  예약 목록</h2>
 			<table>
 				<tr id = "tr_title">
 					<td><input type="checkbox" name = "allCheck" onclick="checkAll()" /></td>

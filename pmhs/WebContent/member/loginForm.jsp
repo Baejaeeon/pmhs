@@ -77,7 +77,7 @@ h2 {
   
 </script>
 </head>
-<body style="background-image: url('img/login-bg.jpg')">
+<body style="background-image: url('img/login-bg.jpg'); ">
 	<br>
 	<br>
 	<br>

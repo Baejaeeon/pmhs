@@ -27,8 +27,10 @@ function winMemberDetail(){
 <%
   Member loginUser = (Member)session.getAttribute("loginUser");
 %>
-<% if(loginUser != null){
-	%>
+<% 
+	if(loginUser != null){
+%>
+
 <%
 }
 %>
@@ -65,7 +67,18 @@ function winMemberDetail(){
                         <div class="form-group">
                             <div class="col-md-12 text-center">
                                 <input type="button" class="btn btn-primary btn-lg" value = "회원 정보상세보기" onclick = "winMemberDetail() ">
-                                <button type="submit" class="btn btn-primary btn-lg">로그 아웃</button>
+                                <%
+                                	if(loginUser != null){
+                                %>
+                                	<button type="submit" class="btn btn-primary btn-lg">로그 아웃</button>
+                            	<%
+                                	}
+                                	else {
+                            	%>
+                            	<button type="button" class="btn btn-primary btn-lg">로그인</button>
+                            	<%
+                                	}
+                            	%>
                             </div>
                         </div>
                     </fieldset>

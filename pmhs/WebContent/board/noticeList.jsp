@@ -17,13 +17,6 @@
 		border: 1px;
 		border-bottom: 1px dotted; 
 	}
-
-	img{
-		margin: auto;
-		float: right;
-		width: 40px;
-		height: 30px;
-	}
 	#command{
 		margin: auto;
 		width: 60%;
@@ -104,7 +97,7 @@
 			<h2>등록된 글이 없습니다.</h2>
 		</c:if>
 	<c:if test="${not empty articleList }">	
-		<h2> 공지 사항</h2>
+		<h2> <img src="img/list.PNG"> 공지 사항</h2>
 			<table>
 				<tr id = "tr_title">
 					<td class = "td_num">

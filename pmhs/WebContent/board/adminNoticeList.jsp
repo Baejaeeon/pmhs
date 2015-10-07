@@ -17,11 +17,6 @@
 		border: 1px;
 		border-bottom: 1px dotted; 
 	}
-
-	img{
-		margin: auto;
-		float: right;
-		}
 	#command{
 		margin: auto;
 		width: 60%;
@@ -102,7 +97,7 @@
 			<h2>등록된 글이 없습니다.</h2>
 		</c:if>
 	<c:if test="${not empty articleList }">	
-		<h2> 공지 사항</h2>
+		<h2> <img src="img/list.PNG">  공지 사항</h2>
 			<table>
 				<tr id = "tr_title">
 					<td class = "td_num">
@@ -147,7 +142,7 @@
 		</c:if>
 	</section>
    <div id="command">
-	 <a href="noticeBoardWriteForm.boa"><img src="img/boardWrite.jpg" alt="글쓰기" style="margin-top: 5px; "></a>
+	 <a href="noticeBoardWriteForm.boa"><img src="img/boardWrite.jpg" alt="글쓰기" style="margin-top: 5px; float: right;"></a>
     </div>
 	<c:if test="${pageInfo.count > 0 }">
 	<section id = "pageArea">

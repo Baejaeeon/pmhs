@@ -12,6 +12,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.mmain.min.css" rel="stylesheet" type="text/css">
+<link href="font-awesome/css/font-awesome.mmain.min.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.10.2.mmain.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.mmain.js" type="text/javascript"></script>
 <style>
 	#declareFormArea {
 		margin: auto;
@@ -26,6 +31,10 @@
     html, body {
        background-color: white;
      }
+     .bigicon {
+    font-size:25px;
+    color:#197BB5;
+}
 </style>
 <script>
 function reservationSuccess() {
@@ -45,8 +54,8 @@ function winClose() {
 	<font color="#ffffff"><h2>고장PC 상세보기</h2></font>
 	</div>
 	<section id="declareFormArea">
-	<form action="pcReservationPro.pca" method="post">
 		<table>
+	<form action="pcReservationPro.pca" method="post">
 			<tr>
 				<td>
 					<label id="unit">단대</label>
@@ -178,8 +187,12 @@ function winClose() {
 					<input type = "image" src="img/boardCancel.jpg" onclick="javaScript:winClose()"/>
 				</td>
 			</tr>
+				</form>
 		</table>
-	</form>
+			<!-- <form action="smsSendPro.sms" name = "smsSendPro" method="post"> -->
+			<a href="smsSendPro.sms?pcSitNum=${errorPCInfo.p_num }"><input type="submit" value="문자 보내기" onclick="javaScript:document.smsPro.submit()" /></a>
+			</form>
+			</table>
 	</section>
 </body>
 </html>

@@ -47,6 +47,8 @@ public class SMSFrontController extends HttpServlet {
 		
 		// 각각의 요청 처리
 		if(command.equals("/smsSendPro.sms")) { // 문자 전송
+			System.out.println("4444");
+
 			action = new SMSSendProAction();
 			try {
 				forward = action.execute(request, response);

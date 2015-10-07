@@ -216,7 +216,7 @@ table{
                 <form action="pcSelectForm.pc" name="forms2" method="post">
                 <div class="post-preview">
                         <h2 class="post-title">
-                            	PC 선택 &nbsp;&nbsp;&nbsp; <font color="red" size="3px">단대, 학과 및 강의실을 선택해서 검색해주세요.</font>
+                            	<img src="img/pclist.PNG">PC 선택 &nbsp;&nbsp;&nbsp; <font color="red" size="3px">단대, 학과 및 강의실을 선택해서 검색해주세요.</font>
                         </h2>
                     <h3 class="post-subtitle" style="margin-left: 55px; margin-top: 50px;font-size: 20px;" >
                         	단대 : 
@@ -253,7 +253,7 @@ table{
                 <div class="post-preview">
                     <a href="noticeBoardList.bo">
                         <h2 class="post-title">
-                           	 공지사항
+                        <img src="img/list.PNG">   	 공지사항
                         </h2></a>
                         
                         <c:forEach var = "noticeArticle" items = "${noticeArticleList }">
@@ -277,7 +277,7 @@ table{
                 <div class="post-preview">
                     <a href="qnABoardList.bo">
                         <h2 class="post-title">
-                            	문의사항
+                        <img src="img/list.PNG">   	 문의사항
                         </h2></a>
                      		<c:forEach var = "qnaArticle" items = "${qnaArticleList }">
                         <table>

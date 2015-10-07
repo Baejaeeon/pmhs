@@ -159,10 +159,9 @@ table{
 								<input type="text" name="id" id="id" placeholder="Enter your ID">
 								<input type="password" name="passwd" id="passwd"
 									placeholder="Enter your Password"> <input type="submit"
-									class="btn" value="LOG-IN" onclick="javaScript:document.forms.submit()">
+									class="btn" value="LOG-IN" style =  "margin-bottom: 5px; background-color: #424242;" onclick="javaScript:document.forms.submit()">
 									<input type="button"
-									class="btn" value="회원가입" onclick = "regist()">
-									
+									class="btn" style =  "margin-bottom: 5px; background-color: #424242;" value="회원가입" onclick = "regist()">
 							</div>
 						</div>
 					</div>

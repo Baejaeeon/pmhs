@@ -125,7 +125,7 @@
 				<%
 					}
 				%>
-				  <input type = "submit" value = "삭제"/>
+				  <input type = "submit"  value = "삭제"/>
 				</fieldset>
 				
 				 <br>
@@ -140,7 +140,7 @@
 						 <option>아이디</option>
 						 <option>이름</option>
 						 <option>학번</option>
-				 	<input type = "search" name = "search" id ="search"/><input type = "submit" value ="검색"  /></a>
+				 	<input type = "search" name = "search" id ="search"/><input type = "submit" value ="검색" "  /></a>
 					</select>
 				</td>
 				</tr>

@@ -82,9 +82,6 @@
                     </li>
                     </c:if>
                     <li>
-                        <a href="memberMain.mem">회원정보</a>
-                    </li>
-                    <li>
                     <c:if test="${loginUser.m_id eq 'admin' }">
                         <a href="errorPcList.pca">PC 관리</a>
                     </c:if>

@@ -66,16 +66,16 @@ function winMemberDetail(){
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
-                                <input type="button" class="btn btn-primary btn-lg" value = "회원 정보상세보기" onclick = "winMemberDetail() ">
+                                <input type="button" class="btn btn-primary btn-lg"  style =  "margin-bottom: 5px; background-color: #424242;" value = "회원 정보상세보기" onclick = "winMemberDetail() ">
                                 <%
                                 	if(loginUser != null){
                                 %>
-                                	<button type="submit" class="btn btn-primary btn-lg">로그 아웃</button>
+                                	<button type="submit" class="btn btn-primary btn-lg" style =  "margin-bottom: 5px; background-color: #424242;">로그 아웃</button>
                             	<%
                                 	}
                                 	else {
                             	%>
-                            	<button type="button" class="btn btn-primary btn-lg">로그인</button>
+                            	<button type="button" class="btn btn-primary btn-lg" style =  "margin-bottom: 5px; background-color: #424242;">로그인</button>
                             	<%
                                 	}
                             	%>

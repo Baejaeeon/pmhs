@@ -38,7 +38,7 @@ function winMemberList(){
             <div class="well well-sm">
                 <form action ="logout.mem" class="form-horizontal" method="post">
                     <fieldset>
-                        <legend class="text-center header">회원 관리</legend>
+                        <legend class="text-center header" STYLE ="color:black">회원 관리</legend>
 
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
@@ -64,8 +64,8 @@ function winMemberList(){
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
-                                <input type="button" class="btn btn-primary btn-lg" value = "회원 목록보기" onclick = "winMemberList() ">
-                                <button type="submit" class="btn btn-primary btn-lg">로그 아웃</button>
+                                <input type="button" class="btn btn-primary btn-lg" style =  "margin-bottom: 5px; background-color: #424242;" value = "회원 목록보기" onclick = "winMemberList() ">
+                                <button type="submit" class="btn btn-primary btn-lg" style =  "margin-bottom: 5px; background-color: #424242;">로그 아웃</button>
                             </div>
                         </div>
                     </fieldset>

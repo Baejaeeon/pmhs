@@ -36,7 +36,7 @@ function winMemberModify(){
             <div class="well well-sm">
                 <form action ="main.jsp" class="form-horizontal" method="post">
                     <fieldset>
-                        <legend class="text-center header">회원 상세정보</legend>
+                        <legend class="text-center header" style =  "margin-bottom: 5px; background-color: #424242;"><span STYLE = "color: white">회원 상세정보</span></legend>
 
                         <div class="form-group">
                             <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-check bigicon"><span STYLE ="font-size: 20px">ID  </span></i></span>
@@ -99,8 +99,8 @@ function winMemberModify(){
 
                         <div class="form-group">
                             <div class="col-md-12 text-center">
-                                <input type="button" class="btn btn-primary btn-lg" value = "회원 정보수정" onclick = "winMemberModify() ">
-                                <button type="submit" class="btn btn-primary btn-lg">메인화면으로</button>
+                                <input type="button" class="btn btn-primary btn-lg"  style =  "margin-bottom: 5px; background-color: #424242;" value = "회원 정보수정" onclick = "winMemberModify() ">
+                                <button type="submit" class="btn btn-primary btn-lg" style =  "margin-bottom: 5px; background-color: #424242;">메인화면으로</button>
                             </div>
                         </div>
                     </fieldset>
